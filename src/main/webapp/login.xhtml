@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html class="js html" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>MicroSity Version 6</title>
+        <h:outputStylesheet library="css" name="login.css" id="pagesheet" />
+        <h:outputStylesheet library="css" name="site_global.css"  />
+    </h:head>
+    <h:body>
+        <p:growl autoUpdate="true" />
+        <div class="clearfix borderbox" id="page"><!-- column -->
+            <div class="position_content" id="page_position_content">
+                <div class="clearfix colelem" id="pu883"><!-- group -->
+                    <div class="browser_width" id="u883-bw">
+                        <div id="u883"><!-- simple frame --></div>
+                    </div>
+                    <div class="museBGSize" id="u886"><!-- simple frame --></div>
+                    <img id="u897" alt="" src="resources/images/logo-u897.png" data-image-width="170"/><!-- rasterized frame -->
+                </div>
+                <h:form>
+                    <img class="colelem" id="u913-4" alt="Авторизация" src="resources/images/u913-4.png" data-image-width="417"/><!-- rasterized frame -->
+                    <h:inputText id="email" styleClass="colelem "  
+                                 style="text-align: center; height: 27px;box-shadow: 6px 6px 8px rgba(0,0,0,0.5);
+                                 z-index: 28;display: block;vertical-align: top;top: -816px;margin-bottom: -36px;
+                                 position: relative;width: 28.45%;margin-left: 35.78%;left: 335px;" 
+                                 value="#{userController.current.mainEmail}" required="true" requiredMessage="Нужен почтовый ящик" />
+                    <p:watermark for="email" value="Почтовый ящик" />
+                    <h:inputSecret id="pass" class="colelem" 
+                                   style="text-align: center; height: 27px;z-index: 32;display: block;vertical-align: top;top: -768px;
+                                   margin-bottom: -36px;position: relative;width: 28.45%;margin-left: 35.78%;left: 335px;box-shadow: 6px 6px 8px rgba(0,0,0,0.5);"
+                                   value="#{userController.current.passwordHash}" required="true" requiredMessage="Забыли ввести пароль" />
+                    <p:watermark for="pass" value="Пароль" />
+                    <div class="clearfix colelem" id="pbuttonu929"><!-- group -->
+                        <h:commandLink action="#{userController.login()}">
+                            <div class="Button transition shadow clearfix grpelem" id="buttonu929"><!-- container box -->
+                                <div class="clip_frame grpelem" id="u952"><!-- image -->
+                                    <img class="block" id="u952_img" src="resources/images/check.png" alt="" data-image-width="25" data-image-height="25"/>
+                                </div>
+                                <div class="clearfix grpelem" id="u954-4"><!-- content -->
+                                    <p>Войти</p>
+                                </div>
+                            </div>
+                        </h:commandLink>
+                        <a class="nonblock nontext grpelem" id="u978-4" href="forgotpassword.xhtml?faces-redirect=true"><!-- rasterized frame --><img id="u978-4_img" alt="Забыли пароль?" src="resources/images/u978-4.png" data-image-width="162"/></a>
+                    </div>
+                </h:form>
+                <div id="u904-4-wrapper">
+                    <div class="clearfix pinned-colelem" id="u904-4"><!-- content -->
+                        <p><span id="u904" style="white-space: nowrap">Приветствуем!</span></p>
+                    </div>
+                </div>
+                <img class="colelem" id="u981-4" alt="Регистрация" src="resources/images/u981-4.png" data-image-width="417"/><!-- rasterized frame -->
+                <div id="u907-7-wrapper">
+                    <div class="clearfix pinned-colelem" id="u907-7"><!-- content -->
+                        <p>Для дальнейшей работы с порталом необходима авторизация. Если Вы до сих пор не имеете учетной записи, зарегистрируйтесь. Если&nbsp; Вы хотите ознакомиться с возможностями нашей системы, мы приготовили для Вас тестовую учетную запись.</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+                <h:form>
+                    <h:inputText id="email2" styleClass="colelem" 
+                                 style="z-index: 51;display: block;vertical-align: top;top: -588px;
+                                 margin-bottom: -36px;position: relative;width: 28.45%;margin-left: 35.78%;
+                                 left: 335px;text-align: center; height: 27px;box-shadow: 6px 6px 8px rgba(0,0,0,0.5);"
+                                 value="#{userController.created.mainEmail}" required="true" requiredMessage="Нужен почтовый ящик" />
+                    <p:watermark for="email2" value="Почтовый ящик" />
+                    <h:inputSecret id="pass2" styleClass="colelem"
+                                   style="z-index: 55;display: block;vertical-align: top;top: -541px;
+                                   margin-bottom: -36px;position: relative;width: 28.45%;margin-left: 35.78%;
+                                   left: 335px;text-align: center; height: 27px;box-shadow: 6px 6px 8px rgba(0,0,0,0.5);"
+                                   value="#{userController.created.passwordHash}" required="true" requiredMessage="Нужен пароль!" />
+                    <p:watermark for="pass2" value="Пароль" />
+                    <h:inputSecret id="pass3" styleClass="colelem"
+                                   style="z-index: 59;display: block;vertical-align: top;top: -493px;margin-bottom: -36px;
+                                   position: relative;width: 28.45%;margin-left: 35.78%;left: 335px;
+                                   text-align: center; height: 27px;box-shadow: 6px 6px 8px rgba(0,0,0,0.5);"
+                                   value="#{userController.repeatedPassword}" required="true" requiredMessage="Надо подтверждение пароля!" />
+                    <p:watermark for="pass3" value="Подтверждение пароля" />
+                    <h:commandLink action="#{userController.demo}">
+                        <div id="buttonu965-wrapper">
+                            <div class="nonblock nontext Button transition shadow clearfix pinned-colelem" id="buttonu965"><!-- container box -->
+                                <div class="clip_frame grpelem" id="u966"><!-- image -->
+                                    <img class="block" id="u966_img" src="resources/images/check.png" alt="" data-image-width="25" data-image-height="25"/>
+                                </div>
+                                <div class="clearfix grpelem" id="u968-4"><!-- content --><p>Бесплатный тур</p>
+                                </div>
+                            </div>
+                        </div>
+                    </h:commandLink>
+                    <div class="shadow colelem" id="u1006"><!-- simple frame -->
+                        <p:captcha language="ru_RU" />
+                    </div>
+                    <h:commandLink action="#{userController.createUser()}" >
+                        <div class="Button transition shadow clearfix colelem" id="buttonu993"><!-- container box -->
+                            <div class="clip_frame grpelem" id="u994"><!-- image -->
+                                <img class="block" id="u994_img" src="resources/images/check.png" alt="" data-image-width="25" data-image-height="25"/>
+                            </div>
+                            <div class="clearfix grpelem" id="u996-4"><!-- content -->
+                                <p>Регистрация</p>
+                            </div>
+                        </div>
+                    </h:commandLink>
+                </h:form>
+                <div class="verticalspacer"></div>
+            </div>
+        </div>
+    </h:body>
+</html>
+
