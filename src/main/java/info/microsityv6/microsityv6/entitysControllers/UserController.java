@@ -93,6 +93,13 @@ public class UserController implements Serializable {
             newUser.setRole(Role.ADMIN);
             uf.create(newUser);
             users.add(newUser);
+            newUser = new User();
+            newUser.setPasswordHash("demodemo");
+            newUser.setMainEmail("demo@microsity.info");
+            newUser.addPhone("+380512000000");
+            newUser.setRole(Role.USER);
+            uf.create(newUser);
+            users.add(newUser);
         }
         for (User user : users) {
             if (user.getMainEmail().equalsIgnoreCase(current.getMainEmail())) {
@@ -217,5 +224,11 @@ public class UserController implements Serializable {
         this.remMe = remMe;
     }
     
+    public void getDemo(){
+        current=new User();
+        current.setMainEmail("demo@microsity.info");
+        current.setPasswordHash("demodemo");
+        login();
+    }
     
 }
