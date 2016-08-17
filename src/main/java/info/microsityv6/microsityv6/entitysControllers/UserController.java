@@ -44,6 +44,7 @@ public class UserController implements Serializable {
     private boolean entered = false;
     private boolean admin = false;
     private boolean remMe = false;
+    private String userMail;
 
     @PostConstruct
     public void init() {
@@ -222,6 +223,14 @@ public class UserController implements Serializable {
 
     public void setRemMe(boolean remMe) {
         this.remMe = remMe;
+    }
+
+    public String getUserMail() {
+        return userMail;
+    }
+
+    public void setUserMail(String userMail) {
+        this.userMail = userMail;
     }
     
     public void getDemo(){

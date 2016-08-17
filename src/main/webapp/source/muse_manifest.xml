@@ -39,7 +39,7 @@
     <file name="jquery.musepolyfill.bgsize.js" crc="3792042506" ref="index:login:loginerror:forgotpassword"/>
     <file name="jquery.scrolleffects.js" crc="3837774061" ref="index"/>
   </folder>
-  <folder name="images">
+  <folder name="resources/images/">
     <file name="blank.gif" crc="4208392903" ref="home:index:login:loginerror:forgotpassword"/>
     <file name="maps-new.png" crc="528500896" seo="true" ref="home:addfacility:cameras:counters:sensors:rcontrols:health:gps:actionmap:addcamera:addcounter:setupcounter:addsensor:setupsensor:addcontroller:setupcontroller:addhealth:setuphealth:addgps:setupgps:setupmap:messages:profile"/>
     <file name="u1915-4.png" crc="489415257" ref="home:addfacility:cameras:counters:sensors:rcontrols:health:gps:actionmap:addcamera:addcounter:setupcounter:addsensor:setupsensor:addcontroller:setupcontroller:addhealth:setuphealth:addgps:setupgps:setupmap:messages:profile"/>

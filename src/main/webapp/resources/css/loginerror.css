@@ -334,6 +334,7 @@
 .html
 {
 	background-color: #90A7BB;
+        overflow: hidden;
 }
 
 body
