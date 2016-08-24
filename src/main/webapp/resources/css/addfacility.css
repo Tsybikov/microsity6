@@ -1,7 +1,7 @@
 .version.addfacility /* version checker */
 {
-	color: #0000E0;
-	background-color: #204F75;
+	color: #0000FB;
+	background-color: #43ED59;
 }
 
 #muse_css_mq
@@ -33,7 +33,7 @@
 
 #u1880
 {
-	z-index: 3;
+	z-index: 52;
 	height: 62px;
 	position: fixed;
 	top: 1px;
@@ -41,12 +41,12 @@
 
 #u1880-bw
 {
-	z-index: 3;
+	z-index: 52;
 }
 
 #u1883
 {
-	z-index: 4;
+	z-index: 53;
 	position: fixed;
 	top: 5px;
 	left: 0px;
@@ -56,7 +56,7 @@
 
 #u1885
 {
-	z-index: 6;
+	z-index: 55;
 	height: 62px;
 	position: fixed;
 	top: 63px;
@@ -64,12 +64,12 @@
 
 #u1885-bw
 {
-	z-index: 6;
+	z-index: 55;
 }
 
 #u1929-4
 {
-	z-index: 31;
+	z-index: 80;
 	position: fixed;
 	top: 24px;
 	left: 97px;
@@ -79,7 +79,7 @@
 
 #u1930-4
 {
-	z-index: 35;
+	z-index: 84;
 	position: fixed;
 	top: 24px;
 	left: 255px;
@@ -89,7 +89,7 @@
 
 #u1931-4
 {
-	z-index: 39;
+	z-index: 88;
 	position: fixed;
 	top: 24px;
 	left: 334px;
@@ -99,7 +99,7 @@
 
 #u3870
 {
-	z-index: 43;
+	z-index: 92;
 	padding-bottom: 375px;
 	position: fixed;
 	top: 141px;
@@ -110,7 +110,7 @@
 
 #u3885
 {
-	z-index: 44;
+	z-index: 93;
 	height: 375px;
 	position: fixed;
 	top: 141px;
@@ -121,7 +121,7 @@
 
 #buttonu3877
 {
-	z-index: 45;
+	z-index: 94;
 	padding-bottom: 4px;
 	position: fixed;
 	top: 459px;
@@ -148,7 +148,7 @@
 
 #u3878-4
 {
-	z-index: 46;
+	z-index: 95;
 	position: relative;
 	margin-right: -10000px;
 	margin-top: 6px;
@@ -157,7 +157,7 @@
 
 #u3872
 {
-	z-index: 50;
+	z-index: 99;
 	padding-bottom: 34px;
 	position: fixed;
 	top: 141px;
@@ -168,7 +168,7 @@
 
 #u3873-4
 {
-	z-index: 51;
+	z-index: 100;
 	position: fixed;
 	top: 147px;
 	left: 17px;
@@ -178,7 +178,7 @@
 
 #u3892
 {
-	z-index: 55;
+	z-index: 104;
 	padding-bottom: 137px;
 	position: fixed;
 	top: 177px;
@@ -205,7 +205,7 @@
 
 #u3888-4
 {
-	z-index: 56;
+	z-index: 105;
 	position: fixed;
 	top: 182px;
 	left: 30px;
@@ -225,7 +225,7 @@
 
 #u3883-4
 {
-	z-index: 60;
+	z-index: 109;
 	position: fixed;
 	top: 205px;
 	left: 82px;
@@ -235,7 +235,7 @@
 
 #u3894-4
 {
-	z-index: 76;
+	z-index: 125;
 	position: fixed;
 	top: 205px;
 	left: 181px;
@@ -255,7 +255,7 @@
 
 #u3875-4
 {
-	z-index: 64;
+	z-index: 113;
 	position: fixed;
 	top: 229px;
 	left: 82px;
@@ -265,7 +265,7 @@
 
 #u3891-4
 {
-	z-index: 80;
+	z-index: 129;
 	position: fixed;
 	top: 229px;
 	left: 181px;
@@ -285,7 +285,7 @@
 
 #u3871-4
 {
-	z-index: 68;
+	z-index: 117;
 	position: fixed;
 	top: 253px;
 	left: 82px;
@@ -295,7 +295,7 @@
 
 #u3882-4
 {
-	z-index: 84;
+	z-index: 133;
 	position: fixed;
 	top: 253px;
 	left: 181px;
@@ -315,7 +315,7 @@
 
 #u3887-4
 {
-	z-index: 72;
+	z-index: 121;
 	position: fixed;
 	top: 276px;
 	left: 82px;
@@ -325,7 +325,7 @@
 
 #u3890-4
 {
-	z-index: 88;
+	z-index: 137;
 	position: fixed;
 	top: 276px;
 	left: 181px;
@@ -335,7 +335,7 @@
 
 #u3876
 {
-	z-index: 92;
+	z-index: 141;
 	height: 88px;
 	position: fixed;
 	top: 205px;
@@ -346,7 +346,7 @@
 
 #u3880
 {
-	z-index: 93;
+	z-index: 142;
 	padding-bottom: 137px;
 	position: fixed;
 	top: 314px;
@@ -373,7 +373,7 @@
 
 #u3884-4
 {
-	z-index: 94;
+	z-index: 143;
 	position: fixed;
 	top: 319px;
 	left: 30px;
@@ -393,7 +393,7 @@
 
 #u3879-4
 {
-	z-index: 98;
+	z-index: 147;
 	position: fixed;
 	top: 343px;
 	left: 82px;
@@ -403,7 +403,7 @@
 
 #u3893-4
 {
-	z-index: 114;
+	z-index: 163;
 	position: fixed;
 	top: 343px;
 	left: 181px;
@@ -423,7 +423,7 @@
 
 #u3889-4
 {
-	z-index: 102;
+	z-index: 151;
 	position: fixed;
 	top: 367px;
 	left: 82px;
@@ -433,7 +433,7 @@
 
 #u3895-4
 {
-	z-index: 118;
+	z-index: 167;
 	position: fixed;
 	top: 367px;
 	left: 181px;
@@ -453,7 +453,7 @@
 
 #u3881-4
 {
-	z-index: 106;
+	z-index: 155;
 	position: fixed;
 	top: 390px;
 	left: 82px;
@@ -463,7 +463,7 @@
 
 #u3896-4
 {
-	z-index: 122;
+	z-index: 171;
 	position: fixed;
 	top: 390px;
 	left: 181px;
@@ -483,7 +483,7 @@
 
 #u3886-4
 {
-	z-index: 110;
+	z-index: 159;
 	position: fixed;
 	top: 414px;
 	left: 82px;
@@ -493,7 +493,7 @@
 
 #u3897-4
 {
-	z-index: 126;
+	z-index: 175;
 	position: fixed;
 	top: 414px;
 	left: 181px;
@@ -503,7 +503,7 @@
 
 #u3874
 {
-	z-index: 130;
+	z-index: 179;
 	height: 88px;
 	position: fixed;
 	top: 343px;
@@ -514,7 +514,7 @@
 
 #buttonu1886
 {
-	z-index: 131;
+	z-index: 180;
 	position: fixed;
 	top: 63px;
 	left: 163px;
@@ -532,7 +532,7 @@
 
 #u1889-4
 {
-	z-index: 132;
+	z-index: 181;
 	margin-bottom: -6px;
 	position: relative;
 	margin-right: -10000px;
@@ -543,7 +543,7 @@
 
 #u1887
 {
-	z-index: 136;
+	z-index: 185;
 	position: relative;
 	margin-right: -10000px;
 	margin-top: 4px;
@@ -560,7 +560,7 @@
 
 #buttonu1890
 {
-	z-index: 138;
+	z-index: 187;
 	position: fixed;
 	top: 63px;
 	left: 244px;
@@ -578,7 +578,7 @@
 
 #u1891-4
 {
-	z-index: 139;
+	z-index: 188;
 	margin-bottom: -6px;
 	position: relative;
 	margin-right: -10000px;
@@ -589,7 +589,7 @@
 
 #u1892
 {
-	z-index: 143;
+	z-index: 192;
 	position: relative;
 	margin-right: -10000px;
 	margin-top: 4px;
@@ -606,7 +606,7 @@
 
 #buttonu1902
 {
-	z-index: 145;
+	z-index: 194;
 	position: fixed;
 	top: 63px;
 	left: 329px;
@@ -624,7 +624,7 @@
 
 #u1903-4
 {
-	z-index: 146;
+	z-index: 195;
 	margin-bottom: -6px;
 	position: relative;
 	margin-right: -10000px;
@@ -634,7 +634,7 @@
 
 #u1904
 {
-	z-index: 150;
+	z-index: 199;
 	position: relative;
 	margin-right: -10000px;
 	margin-top: 4px;
@@ -651,7 +651,7 @@
 
 #buttonu1906
 {
-	z-index: 152;
+	z-index: 201;
 	position: fixed;
 	top: 63px;
 	left: 411px;
@@ -669,7 +669,7 @@
 
 #u1909-4
 {
-	z-index: 153;
+	z-index: 202;
 	margin-bottom: -6px;
 	position: relative;
 	margin-right: -10000px;
@@ -679,7 +679,7 @@
 
 #u1907
 {
-	z-index: 157;
+	z-index: 206;
 	position: relative;
 	margin-right: -10000px;
 	margin-top: 4px;
@@ -696,7 +696,7 @@
 
 #buttonu1910
 {
-	z-index: 159;
+	z-index: 208;
 	position: fixed;
 	top: 63px;
 	left: 493px;
@@ -722,7 +722,7 @@
 
 #u1911-4
 {
-	z-index: 160;
+	z-index: 209;
 	margin-bottom: -6px;
 	position: relative;
 	margin-right: -10000px;
@@ -732,7 +732,7 @@
 
 #u1912
 {
-	z-index: 164;
+	z-index: 213;
 	position: relative;
 	margin-right: -10000px;
 	margin-top: 4px;
@@ -756,7 +756,7 @@
 
 #buttonu1894
 {
-	z-index: 166;
+	z-index: 215;
 	position: fixed;
 	top: 63px;
 	left: 81px;
@@ -774,7 +774,7 @@
 
 #u1895-4
 {
-	z-index: 167;
+	z-index: 216;
 	margin-bottom: -6px;
 	position: relative;
 	margin-right: -10000px;
@@ -785,7 +785,7 @@
 
 #u1896
 {
-	z-index: 171;
+	z-index: 220;
 	position: relative;
 	margin-right: -10000px;
 	margin-top: 4px;
@@ -809,7 +809,7 @@
 
 #buttonu1898
 {
-	z-index: 173;
+	z-index: 222;
 	position: fixed;
 	top: 63px;
 	left: 0px;
@@ -835,7 +835,7 @@
 
 #u1899-4
 {
-	z-index: 174;
+	z-index: 223;
 	margin-bottom: -6px;
 	position: relative;
 	margin-right: -10000px;
@@ -846,7 +846,7 @@
 
 #u1900
 {
-	z-index: 178;
+	z-index: 227;
 	position: relative;
 	margin-right: -10000px;
 	margin-top: 4px;
@@ -868,17 +868,472 @@
 	margin: 4px -10000px 0px 0%;
 }
 
-#pbuttonu1914
+#u4556
 {
-	padding-bottom: 126px;
+	z-index: 2;
+	border-width: 0px;
+	border-color: transparent;
+	background-color: transparent;
+	position: relative;
 	margin-right: -10000px;
-	margin-left: 1068px;
-	width: 27.84%;
+	margin-top: 144px;
+	width: 44.46%;
+	margin-left: 27.78%;
+	left: 82px;
+}
+
+#u4557
+{
+	z-index: 3;
+	border-width: 0px;
+	border-color: transparent;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	width: 100%;
+	margin-left: 0%;
+	left: 0px;
+}
+
+#u4558
+{
+	z-index: 4;
+	border-width: 0px;
+	border-color: transparent;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	width: 100%;
+	margin-left: 0%;
+	left: 0px;
+}
+
+#u4559
+{
+	z-index: 5;
+	height: 301px;
+	-pie-box-shadow: none;
+	box-shadow: 6px 6px 8px rgba(0,0,0,0.5);
+	background-color: #4C5760;
+	opacity: 0.46;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=46)";
+	filter: alpha(opacity=46);
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 1px;
+	width: 100%;
+	margin-left: 0%;
+	left: 0px;
+}
+
+#u4560
+{
+	z-index: 6;
+	height: 29px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #414D57;
+	background-color: #263643;
+	position: relative;
+	margin-right: -10000px;
+	width: 99.7%;
+	margin-left: 0.16%;
+	left: -1px;
+}
+
+#u4561-4
+{
+	z-index: 7;
+	display: block;
+	vertical-align: top;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 6px;
+	width: 42.56%;
+	margin-left: 28.73%;
+	left: -189px;
+}
+
+#u4570
+{
+	z-index: 11;
+	border-width: 0px;
+	border-color: transparent;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 46px;
+	width: 46.97%;
+	margin-left: 26.52%;
+	left: -164px;
+}
+
+#u4572
+{
+	z-index: 12;
+	border-width: 0px;
+	border-color: transparent;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	width: 100%;
+	margin-left: 0%;
+	left: 0px;
+}
+
+#u4578
+{
+	z-index: 13;
+	border-width: 0px;
+	border-color: transparent;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	width: 100%;
+	margin-left: 0%;
+	left: 0px;
+}
+
+#u4581
+{
+	z-index: 14;
+	background-color: transparent;
+	padding-bottom: 178px;
+	position: relative;
+	margin-right: -10000px;
+	width: 100%;
+	margin-left: 0%;
+	left: 0px;
+}
+
+#u4579
+{
+	z-index: 15;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #414D57;
+	background-color: #263643;
+	padding-bottom: 4px;
+	position: relative;
+	margin-right: -10000px;
+	width: 99.36%;
+	margin-left: 0.33%;
+	left: -1px;
+}
+
+#u4580-4
+{
+	z-index: 16;
+	display: block;
+	vertical-align: top;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 4px;
+	width: 76.88%;
+	margin-left: 11.57%;
+	left: -37px;
+}
+
+#u4586-4
+{
+	z-index: 20;
+	display: block;
+	vertical-align: top;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 85px;
+	width: 64.73%;
+	margin-left: 17.64%;
+	left: -18px;
+}
+
+#u4584-4
+{
+	z-index: 24;
+	display: block;
+	vertical-align: top;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 110px;
+	width: 64.73%;
+	margin-left: 17.64%;
+	left: -18px;
+}
+
+#u4573-4
+{
+	z-index: 28;
+	display: block;
+	vertical-align: top;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 135px;
+	width: 64.73%;
+	margin-left: 17.64%;
+	left: -19px;
+}
+
+#u4575-4
+{
+	z-index: 32;
+	display: block;
+	vertical-align: top;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 35px;
+	width: 76.38%;
+	margin-left: 11.82%;
+	left: 0px;
+}
+
+#u4571-4
+{
+	z-index: 36;
+	display: block;
+	vertical-align: top;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 60px;
+	width: 65.05%;
+	margin-left: 17.48%;
+	left: -17px;
+}
+
+#u4670
+{
+	z-index: 40;
+	height: 137px;
+	-pie-box-shadow: 6px 6px 8px #7F7F7F;
+	box-shadow: 6px 6px 8px rgba(0,0,0,0.5);
+	background-color: #FFFFFF;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 192px;
+	width: 18.45%;
+	left: 57.44%;
+}
+
+#pbuttonu4675
+{
+	padding-bottom: 0px;
+	margin-right: -10000px;
+	margin-top: 363px;
+	width: 11.29%;
+	margin-left: 44.36%;
+}
+
+#buttonu4675
+{
+	z-index: 46;
+	-pie-box-shadow: 4px 4px 8px #7F7F7F;
+	box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+	border-width: 0px;
+	background-color: #3F698A;
+	padding-bottom: 6px;
+	position: relative;
+	width: 100%;
+	margin-left: 0%;
+	left: 299.5px;
+}
+
+#buttonu4675:hover
+{
+	background-color: #12456D;
+	min-height: 0px;
+	width: 100%;
+	left: 299.5px;
+	margin: 0px 0px 0px 0%;
+}
+
+#buttonu4675.ButtonSelected
+{
+	background-color: #3F698A;
+	min-height: 0px;
+	width: 100%;
+	left: 299.5px;
+	margin: 0px 0px 0px 0%;
+}
+
+#u4676-4
+{
+	z-index: 47;
+	display: block;
+	vertical-align: top;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 6px;
+	width: 100%;
+}
+
+#buttonu4673
+{
+	z-index: 41;
+	-pie-box-shadow: 4px 4px 8px #7F7F7F;
+	box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+	border-width: 0px;
+	background-color: #3F698A;
+	padding-bottom: 6px;
+	margin-top: 13px;
+	position: relative;
+	width: 100%;
+	margin-left: 0%;
+	left: 299.5px;
+}
+
+#buttonu4673:hover
+{
+	background-color: #12456D;
+	min-height: 0px;
+	width: 100%;
+	left: 299.5px;
+	margin: 13px 0px 0px 0%;
+}
+
+#buttonu4673.ButtonSelected
+{
+	background-color: #3F698A;
+	min-height: 0px;
+	width: 100%;
+	left: 299.5px;
+	margin: 13px 0px 0px 0%;
+}
+
+#u4674-4
+{
+	z-index: 42;
+	display: block;
+	vertical-align: top;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 6px;
+	width: 100%;
+}
+
+#buttonu1918
+{
+	z-index: 63;
+	padding-bottom: 11px;
+	position: fixed;
+	top: 0px;
+	right: 281px;
+	width: 8.86%;
+	max-width: 131px;
+}
+
+#buttonu1918:hover
+{
+	min-height: 0px;
+	width: 8.86%;
+	max-width: 131px;
+	margin: 0px;
+}
+
+#buttonu1918.ButtonSelected
+{
+	min-height: 0px;
+	width: 8.86%;
+	max-width: 131px;
+	margin: 0px;
+}
+
+#u1919
+{
+	z-index: 68;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 16px;
+	width: 22.91%;
+	left: 5.35%;
+}
+
+#buttonu1918:hover #u1919
+{
+	min-height: 0px;
+	width: 22.91%;
+	margin: 16px -10000px 0px 0%;
+}
+
+#buttonu1918.ButtonSelected #u1919
+{
+	min-height: 0px;
+	width: 22.91%;
+	margin: 16px -10000px 0px 0%;
+}
+
+#u1921-4
+{
+	z-index: 64;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 16px;
+	width: 67.18%;
+	left: 32.83%;
+}
+
+#buttonu1922
+{
+	z-index: 70;
+	padding-bottom: 11px;
+	position: fixed;
+	top: 0px;
+	right: 138px;
+	width: 9.13%;
+	max-width: 135px;
+}
+
+#buttonu1922:hover
+{
+	min-height: 0px;
+	width: 9.13%;
+	max-width: 135px;
+	margin: 0px;
+}
+
+#buttonu1922.ButtonSelected
+{
+	min-height: 0px;
+	width: 9.13%;
+	max-width: 135px;
+	margin: 0px;
+}
+
+#u1924
+{
+	z-index: 75;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 16px;
+	width: 22.23%;
+	left: 6.67%;
+}
+
+#buttonu1922:hover #u1924
+{
+	min-height: 0px;
+	width: 22.23%;
+	margin: 16px -10000px 0px 0%;
+}
+
+#buttonu1922.ButtonSelected #u1924
+{
+	min-height: 0px;
+	width: 22.23%;
+	margin: 16px -10000px 0px 0%;
+}
+
+#u1923-4
+{
+	z-index: 71;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 16px;
+	width: 65.19%;
+	left: 28.89%;
 }
 
 #buttonu1914
 {
-	z-index: 7;
+	z-index: 56;
 	padding-bottom: 0px;
 	position: fixed;
 	top: 63px;
@@ -912,7 +1367,7 @@
 
 #u1916
 {
-	z-index: 12;
+	z-index: 61;
 	position: relative;
 	width: 18.19%;
 	margin-left: 40.61%;
@@ -934,138 +1389,16 @@
 
 #u1915-4
 {
-	z-index: 8;
+	z-index: 57;
 	top: -4px;
 	margin-bottom: -4px;
 	position: relative;
 	width: 103.04%;
 }
 
-#buttonu1918
-{
-	z-index: 14;
-	padding-bottom: 11px;
-	position: fixed;
-	top: 0px;
-	right: 281px;
-	width: 8.86%;
-	max-width: 131px;
-}
-
-#buttonu1918:hover
-{
-	min-height: 0px;
-	width: 8.86%;
-	max-width: 131px;
-	margin: 0px;
-}
-
-#buttonu1918.ButtonSelected
-{
-	min-height: 0px;
-	width: 8.86%;
-	max-width: 131px;
-	margin: 0px;
-}
-
-#u1919
-{
-	z-index: 19;
-	position: relative;
-	margin-right: -10000px;
-	margin-top: 16px;
-	width: 22.91%;
-	left: 5.35%;
-}
-
-#buttonu1918:hover #u1919
-{
-	min-height: 0px;
-	width: 22.91%;
-	margin: 16px -10000px 0px 0%;
-}
-
-#buttonu1918.ButtonSelected #u1919
-{
-	min-height: 0px;
-	width: 22.91%;
-	margin: 16px -10000px 0px 0%;
-}
-
-#u1921-4
-{
-	z-index: 15;
-	position: relative;
-	margin-right: -10000px;
-	margin-top: 16px;
-	width: 67.18%;
-	left: 32.83%;
-}
-
-#buttonu1922
-{
-	z-index: 21;
-	padding-bottom: 11px;
-	position: fixed;
-	top: 0px;
-	right: 138px;
-	width: 9.13%;
-	max-width: 135px;
-}
-
-#buttonu1922:hover
-{
-	min-height: 0px;
-	width: 9.13%;
-	max-width: 135px;
-	margin: 0px;
-}
-
-#buttonu1922.ButtonSelected
-{
-	min-height: 0px;
-	width: 9.13%;
-	max-width: 135px;
-	margin: 0px;
-}
-
-#u1924
-{
-	z-index: 26;
-	position: relative;
-	margin-right: -10000px;
-	margin-top: 16px;
-	width: 22.23%;
-	left: 6.67%;
-}
-
-#buttonu1922:hover #u1924
-{
-	min-height: 0px;
-	width: 22.23%;
-	margin: 16px -10000px 0px 0%;
-}
-
-#buttonu1922.ButtonSelected #u1924
-{
-	min-height: 0px;
-	width: 22.23%;
-	margin: 16px -10000px 0px 0%;
-}
-
-#u1923-4
-{
-	z-index: 22;
-	position: relative;
-	margin-right: -10000px;
-	margin-top: 16px;
-	width: 65.19%;
-	left: 28.89%;
-}
-
 #buttonu1926
 {
-	z-index: 28;
+	z-index: 77;
 	padding-bottom: 17px;
 	position: fixed;
 	top: 0px;
@@ -1092,7 +1425,7 @@
 
 #u1927
 {
-	z-index: 29;
+	z-index: 78;
 	position: relative;
 	margin-right: -10000px;
 	margin-top: 16px;
@@ -1116,13 +1449,13 @@
 
 #u2064
 {
-	z-index: 2;
+	z-index: 51;
 	height: 71px;
 }
 
 .js body
 {
-	visibility: hidden;
+	visibility: visible;
 }
 
 .js body.initialized
@@ -1132,7 +1465,7 @@
 
 #u2064-bw
 {
-	z-index: 2;
+	z-index: 51;
 	margin-top: 12px;
 	height: 71px;
 }
@@ -1153,7 +1486,7 @@ body
 	min-height: 1px;
 }
 
-#u1887_img,#u1892_img,#u1904_img,#u1907_img,#u1912_img,#u1896_img,#u1900_img,#u1916_img,#u1919_img,#u1924_img,#u1927_img
+#u1887_img,#u1892_img,#u1904_img,#u1907_img,#u1912_img,#u1896_img,#u1900_img,#u1919_img,#u1924_img,#u1916_img,#u1927_img
 {
 	width: 100%;
 }

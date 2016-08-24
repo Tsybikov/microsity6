@@ -3,7 +3,8 @@
 <html class="js html" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:comp="http://xmlns.jcp.org/jsf/composite/ezcomp">
     <h:head>
         <title>MicroSity Version 6</title>
         <h:outputStylesheet library="css" name="master-a.css" />
@@ -24,66 +25,12 @@
                 <div class="browser_width" id="u1885-bw">
                     <div class="shadow" id="u1885"><!-- simple frame --></div>
                 </div>
-                <img id="u1929-4" alt="demo@microsity.info" src="resources/images/u1929-4.png" data-image-width="137"/><!-- rasterized frame -->
-                <img id="u1930-4" alt="Баланс :" src="resources/images/u1930-4.png" data-image-width="58"/><!-- rasterized frame -->
-                <img id="u1931-4" alt="+100500" src="resources/images/u1931-4.png" data-image-width="63"/><!-- rasterized frame -->
-                <div class="clearfix" id="u3870"><!-- group -->
-                    <div class="shadow" id="u3885"><!-- simple frame --></div>
-                    <div class="Button shadow clearfix" id="buttonu3877"><!-- container box -->
-                        <img class="grpelem" id="u3878-4" alt="Добавить" src="resources/images/u3878-4.png" data-image-width="167"/><!-- rasterized frame -->
-                    </div>
-                    <div class="clearfix" id="u3872"><!-- group -->
-                        <img id="u3873-4" alt="Объекты" src="resources/images/u3873-4.png" data-image-width="314"/><!-- rasterized frame -->
-                    </div>
-                    <div class="clearfix" id="u3892"><!-- group -->
-                        <div class="clearfix" id="pu3888-4"><!-- column -->
-                            <div class="position_content" id="pu3888-4_position_content">
-                                <img class="pinned-colelem" id="u3888-4" alt="Название объекта №1" src="resources/images/u3888-4.png" data-image-width="217"/><!-- rasterized frame -->
-                                <div class="clearfix pinned-colelem" id="pu3883-4"><!-- group -->
-                                    <img id="u3883-4" alt="Камеры:" src="resources/images/u3883-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                    <img id="u3894-4" alt="3" src="resources/images/u3894-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                </div>
-                                <div class="clearfix pinned-colelem" id="pu3875-4"><!-- group -->
-                                    <img id="u3875-4" alt="Датчики:" src="resources/images/u3875-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                    <img id="u3891-4" alt="3" src="resources/images/u3891-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                </div>
-                                <div class="clearfix pinned-colelem" id="pu3871-4"><!-- group -->
-                                    <img id="u3871-4" alt="Сенсоры:" src="resources/images/u3871-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                    <img id="u3882-4" alt="3" src="resources/images/u3882-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                </div>
-                                <div class="clearfix pinned-colelem" id="pu3887-4"><!-- group -->
-                                    <img id="u3887-4" alt="Контроллеры:" src="resources/images/u3887-4.png" data-image-width="97"/><!-- rasterized frame -->
-                                    <img id="u3890-4" alt="3" src="resources/images/u3890-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="shadow" id="u3876"><!-- simple frame --></div>
-                    </div>
-                    <div class="clearfix" id="u3880"><!-- group -->
-                        <div class="clearfix" id="pu3884-4"><!-- column -->
-                            <div class="position_content" id="pu3884-4_position_content">
-                                <img class="pinned-colelem" id="u3884-4" alt="Название объекта №2" src="resources/images/u3884-4.png" data-image-width="217"/><!-- rasterized frame -->
-                                <div class="clearfix pinned-colelem" id="pu3879-4"><!-- group -->
-                                    <img id="u3879-4" alt="Камеры:" src="resources/images/u3879-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                    <img id="u3893-4" alt="3" src="resources/images/u3893-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                </div>
-                                <div class="clearfix pinned-colelem" id="pu3889-4"><!-- group -->
-                                    <img id="u3889-4" alt="Датчики:" src="resources/images/u3889-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                    <img id="u3895-4" alt="3" src="resources/images/u3895-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                </div>
-                                <div class="clearfix pinned-colelem" id="pu3881-4"><!-- group -->
-                                    <img id="u3881-4" alt="Сенсоры:" src="resources/images/u3881-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                    <img id="u3896-4" alt="3" src="resources/images/u3896-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                </div>
-                                <div class="clearfix pinned-colelem" id="pu3886-4"><!-- group -->
-                                    <img id="u3886-4" alt="Контроллеры:" src="resources/images/u3886-4.png" data-image-width="97"/><!-- rasterized frame -->
-                                    <img id="u3897-4" alt="3" src="resources/images/u3897-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="shadow" id="u3874"><!-- simple frame --></div>
-                    </div>
-                </div>
+                <!--personal info-->
+                <comp:personal/>
+                <!-- end personal info-->
+                <!-- Facilitys div -->
+                <comp:facilitysSelector/>
+                <!-- /facility div -->
                 <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1886" href="counters.xhtml?faces-redirect=true"><!-- container box --><img class="grpelem" id="u1889-4" alt="Счетчики" src="resources/images/u1889-4.png" data-image-width="77"/><!-- rasterized frame --><div class="clip_frame grpelem" id="u1887"><!-- image --><img class="block" id="u1887_img" src="resources/images/counters-new.png" alt="" data-image-width="25" data-image-height="25"/></div></a>
                 <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1890" href="sensors.xhtml?faces-redirect=true"><!-- container box --><img class="grpelem" id="u1891-4" alt="Датчики" src="resources/images/u1891-4.png" data-image-width="76"/><!-- rasterized frame --><div class="clip_frame grpelem" id="u1892"><!-- image --><img class="block" id="u1892_img" src="resources/images/sensors-new.png" alt="" data-image-width="25" data-image-height="25"/></div></a>
                 <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1902" href="rcontrols.xhtml?faces-redirect=true"><!-- container box --><img class="grpelem" id="u1903-4" alt="Управление" src="resources/images/u1903-4.png" data-image-width="88"/><!-- rasterized frame --><div class="clip_frame grpelem" id="u1904"><!-- image --><img class="block" id="u1904_img" src="resources/images/rcontrol-new.png" alt="" data-image-width="25" data-image-height="25"/></div></a>

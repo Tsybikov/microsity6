@@ -31,8 +31,8 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String mainEmail;
-    private String passwordHash;
+    private String mainEmail="";
+    private String passwordHash="";
     private List<String> otherEmails;
     private List<String> phones;
     private boolean rememberMe=false;

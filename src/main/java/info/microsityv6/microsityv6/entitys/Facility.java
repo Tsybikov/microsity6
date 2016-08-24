@@ -40,7 +40,7 @@ public class Facility implements Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Sensor> sensors;
     @OneToMany(cascade = CascadeType.ALL)
-    
+    private List<Controller> controllers;
     
     public String getCoord(){
         String text="";
@@ -146,6 +146,14 @@ public class Facility implements Serializable {
 
     public List<Sensor> getSensors() {
         return sensors;
+    }
+
+    public List<Controller> getControllers() {
+        return controllers;
+    }
+
+    public void setControllers(List<Controller> controllers) {
+        this.controllers = controllers;
     }
 
     public void setSensors(List<Sensor> sensors) {

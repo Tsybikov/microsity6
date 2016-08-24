@@ -2752,7 +2752,7 @@
 
 .js body
 {
-	visibility: hidden;
+	visibility: visible;
 }
 
 .js body.initialized

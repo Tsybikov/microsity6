@@ -178,7 +178,7 @@
 
 #u3892
 {
-	z-index: 55;
+	z-index: 386;
 	padding-bottom: 137px;
 	position: fixed;
 	top: 177px;
@@ -1122,7 +1122,7 @@
 
 .js body
 {
-	visibility: hidden;
+	visibility: visible;
 }
 
 .js body.initialized

@@ -71,7 +71,7 @@
                                    style="z-index: 55;display: block;vertical-align: top;top: -541px;
                                    margin-bottom: -36px;position: relative;width: 28.45%;margin-left: 35.78%;
                                    left: 335px;text-align: center; height: 27px;box-shadow: 6px 6px 8px rgba(0,0,0,0.5);"
-                                   value="#{userController.created.passwordHash}" required="true" requiredMessage="Нужен пароль!" />
+                                   value="#{userController.newPassword}" required="true" requiredMessage="Нужен пароль!" />
                     <p:watermark for="pass2" value="Пароль" />
                     <h:inputSecret id="pass3" styleClass="colelem"
                                    style="z-index: 59;display: block;vertical-align: top;top: -493px;margin-bottom: -36px;
@@ -79,17 +79,7 @@
                                    text-align: center; height: 27px;box-shadow: 6px 6px 8px rgba(0,0,0,0.5);"
                                    value="#{userController.repeatedPassword}" required="true" requiredMessage="Надо подтверждение пароля!" />
                     <p:watermark for="pass3" value="Подтверждение пароля" />
-                    <h:commandLink action="#{userController.demo}">
-                        <div id="buttonu965-wrapper">
-                            <div class="nonblock nontext Button transition shadow clearfix pinned-colelem" id="buttonu965"><!-- container box -->
-                                <div class="clip_frame grpelem" id="u966"><!-- image -->
-                                    <img class="block" id="u966_img" src="resources/images/check.png" alt="" data-image-width="25" data-image-height="25"/>
-                                </div>
-                                <div class="clearfix grpelem" id="u968-4"><!-- content --><p>Бесплатный тур</p>
-                                </div>
-                            </div>
-                        </div>
-                    </h:commandLink>
+                    
                     <div class="shadow colelem" id="u1006"><!-- simple frame -->
                         <p:captcha language="ru_RU" />
                     </div>
@@ -100,6 +90,19 @@
                             </div>
                             <div class="clearfix grpelem" id="u996-4"><!-- content -->
                                 <p>Регистрация</p>
+                            </div>
+                        </div>
+                    </h:commandLink>
+                </h:form>
+                <h:form>
+                    <h:commandLink action="#{userController.demo()}">
+                        <div id="buttonu965-wrapper">
+                            <div class="nonblock nontext Button transition shadow clearfix pinned-colelem" id="buttonu965"><!-- container box -->
+                                <div class="clip_frame grpelem" id="u966"><!-- image -->
+                                    <img class="block" id="u966_img" src="resources/images/check.png" alt="" data-image-width="25" data-image-height="25"/>
+                                </div>
+                                <div class="clearfix grpelem" id="u968-4"><!-- content --><p>Бесплатный тур</p>
+                                </div>
                             </div>
                         </div>
                     </h:commandLink>

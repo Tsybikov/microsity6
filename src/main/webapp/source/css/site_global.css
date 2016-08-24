@@ -236,7 +236,7 @@ a.nontext /* used to override default properties of 'a' tag */
 .clearfix:after /* force a container to fit around floated items */
 {
 	content: "\0020";
-	visibility: hidden;
+	visibility: visible;
 	display: block;
 	height: 0px;
 	clear: both;
@@ -355,13 +355,13 @@ textarea
 
 .ose_ei
 {
-	visibility: hidden;
+	visibility: visible;
 	z-index: 0;
 }
 
 .widget_invisible,.js .invi,.js .mse_pre_init,.js .an_invi /* used to hide the widget before loaded */
 {
-	visibility: hidden;
+	visibility: visible;
 }
 
 .no_vert_scroll

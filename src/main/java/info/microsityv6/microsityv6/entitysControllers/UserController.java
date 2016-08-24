@@ -38,13 +38,14 @@ public class UserController implements Serializable {
     private UserFacade uf;
     @EJB
     private LogFacade lf;
-    private User current;
-    private User created;
-    private String repeatedPassword;
+    private User current=new User();
+    private User created=new User();
+    private String repeatedPassword="";
+    private String newPassword="";
     private boolean entered = false;
     private boolean admin = false;
     private boolean remMe = false;
-    private String userMail;
+    private String userMail="";
 
     @PostConstruct
     public void init() {
@@ -135,7 +136,7 @@ public class UserController implements Serializable {
         return "loginerror.xhtml?faces-redirect=true";
     }
 
-    public void createUser() {
+    public String createUser() {
         if (created.getMainEmail().contains("@")) {
             List<User> users = uf.findAll();
             boolean existing = false;
@@ -146,22 +147,23 @@ public class UserController implements Serializable {
                 }
             }
             if (!existing) {
-                if (created.getPasswordHash().equals(DigestUtils.md5Hex(repeatedPassword))) {
+                if (!newPassword.equals(repeatedPassword)){
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Пароли не совпадают"));
                 } else {
                     created.setRole(Role.USER);
+                    created.setPasswordHash(newPassword);
                     created.addMessage("Добро пожаловать! Вы успешно зарегистрированны в системе MicroSity");
                     uf.create(created);
                     current=created;
                     created = new User();
                     //new Mail().confirmMail(enterLogMail, enterPass);
-                    login();
+                    return login();
                 }
             }
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Не верный формат почтового ящика"));
         }
-        
+        return "";
     }
 
     public String logout() {
@@ -233,11 +235,25 @@ public class UserController implements Serializable {
         this.userMail = userMail;
     }
     
-    public void getDemo(){
+    public String demo(){
         current=new User();
         current.setMainEmail("demo@microsity.info");
         current.setPasswordHash("demodemo");
-        login();
+        return login();
     }
+    
+    public void saveCurrent(User current){
+        if(current==null)current=this.current;
+        uf.edit(current);
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+    
     
 }
