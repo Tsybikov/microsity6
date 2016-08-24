@@ -12,99 +12,48 @@
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-        <div class="clearfix" id="u3870" ><!-- group -->
-            <div class="shadow" id="u3885" style="height: 200px;"><!-- simple frame --></div>
-            <h:form>
-                <h:commandLink action="addfacility.xhtml?faces-redirect=true">
-                    <div style="left:19.5%;top:298px;" class="Button shadow clearfix" id="buttonu3877"><!-- container box -->
-                        <img class="grpelem"  id="u3878-4" alt="Добавить" src="resources/images/u3878-4.png" data-image-width="167"/><!-- rasterized frame -->
+        <h:form>
+            <div class="clearfix colelem" id="u94"><!-- group -->
+                <div class="shadow grpelem" id="u114"></div><!-- simple frame -->
+
+                <div class="clearfix grpelem" id="u96"><!-- group -->
+                    <img class="grpelem" id="u121-4" alt="Объекты" src="resources/images/u121-4.png" data-image-width="314"/><!-- rasterized frame -->
+                </div>
+                <p:scrollPanel style="z-index: 5;margin-top: 35px;width: 460px;height: 420px;background: none!important;border: none!important;position: relative;overflow: auto;">
+                    <c:forEach var="facility" items="#{facilitysSelectorControllers.facilitys}">
+                        <p:commandLink actionListener="#{homePageController.setCurrentFacility(facility)}" update="@all">
+                            <div class="clearfix grpelem" id="u117"><!-- group -->
+                                <div class="clearfix grpelem" id="pu112-4"><!-- column -->
+                                    <h:outputText value="#{facility.title}" styleClass="colelem" id="u112-4" style="color: white;" />
+                                    <div class="clearfix colelem" id="pu97-4"><!-- group -->
+                                        <img class="grpelem" id="u97-4" alt="Камеры:" src="resources/images/u97-4.png" data-image-width="66"/><!-- rasterized frame -->
+                                        <h:outputText value="#{facility.cameras.size()}" styleClass="grpelem value"  />
+                                    </div>
+                                    <div class="clearfix colelem" id="pu118-4"><!-- group -->
+                                        <img class="grpelem" id="u118-4" alt="Датчики:" src="resources/images/u118-4.png" data-image-width="66"/><!-- rasterized frame -->
+                                        <h:outputText value="#{facility.counters.size()}" styleClass="grpelem value" />
+                                    </div>
+                                    <div class="clearfix colelem" id="pu111-4"><!-- group -->
+                                        <img class="grpelem" id="u111-4" alt="Сенсоры:" src="resources/images/u111-4.png" data-image-width="66"/><!-- rasterized frame -->
+                                        <h:outputText value="#{facility.sensors.size()}" styleClass="grpelem value" />
+                                    </div>
+                                    <div class="clearfix colelem" id="pu95-4"><!-- group -->
+                                        <img class="grpelem" id="u95-4" alt="Контроллеры:" src="resources/images/u95-4.png" data-image-width="97"/><!-- rasterized frame -->
+                                        <h:outputText value="#{facility.controllers.size()}" styleClass="grpelem value" />
+                                    </div>
+                                </div>
+                                <div class="shadow grpelem" id="u120"><!-- simple frame --></div>
+                            </div> 
+                        </p:commandLink>
+                    </c:forEach>
+                </p:scrollPanel>
+                <h:commandLink action="addfacility.xhtml?faces-redirect=true" >
+                    <div class="Button shadow clearfix grpelem" id="buttonu106"><!-- container box -->
+                        <img class="grpelem" id="u107-4" alt="Добавить" src="resources/images/u107-4.png" data-image-width="167"/><!-- rasterized frame -->
                     </div>
                 </h:commandLink>
-            </h:form>
-            <div class="clearfix" id="u3872"><!-- group -->
-                <img id="u3873-4" alt="Объекты" src="resources/images/u3873-4.png" data-image-width="314"/><!-- rasterized frame -->
+
             </div>
-            <c:if test="#{!facilitysSelectorControllers.hasFacilitys}">
-                <h:outputText value="Объектов не найдено" style="z-index: 375;position: fixed;top: 229px;left: 82px;
-                              font-size: 14px;color: white;" />
-            </c:if>
-            <c:if test="#{facilitysSelectorControllers.hasFacilitys}">
-                <c:if test="#{facilitysSelectorControllers.needScrool}">
-                    <p:scrollPanel style="max-width: 415px;max-height:300px;">
-                        <c:forEach var="facility" items="#{facilitysSelectorControllers.facilitys}">
-                            <div class="clearfix" id="groupOfOneFacility"><!-- group -->
-                                <div class="clearfix" id="groupOfFacilityValues"><!-- column -->
-                                    <div class="position_content" id="textInformation">
-                                        <h:outputText value="#{facility.title}" style="z-index: 64;position: fixed;top: 229px;left: 82px;
-                                                      width: 4.46%;max-width: 66px;font-size: 14px;color: white;" />
-                                        <div class="clearfix pinned-colelem" id="pu3883-4"><!-- group -->
-                                            <img id="u3883-4" alt="Камеры:" src="resources/images/u3883-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                            <h:outputText value="#{facility.cameras.size()}" style="z-index: 64;position: fixed;top: 229px;left: 82px;
-                                                          width: 4.46%;max-width: 66px;font-size: 14px;color: white;" />
-                                        </div>
-                                        <div class="clearfix pinned-colelem" id="pu3875-4"><!-- group -->
-                                            <img id="u3875-4" alt="Датчики:" src="resources/images/u3875-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                            <h:outputText value="#{facility.counters.size()}" style="z-index: 64;position: fixed;top: 229px;left: 82px;
-                                                          width: 4.46%;max-width: 66px;font-size: 14px;color: white;" />
-                                        </div>
-                                        <div class="clearfix pinned-colelem" id="pu3871-4"><!-- group -->
-                                            <img id="u3871-4" alt="Сенсоры:" src="resources/images/u3871-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                            <h:outputText value="#{facility.sensors.size()}" style="z-index: 64;position: fixed;top: 229px;left: 82px;
-                                                          width: 4.46%;max-width: 66px;font-size: 14px;color: white;" />
-                                        </div>
-                                        <div class="clearfix pinned-colelem" id="pu3887-4"><!-- group -->
-                                            <img id="u3887-4" alt="Контроллеры:" src="resources/images/u3887-4.png" data-image-width="97"/><!-- rasterized frame -->
-                                            <h:outputText value="#{facility.controllers.size()}" style="z-index: 64;position: fixed;top: 229px;left: 82px;
-                                                          width: 4.46%;max-width: 66px;font-size: 14px;color: white;" />
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="shadow" id="facilityGMap"><!-- simple frame --></div>
-                            </div>
-                        </c:forEach>
-                    </p:scrollPanel>
-                </c:if>
-                <c:if test="#{!facilitysSelectorControllers.needScrool}">
-                    <p:scrollPanel style="max-width: 415px;max-height:300px;">
-                        <c:forEach var="facility" items="#{facilitysSelectorControllers.facilitys}">
-                            <div class="clearfix" id="groupOfOneFacility"><!-- group -->
-                                <div class="clearfix" id="groupOfFacilityValues"><!-- column -->
-                                    <div class="position_content" id="textInformation">
-                                        <h:outputText value="#{facility.title}" style="z-index: 64;position: fixed;top: 229px;left: 82px;
-                                                      width: 4.46%;max-width: 66px;font-size: 14px;color: white;" />
-                                        <div class="clearfix pinned-colelem" id="pu3883-4"><!-- group -->
-                                            <img id="u3883-4" alt="Камеры:" src="resources/images/u3883-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                            <h:outputText value="#{facility.cameras.size()}" style="z-index: 64;position: fixed;top: 229px;left: 82px;
-                                                          width: 4.46%;max-width: 66px;font-size: 14px;color: white;" />
-                                        </div>
-                                        <div class="clearfix pinned-colelem" id="pu3875-4"><!-- group -->
-                                            <img id="u3875-4" alt="Датчики:" src="resources/images/u3875-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                            <h:outputText value="#{facility.counters.size()}" style="z-index: 64;position: fixed;top: 229px;left: 82px;
-                                                          width: 4.46%;max-width: 66px;font-size: 14px;color: white;" />
-                                        </div>
-                                        <div class="clearfix pinned-colelem" id="pu3871-4"><!-- group -->
-                                            <img id="u3871-4" alt="Сенсоры:" src="resources/images/u3871-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                            <h:outputText value="#{facility.sensors.size()}" style="z-index: 64;position: fixed;top: 229px;left: 82px;
-                                                          width: 4.46%;max-width: 66px;font-size: 14px;color: white;" />
-                                        </div>
-                                        <div class="clearfix pinned-colelem" id="pu3887-4"><!-- group -->
-                                            <img id="u3887-4" alt="Контроллеры:" src="resources/images/u3887-4.png" data-image-width="97"/><!-- rasterized frame -->
-                                            <h:outputText value="#{facility.controllers.size()}" style="z-index: 64;position: fixed;top: 229px;left: 82px;
-                                                          width: 4.46%;max-width: 66px;font-size: 14px;color: white;" />
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="shadow" id="facilityGMap"><!-- simple frame --></div>
-                            </div>
-                        </c:forEach>
-                    </p:scrollPanel>
-                </c:if>
-            </c:if>
-            <!-- to repeat-->
-
-            <!-- end to repeat-->            
-        </div>
+        </h:form>
     </cc:implementation>
 </html>

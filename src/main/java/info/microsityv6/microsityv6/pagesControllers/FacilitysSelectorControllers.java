@@ -65,7 +65,7 @@ public class FacilitysSelectorControllers extends PageController{
     }
 
     public boolean isNeedScrool() {
-        if(getFacilitys().isEmpty()){
+        if(!getFacilitys().isEmpty()){
             if(getFacilitys().size()>4) return true;
         }
         return false;
