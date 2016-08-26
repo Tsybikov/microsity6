@@ -18,10 +18,26 @@ import javax.enterprise.context.SessionScoped;
 @Named(value = "homePageController")
 @SessionScoped
 public class HomePageController extends PageController implements Serializable{
-
+    
+    private boolean needRender=false;
     public HomePageController() {
         
     }
+
+    public boolean isNeedRender() {
+        if(super.getCurrentFacility()==null){
+            if(!super.getUserController().getCurrent().getFasilitys().isEmpty()){
+                 super.setCurrentFacility(super.getUserController().getCurrent().getFasilitys().get(0));
+                 return true;
+            }
+        }
+        return false;
+    }
+
+    public void setNeedRender(boolean needRender) {
+        this.needRender = needRender;
+    }
+    
     
     
 }
