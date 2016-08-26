@@ -7,6 +7,8 @@ package info.microsityv6.microsityv6.pagesControllers;
 
 import info.microsityv6.microsityv6.entitys.Facility;
 import info.microsityv6.microsityv6.entitysControllers.UserController;
+import info.microsityv6.microsityv6.facades.FacilityFacade;
+import javax.ejb.EJB;
 import javax.inject.Inject;
 
 /**
@@ -17,6 +19,8 @@ public class PageController {
     @Inject
     private UserController userController;
     private Facility currentFacility;
+    @EJB
+    private FacilityFacade ff;
     
     
     
@@ -36,9 +40,13 @@ public class PageController {
     public void setCurrentFacility(Facility currentFacility) {
         this.currentFacility = currentFacility;
     }
-    
-    
-    
-    
+
+    public FacilityFacade getFf() {
+        return ff;
+    }
+
+    public void setFf(FacilityFacade ff) {
+        this.ff = ff;
+    }
     
 }

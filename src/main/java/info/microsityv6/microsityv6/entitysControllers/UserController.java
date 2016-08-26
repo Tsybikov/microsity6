@@ -255,5 +255,8 @@ public class UserController implements Serializable {
         this.newPassword = newPassword;
     }
     
+    public void updateBean(){
+        current=uf.find(current.getId());
+    }
     
 }
