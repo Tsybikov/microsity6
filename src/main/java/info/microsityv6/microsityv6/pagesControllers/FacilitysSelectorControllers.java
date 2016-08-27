@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 
 /**
  *
  * @author Panker-RDP
  */
 @Named(value = "facilitysSelectorControllers")
-@RequestScoped
+@SessionScoped
 public class FacilitysSelectorControllers extends PageController{
     
     private boolean hasFacilitys;

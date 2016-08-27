@@ -6,8 +6,9 @@
 package info.microsityv6.microsityv6.pagesControllers;
 
 import info.microsityv6.microsityv6.entitys.Facility;
+import java.io.Serializable;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -16,8 +17,8 @@ import javax.faces.context.FacesContext;
  * @author Panker-RDP
  */
 @Named(value = "addFacilityController")
-@RequestScoped
-public class AddFacilityController extends PageController {
+@SessionScoped
+public class AddFacilityController extends PageController implements Serializable{
 
     private Facility addedFacility = new Facility();
 

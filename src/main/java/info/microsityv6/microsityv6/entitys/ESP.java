@@ -7,11 +7,14 @@ package info.microsityv6.microsityv6.entitys;
 
 import info.microsityv6.microsityv6.enums.DeviceType;
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -34,10 +37,18 @@ public class ESP implements Serializable {
     private String lastIp;
     @Column(name="LAST_AP")
     private String lastAP;
-    @Column(name="DEVICE_SERIES_ID")
-    private String DeviceSeriesId;
-    @Column(name = "IS_ACTION")
-    private boolean isAction;
+    @Column(name = "FIRMWARE_ID")
+    private String firmware_id;
+    @Column(name = "STATUS")
+    private boolean status;
+    @Column(name="INPUT_DATE")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Calendar input_date;
+    @Column(name="UPDATE_DATE")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Calendar update_date;
+    @Column(name="ESP_DEVICES")
+    private List<Pin> pins;
 
     public Long getId() {
         return id;
@@ -87,21 +98,46 @@ public class ESP implements Serializable {
         this.lastAP = lastAP;
     }
 
-    public String getDeviceSeriesId() {
-        return DeviceSeriesId;
+    public String getFirmware_id() {
+        return firmware_id;
     }
 
-    public void setDeviceSeriesId(String DeviceSeriesId) {
-        this.DeviceSeriesId = DeviceSeriesId;
+    public void setFirmware_id(String firmware_id) {
+        this.firmware_id = firmware_id;
     }
 
-    public boolean isIsAction() {
-        return isAction;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setIsAction(boolean isAction) {
-        this.isAction = isAction;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
+
+    public Calendar getInput_date() {
+        return input_date;
+    }
+
+    public void setInput_date(Calendar input_date) {
+        this.input_date = input_date;
+    }
+
+    public Calendar getUpdate_date() {
+        return update_date;
+    }
+
+    public void setUpdate_date(Calendar update_date) {
+        this.update_date = update_date;
+    }
+
+    public List<Pin> getPins() {
+        return pins;
+    }
+
+    public void setPins(List<Pin> pins) {
+        this.pins = pins;
+    }
+
     
     
     
@@ -110,6 +146,38 @@ public class ESP implements Serializable {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
+    }
+    
+    private class Pin{
+        DeviceType type;
+        int pin_num;
+        String relay_id;
+
+        public DeviceType getType() {
+            return type;
+        }
+
+        public void setType(DeviceType type) {
+            this.type = type;
+        }
+
+        public int getPin_num() {
+            return pin_num;
+        }
+
+        public void setPin_num(int pin_num) {
+            this.pin_num = pin_num;
+        }
+
+        public String getRelay_id() {
+            return relay_id;
+        }
+
+        public void setRelay_id(String relay_id) {
+            this.relay_id = relay_id;
+        }
+        
+        
     }
 
     @Override

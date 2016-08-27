@@ -8,16 +8,21 @@ package info.microsityv6.microsityv6.pagesControllers;
 import info.microsityv6.microsityv6.entitys.Facility;
 import info.microsityv6.microsityv6.entitysControllers.UserController;
 import info.microsityv6.microsityv6.facades.FacilityFacade;
+import java.io.Serializable;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  *
  * @author Panker-RDP
  */
-public class PageController {
+public class PageController implements Serializable{
     @Inject
     private UserController userController;
+    @Inject
+    private FacilitysSelectorControllers fsc;
     private Facility currentFacility;
     @EJB
     private FacilityFacade ff;
