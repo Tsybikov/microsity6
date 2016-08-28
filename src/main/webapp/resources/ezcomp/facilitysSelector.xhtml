@@ -21,7 +21,7 @@
                 </div>
                 <p:scrollPanel style="z-index: 5;margin-top: 35px;width: 460px;height: 420px;background: none!important;border: none!important;position: relative;overflow: auto;">
                     <c:forEach var="facility" items="#{facilitysSelectorControllers.facilitys}">
-                        <p:commandLink actionListener="#{homePageController.setCurrentFacility(facility)}" update="@all">
+                        <p:commandLink actionListener="#{facilitysSelectorControllers.setSelected(facility)}" update="@all">
                             <div class="clearfix grpelem" id="u117"><!-- group -->
                                 <div class="clearfix grpelem" id="pu112-4"><!-- column -->
                                     <h:outputText value="#{facility.title}" styleClass="colelem" id="u112-4" style="color: white;" />

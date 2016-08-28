@@ -7,11 +7,14 @@ package info.microsityv6.microsityv6.pagesControllers;
 
 import info.microsityv6.microsityv6.entitys.Facility;
 import info.microsityv6.microsityv6.entitys.User;
+import info.microsityv6.microsityv6.entitysControllers.UserController;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 
 /**
  *
@@ -19,61 +22,48 @@ import javax.enterprise.context.SessionScoped;
  */
 @Named(value = "facilitysSelectorControllers")
 @SessionScoped
-public class FacilitysSelectorControllers extends PageController{
+public class FacilitysSelectorControllers implements Serializable{
     
+    @Inject
+    private UserController userController;
+    private Facility selected;
     private boolean hasFacilitys;
-    private List<Facility> facilitys;
-    private User current;
-    private boolean needScrool;
+    private List <Facility> facilitys;
     
     public FacilitysSelectorControllers() {
     }
     
-    @PostConstruct
-    public void init(){
-        this.current=super.getUserController().getCurrent();
-        if(current.getFasilitys().isEmpty())hasFacilitys=false;
-        else{
-            hasFacilitys=true;
-            facilitys=current.getFasilitys();
-        }
-    }
-
+    
     public boolean isHasFacilitys() {
-        return hasFacilitys;
+        if(userController.getCurrent().getFasilitys().isEmpty()) return false;
+        return true;
     }
 
     public void setHasFacilitys(boolean hasFacilitys) {
         this.hasFacilitys = hasFacilitys;
     }
 
+    public Facility getSelected() {
+        if(selected==null&&isHasFacilitys()){
+            selected=userController.getCurrent().getFasilitys().get(0);
+        }
+        return selected;
+    }
+
+    public void setSelected(Facility selected) {
+        this.selected = selected;
+    }
+
     public List<Facility> getFacilitys() {
-        if(facilitys==null)facilitys=new ArrayList<>();
-        return facilitys;
+        if(isHasFacilitys())
+        return userController.getCurrent().getFasilitys();
+        return new ArrayList<Facility>();
     }
 
     public void setFacilitys(List<Facility> facilitys) {
         this.facilitys = facilitys;
     }
-
-    public User getCurrent() {
-        return current;
-    }
-
-    public void setCurrent(User current) {
-        this.current = current;
-    }
-
-    public boolean isNeedScrool() {
-        if(!getFacilitys().isEmpty()){
-            if(getFacilitys().size()>4) return true;
-        }
-        return false;
-    }
-
-    public void setNeedScrool(boolean needScrool) {
-        this.needScrool = needScrool;
-    }
+    
     
     
     

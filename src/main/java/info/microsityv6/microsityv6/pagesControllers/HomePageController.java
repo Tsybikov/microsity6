@@ -5,7 +5,9 @@
  */
 package info.microsityv6.microsityv6.pagesControllers;
 
+import info.microsityv6.microsityv6.facades.FacilityFacade;
 import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 
@@ -22,21 +24,16 @@ public class HomePageController extends PageController implements Serializable{
     private boolean haveControllers;
     private boolean haveCounters;
     private boolean haveSensors;
+    @EJB
+    private FacilityFacade facilityFacade;
+    
     public HomePageController() {
         
     }
 
     public boolean isNeedRender() {
         
-        if(super.getCurrentFacility()==null){
-            if(!super.getUserController().getCurrent().getFasilitys().isEmpty()){
-                 super.setCurrentFacility(super.getUserController().getCurrent().getFasilitys().get(0));
-                 return true;
-            }
-        }
-        if(super.getCurrentFacility()!=null){
-            return true;
-        }
+        if(super.getCurrentFacility()!=null)return true;
         return false;
     }
 
@@ -90,11 +87,11 @@ public class HomePageController extends PageController implements Serializable{
     }
     
     public void saveFacilityChange(){
-        super.getFf().remove(super.getCurrentFacility());
+        super.saveChanges();
     }
     
     public void deleteFacility(){
-        super.getFf().remove(super.getCurrentFacility());
+        facilityFacade.remove(super.getCurrentFacility());
     }
     
     

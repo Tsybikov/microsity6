@@ -6,8 +6,10 @@
 package info.microsityv6.microsityv6.pagesControllers;
 
 import info.microsityv6.microsityv6.entitys.Facility;
+import info.microsityv6.microsityv6.entitys.User;
 import info.microsityv6.microsityv6.entitysControllers.UserController;
 import info.microsityv6.microsityv6.facades.FacilityFacade;
+import info.microsityv6.microsityv6.facades.UserFacade;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -24,12 +26,31 @@ public class PageController implements Serializable{
     @Inject
     private FacilitysSelectorControllers fsc;
     private Facility currentFacility;
-    @EJB
-    private FacilityFacade ff;
+    private User current;
     
     
     
     
+    public Facility getCurrentFacility() {
+        return fsc.getSelected();        
+    }
+
+    public void setCurrentFacility(Facility currentFacility) {
+        fsc.setSelected(currentFacility);
+    }
+    
+    public User getCurrent(){
+        return userController.getCurrent();
+    }
+    
+    public void setCurrent(User current){
+        userController.setCurrent(current);
+    }
+    
+    public void saveChanges(){
+        userController.saveCurrent(getCurrent());
+    }
+
     public UserController getUserController() {
         return userController;
     }
@@ -37,21 +58,6 @@ public class PageController implements Serializable{
     public void setUserController(UserController userController) {
         this.userController = userController;
     }
-
-    public Facility getCurrentFacility() {
-        return currentFacility;
-    }
-
-    public void setCurrentFacility(Facility currentFacility) {
-        this.currentFacility = currentFacility;
-    }
-
-    public FacilityFacade getFf() {
-        return ff;
-    }
-
-    public void setFf(FacilityFacade ff) {
-        this.ff = ff;
-    }
+    
     
 }
