@@ -4,11 +4,13 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:comp="http://xmlns.jcp.org/jsf/composite/ezcomp">
+      xmlns:comp="http://xmlns.jcp.org/jsf/composite/ezcomp"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>MicroSity Version 6</title>
         <h:outputStylesheet library="css" name="master-a.css" />
         <h:outputStylesheet library="css" name="facilitySelector.css" />
+        <h:outputStylesheet library="css" name="addfacility.css" />
         <h:outputStylesheet library="css" name="cameras.css" id="pagesheet" />
         <h:outputStylesheet library="css" name="site_global.css"  />
         <c:if test="#{!userController.entered}">
@@ -22,7 +24,7 @@
                 <div class="browser_width" id="u1880-bw">
                     <div id="u1880"><!-- simple frame --></div>
                 </div>
-                <img id="u1883" alt="" src="resources/images//logo-u1883.png" data-image-width="96"/><!-- rasterized frame -->
+                <img id="u1883" alt="" src="resources/images//logo.png" data-image-width="96" style="margin-top: 15px"/><!-- rasterized frame -->
                 <div class="browser_width" id="u1885-bw">
                     <div id="u1885"><!-- simple frame --></div>
                 </div>
@@ -44,22 +46,31 @@
                 <div class="clearfix grpelem" id="u3667"><!-- group -->
                     <div class="shadow grpelem" id="u3568"><!-- simple frame --></div>
                     <a class="nonblock nontext Button shadow clearfix grpelem" id="buttonu3560" href="addcamera.xhtml?faces-redirect=true"><!-- container box --><img class="grpelem" id="u3561-4" alt="Добавить" src="resources/images//u3561-4.png" data-image-width="167"/><!-- rasterized frame --></a>
-                    <div class="clearfix grpelem" id="u3555"><!-- group -->
-                        <h:outputText value="#{camerasPageController.currentFacility.title}" style="color:white;" styleClass="grpelem" />
+                    <div class="clearfix grpelem" id="u3555" style="height: 35px;"><!-- group -->
+                        <h:outputText value="#{camerasPageController.currentFacility.title}" style="color:white;margin-top: 8px;margin-left: 10px;font-size: 15px;" styleClass="grpelem" />
                     </div>
                     <c:if test="#{camerasPageController.haveCameras}">
-                        <c:forEach var="camera" items="#{camerasPageController.currentFacility.cameras}">
+                        <p:carousel numVisible="1" var="camera" value="#{camerasPageController.currentFacility.cameras}" style="
+                                        top: 35px; z-index: 44;
+                                    " >
                             <div class="clearfix grpelem" id="u3640"><!-- group -->
-                                <div class="clearfix grpelem" id="u3637"><!-- column -->
-                                    <h:outputText value="#{camera.name}" styleClass="grpelem" style="" />
-                                    <img class="colelem" id="u3571-4" alt="Камера №1" src="resources/images//u3571-4.png" data-image-width="217"/><!-- rasterized frame -->
-                                    <div class="shadow colelem" id="u3559"><!-- simple frame -->
-                                        <p:poll interval="10" update="#{camera.name}" />
-                                        <h:graphicImage url="#{camera.JPGLink}" id="#{camera.name}" />
+                                
+                                <h:form>
+                                    <div class="clearfix grpelem" id="u3637"><!-- column -->
+                                        <h:outputText value="#{camera.name}" styleClass="grpelem" style="color:white; top:-35px;position: relative;" />
+                                        <p:poll interval="100" update="@form" />
+                                        <div class="shadow colelem" id="u3559"><!-- simple frame -->
+                                            <p:graphicImage cache="false" value="#{camera.JPGLink}" alt="Камера не доступна в данный момент" />
+                                        </div>
                                     </div>
-                                </div>
+                                    <h:commandLink action="cameras.xhtml?faces-redirect=true;">
+                                        <div class="Button shadow clearfix colelem" id="buttonu4673" style="width: 150px;top: -50px"><!-- container box -->
+                                            <img class="grpelem" id="u4674-4" alt="Удалить" src="resources/images/u4674-4.png" data-image-width="167"/><!-- rasterized frame -->
+                                        </div>
+                                    </h:commandLink>    
+                                </h:form>
                             </div>
-                        </c:forEach>
+                        </p:carousel>
                     </c:if>
                     <c:if test="#{!camerasPageController.haveCameras}">
                         <div class="clearfix grpelem" id="u3640"><!-- group -->

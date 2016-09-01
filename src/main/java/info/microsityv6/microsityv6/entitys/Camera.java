@@ -28,9 +28,12 @@ public class Camera implements Serializable {
     private String vlcLink;
     private String JPGLink;
     private String ip;
+    private String port;
     @Column(name="j_size")
     private String size;
     private boolean showInTheMap;
+    private String login;
+    private String password;
     
     public Long getId() {
         return id;
@@ -57,6 +60,7 @@ public class Camera implements Serializable {
     }
 
     public String getJPGLink() {
+        JPGLink="http://"+login+":"+password+"@"+ip+":"+port+"/GetImage.cgi?CH=0";
         return JPGLink;
     }
 
@@ -86,6 +90,30 @@ public class Camera implements Serializable {
 
     public void setShowInTheMap(boolean showInTheMap) {
         this.showInTheMap = showInTheMap;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
     }
 
     

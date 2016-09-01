@@ -17,23 +17,33 @@ import javax.enterprise.context.SessionScoped;
  */
 @Named(value = "homePageController")
 @SessionScoped
-public class HomePageController extends PageController implements Serializable{
-    
-    private boolean needRender=false;
+public class HomePageController extends PageController implements Serializable {
+
+    private boolean needRender = false;
     private boolean haveCameras;
     private boolean haveControllers;
     private boolean haveCounters;
     private boolean haveSensors;
+    private String oneCameraLink;
+    private boolean twoCamera;
+    private String twoCameraLink;
+    private boolean threeCamera;
+    private String threeCameraLink;
+    private boolean fourCamera;
+    private String fourCameraLink;
+    
     @EJB
     private FacilityFacade facilityFacade;
-    
+
     public HomePageController() {
-        
+
     }
 
     public boolean isNeedRender() {
-        
-        if(super.getCurrentFacility()!=null)return true;
+
+        if (super.getCurrentFacility() != null) {
+            return true;
+        }
         return false;
     }
 
@@ -42,11 +52,12 @@ public class HomePageController extends PageController implements Serializable{
     }
 
     public boolean isHaveCameras() {
-        if(super.getCurrentFacility().getCameras().isEmpty()) return false;
-        else{
+        if (super.getCurrentFacility().getCameras().isEmpty()) {
+            return false;
+        } else {
             return true;
         }
-        
+
     }
 
     public void setHaveCameras(boolean haveCameras) {
@@ -54,8 +65,9 @@ public class HomePageController extends PageController implements Serializable{
     }
 
     public boolean isHaveControllers() {
-        if(super.getCurrentFacility().getControllers().isEmpty()) return false;
-        else{
+        if (super.getCurrentFacility().getControllers().isEmpty()) {
+            return false;
+        } else {
             return true;
         }
     }
@@ -65,8 +77,9 @@ public class HomePageController extends PageController implements Serializable{
     }
 
     public boolean isHaveCounters() {
-        if(super.getCurrentFacility().getCounters().isEmpty()) return false;
-        else{
+        if (super.getCurrentFacility().getCounters().isEmpty()) {
+            return false;
+        } else {
             return true;
         }
     }
@@ -76,8 +89,9 @@ public class HomePageController extends PageController implements Serializable{
     }
 
     public boolean isHaveSensors() {
-        if(super.getCurrentFacility().getSensors().isEmpty()) return false;
-        else{
+        if (super.getCurrentFacility().getSensors().isEmpty()) {
+            return false;
+        } else {
             return true;
         }
     }
@@ -85,16 +99,78 @@ public class HomePageController extends PageController implements Serializable{
     public void setHaveSensors(boolean haveSensors) {
         this.haveSensors = haveSensors;
     }
-    
-    public void saveFacilityChange(){
+
+    public void saveFacilityChange() {
         super.saveChanges();
     }
-    
-    public void deleteFacility(){
+
+    public void deleteFacility() {
         facilityFacade.remove(super.getCurrentFacility());
     }
-    
-    
-    
+
+    public String getOneCameraLink() {
+        return super.getCurrentFacility().getCameras().get(0).getJPGLink();
+    }
+
+    public void setOneCameraLink(String oneCameraLink) {
+        this.oneCameraLink = oneCameraLink;
+    }
+
+    public boolean isTwoCamera() {
+        if (super.getCurrentFacility().getCameras().size() > 1) {
+            return true;
+        }
+        return false;
+    }
+
+    public void setTwoCamera(boolean twoCamera) {
+        this.twoCamera = twoCamera;
+    }
+
+    public String getTwoCameraLink() {
+        return super.getCurrentFacility().getCameras().get(1).getJPGLink();
+    }
+
+    public void setTwoCameraLink(String twoCameraLink) {
+        this.twoCameraLink = twoCameraLink;
+    }
+
+    public boolean isThreeCamera() {
+        if (super.getCurrentFacility().getCameras().size() > 2) {
+            return true;
+        }
+        return false;
+    }
+
+    public void setThreeCamera(boolean threeCamera) {
+        this.threeCamera = threeCamera;
+    }
+
+    public String getThreeCameraLink() {
+        return super.getCurrentFacility().getCameras().get(2).getJPGLink();
+    }
+
+    public void setThreeCameraLink(String threeCameraLink) {
+        this.threeCameraLink = threeCameraLink;
+    }
+
+    public boolean isFourCamera() {
+        if (super.getCurrentFacility().getCameras().size() > 3) {
+            return true;
+        }
+        return false;
+    }
+
+    public void setFourCamera(boolean fourCamera) {
+        this.fourCamera = fourCamera;
+    }
+
+    public String getFourCameraLink() {
+        return super.getCurrentFacility().getCameras().get(3).getJPGLink();
+    }
+
+    public void setFourCameraLink(String fourCameraLink) {
+        this.fourCameraLink = fourCameraLink;
+    }
     
 }

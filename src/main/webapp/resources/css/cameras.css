@@ -884,7 +884,7 @@
 #u3568
 {
 	z-index: 3;
-	height: 1016px;
+	height: 480px;
 	-pie-box-shadow: none;
 	box-shadow: 6px 6px 8px rgba(0,0,0,0.5);
 	background-color: #4C5760;
@@ -898,7 +898,7 @@
 
 #buttonu3560
 {
-	z-index: 4;
+	z-index: 48;
 	-pie-box-shadow: 4px 4px 8px #7F7F7F;
 	box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
 	border-width: 0px;
@@ -906,7 +906,7 @@
 	padding-bottom: 4px;
 	position: relative;
 	margin-right: -10000px;
-	margin-top: 970px;
+	margin-top: 435px;
 	width: 34.72%;
 	left: 62.38%;
 }
@@ -916,7 +916,7 @@
 	background-color: #12456D;
 	min-height: 0px;
 	width: 34.72%;
-	margin: 970px -10000px 0px 0%;
+	margin: 435px -10000px 0px 0%;
 }
 
 #u3561-4
@@ -940,6 +940,7 @@
 	position: relative;
 	margin-right: -10000px;
 	width: 99.59%;
+        height: 35px;
 }
 
 #u3556-4
@@ -974,7 +975,7 @@
 	border-style: solid;
 	border-color: #909090;
 	background-color: transparent;
-	padding-bottom: 34px;
+	padding-bottom: 45px;
 	position: relative;
 	margin-right: -10000px;
 	width: 100%;
@@ -1372,6 +1373,16 @@ body
 {
 	position: relative;
 	min-width: 1480px;
+}
+
+.ui-widget-content{
+    background: none!important;
+    border: none!important;
+}
+
+.ui-widget-header{
+    background: none!important;
+    border: none!important;
 }
 
 .verticalspacer

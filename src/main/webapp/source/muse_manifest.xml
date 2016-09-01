@@ -48,7 +48,7 @@
     <file name="user.png" crc="3805606834" seo="true" ref="home:addfacility:cameras:counters:sensors:rcontrols:health:gps:actionmap:addcamera:addcounter:setupcounter:addsensor:setupsensor:addcontroller:setupcontroller:addhealth:setuphealth:addgps:setupgps:setupmap:messages:profile"/>
     <file name="u1923-4.png" crc="529451280" ref="home:addfacility:cameras:counters:sensors:rcontrols:health:gps:actionmap:addcamera:addcounter:setupcounter:addsensor:setupsensor:addcontroller:setupcontroller:addhealth:setuphealth:addgps:setupgps:setupmap:messages:profile"/>
     <file name="logout.png" crc="518451741" seo="true" ref="home:addfacility:cameras:counters:sensors:rcontrols:health:gps:actionmap:addcamera:addcounter:setupcounter:addsensor:setupsensor:addcontroller:setupcontroller:addhealth:setuphealth:addgps:setupgps:setupmap:messages:profile"/>
-    <file name="logo-u1883.png" crc="286497119" ref="home:addfacility:cameras:counters:sensors:rcontrols:health:gps:actionmap:addcamera:addcounter:setupcounter:addsensor:setupsensor:addcontroller:setupcontroller:addhealth:setuphealth:addgps:setupgps:setupmap:messages:profile"/>
+    <file name="logo.png" crc="286497119" ref="home:addfacility:cameras:counters:sensors:rcontrols:health:gps:actionmap:addcamera:addcounter:setupcounter:addsensor:setupsensor:addcontroller:setupcontroller:addhealth:setuphealth:addgps:setupgps:setupmap:messages:profile"/>
     <file name="u1889-4.png" crc="3954617235" ref="home:addfacility:cameras:counters:sensors:rcontrols:health:gps:actionmap:addcamera:addcounter:setupcounter:addsensor:setupsensor:addcontroller:setupcontroller:addhealth:setuphealth:addgps:setupgps:setupmap:messages:profile"/>
     <file name="counters-new.png" crc="3772022668" seo="true" ref="home:addfacility:cameras:counters:sensors:rcontrols:health:gps:actionmap:addcamera:addcounter:setupcounter:addsensor:setupsensor:addcontroller:setupcontroller:addhealth:setuphealth:addgps:setupgps:setupmap:messages:profile"/>
     <file name="u1891-4.png" crc="4242120422" ref="home:addfacility:cameras:counters:sensors:rcontrols:health:gps:actionmap:addcamera:addcounter:setupcounter:addsensor:setupsensor:addcontroller:setupcontroller:addhealth:setuphealth:addgps:setupgps:setupmap:messages:profile"/>
@@ -120,7 +120,7 @@
     <file name="u477-4.png" crc="4289156047" ref="index"/>
     <file name="u1388.png" crc="3985128619" ref="index"/>
     <file name="u1388-r.png" crc="4146273" ref="index"/>
-    <file name="logo-u897.png" crc="273345376" ref="login"/>
+    <file name="logo.png" crc="273345376" ref="login"/>
     <file name="check.png" crc="455715924" seo="true" ref="login:loginerror:forgotpassword"/>
     <file name="landing-promo-backgroud.jpg" crc="256608688" ref="login"/>
     <file name="u913-4.png" crc="108442697" ref="login"/>
@@ -131,13 +131,13 @@
     <file name="u984-4.png" crc="300615959" ref="login"/>
     <file name="u985-4.png" crc="4250086990" ref="login"/>
     <file name="u990-4.png" crc="312314271" ref="login"/>
-    <file name="logo-u1034.png" crc="273345376" ref="loginerror"/>
+    <file name="logo.png" crc="273345376" ref="loginerror"/>
     <file name="shot-stop-sign.jpg" crc="4170413841" ref="loginerror"/>
     <file name="u1042-4.png" crc="108442697" ref="loginerror"/>
     <file name="u1043-4.png" crc="300615959" ref="loginerror"/>
     <file name="u1044-4.png" crc="4250086990" ref="loginerror"/>
     <file name="u1049-4.png" crc="425957594" ref="loginerror"/>
-    <file name="logo-u1147.png" crc="273345376" ref="forgotpassword"/>
+    <file name="logo.png" crc="273345376" ref="forgotpassword"/>
     <file name="forgot.jpg" crc="3768857957" ref="forgotpassword"/>
     <file name="u1151-4.png" crc="399181831" ref="forgotpassword"/>
     <file name="u1152-4.png" crc="300615959" ref="forgotpassword"/>

@@ -974,7 +974,7 @@
 	border-style: solid;
 	border-color: #909090;
 	background-color: transparent;
-	padding-bottom: 34px;
+	padding-bottom: 60px;
 	position: relative;
 	margin-right: -10000px;
 	width: 100%;
@@ -1377,6 +1377,14 @@ body
 .verticalspacer
 {
 	min-height: 1px;
+}
+
+.ui-widget-content{
+    background: none;
+}
+
+.ui-widget-header{
+    background: none;
 }
 
 #u1887_img,#u1892_img,#u1904_img,#u1907_img,#u1912_img,#u1896_img,#u1900_img,#u1919_img,#u1924_img,#u1916_img,#u1927_img

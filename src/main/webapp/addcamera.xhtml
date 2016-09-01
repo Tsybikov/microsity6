@@ -9,6 +9,7 @@
         <title>MicroSity Version 6</title>
         <h:outputStylesheet library="css" name="master-a.css" />
         <h:outputStylesheet library="css" name="addcamera.css" />
+        <h:outputStylesheet library="css" name="addfacility.css" />
         <h:outputStylesheet library="css" name="cameras.css" id="pagesheet" />
         <h:outputStylesheet library="css" name="site_global.css"  />
         <c:if test="#{!userController.entered}">
@@ -22,37 +23,74 @@
                 <div class="browser_width" id="u1880-bw">
                     <div id="u1880"><!-- simple frame --></div>
                 </div>
-                <img id="u1883" alt="" src="resources/images//logo-u1883.png" data-image-width="96"/><!-- rasterized frame -->
+                <img id="u1883" alt="" src="resources/images//logo.png" data-image-width="96"/><!-- rasterized frame -->
                 <div class="browser_width" id="u1885-bw">
                     <div id="u1885"><!-- simple frame --></div>
                 </div>
                 <comp:personal />
                 <div class="clearfix colelem" id="u94"><!-- group -->
                     <div class="clearfix grpelem" id="u95"><!-- group -->
-                        <div class="clearfix grpelem" id="u96"><!-- group -->
+                        <div class="clearfix grpelem" id="u96" style="width: 600px;"><!-- group -->
                             <div class="shadow grpelem" id="u98"><!-- simple frame --></div>
                             <div class="grpelem" id="u97"><!-- simple frame --></div>
                         </div>
-                        <h:outputText value="Новая камера" style="color:white" styleClass="grpelem" />
-                        <img class="grpelem" id="u99-4" alt="Новая камера" src="images/u99-4.png" data-image-width="280"/><!-- rasterized frame -->
+                        <h:outputText value="Новая камера" styleClass="grpelem" style="
+                                      z-index: 7;display: block;vertical-align: top;position: relative;margin-right: -10000px;
+                                      margin-top: 6px;width: 42.56%;margin-left: 200px;left: -189px;color: white;
+                                      " />
+                        
                     </div>
-                    <div class="clearfix grpelem" id="u100"><!-- group -->
-                        <div class="clearfix grpelem" id="u102"><!-- group -->
-                            <div class="clearfix grpelem" id="u103"><!-- group -->
-                                <div class="clearfix grpelem" id="u104"><!-- group -->
-                                    <div class="clearfix grpelem" id="u106"><!-- group -->
-                                        <h:outputText value="Данные" styleClass="grpelem" style="color: white" />
+                    <h:form>
+                        <div class="clearfix grpelem" id="u100"><!-- group -->
+                            <div class="clearfix grpelem" id="u102"><!-- group -->
+                                <div class="clearfix grpelem" id="u103"><!-- group -->
+                                    <div class="clearfix grpelem" id="u104"><!-- group -->
+                                        <div class="clearfix grpelem" id="u106"><!-- group -->
+                                            <h:outputText value="Данные" styleClass="grpelem" style="color: white" />
+                                        </div>
                                     </div>
                                 </div>
+
+                                <h:inputText styleClass="grpelem" value="#{addCameraController.addedCamera.name}" id="camName" style="
+                                             z-index: 32;display: block;vertical-align: top;position: relative;margin-right: -10000px;
+                                             margin-top: 35px;width: 250px;margin-left: 15px;left: 0px;
+                                             " />
+                                <p:watermark for="camName" value="Название камеры"  />
+                                <h:inputText styleClass="grpelem" value="#{addCameraController.addedCamera.ip}" id="camIp" style="
+                                             z-index: 36;display: block;vertical-align: top;position: relative;margin-right: -10000px;
+                                             margin-top: 65px;width: 250px;margin-left: 32px;left: -17px;
+                                             "/>
+                                <p:watermark for="camIp" value="IP адрес камеры" />
+                                <h:inputText styleClass="grpelem" value="#{addCameraController.addedCamera.port}" id="camPort" style="
+                                             z-index: 36;display: block;vertical-align: top;position: relative;margin-right: -10000px;
+                                             margin-top: 95px;width: 250px;margin-left: 32px;left: -17px;
+                                             "/>
+                                <p:watermark for="camPort" value="Порт" />
+                                <h:inputText styleClass="grpelem" value="#{addCameraController.addedCamera.login}" id="camLogin" style="
+                                             z-index: 36;display: block;vertical-align: top;position: relative;margin-right: -10000px;
+                                             margin-top: 125px;width: 250px;margin-left: 32px;left: -17px;
+                                             "/>
+                                <p:watermark for="camLogin" value="Логин" />
+                                <h:inputText styleClass="grpelem" value="#{addCameraController.addedCamera.password}" id="camPassword" style="
+                                             z-index: 36;display: block;vertical-align: top;position: relative;margin-right: -10000px;
+                                             margin-top: 155px;width: 250px;margin-left: 32px;left: -17px;
+                                             "/>
+                                <p:watermark for="camPassword" value="Пароль" />
+
+                                <h:commandLink action="#{addCameraController.addCamera()}">
+                                    <div class="Button shadow clearfix colelem" id="buttonu4675" style="width: 150px;top:-80px;"><!-- container box -->
+                                        <img class="grpelem" id="u4676-4" alt="Сохранить" src="resources/images/u4676-4.png" data-image-width="167"/><!-- rasterized frame -->
+                                    </div>
+                                </h:commandLink>
+                                <h:commandLink action="cameras.xhtml?faces-redirect=true;">
+                                    <div class="Button shadow clearfix colelem" id="buttonu4673" style="width: 150px;top: -80px"><!-- container box -->
+                                        <img class="grpelem" id="u4674-4" alt="Удалить" src="resources/images/u4674-4.png" data-image-width="167"/><!-- rasterized frame -->
+                                    </div>
+                                </h:commandLink>                                
                             </div>
 
-                            <img class="grpelem" id="u110-4" alt="Порт" src="images/u110-4.png" data-image-width="200"/><!-- rasterized frame -->
-                            <img class="grpelem" id="u107-4" alt="Логин" src="images/u107-4.png" data-image-width="200"/><!-- rasterized frame -->
-                            <img class="grpelem" id="u108-4" alt="Пароль" src="images/u108-4.png" data-image-width="200"/><!-- rasterized frame -->
-                            <img class="grpelem" id="u109-4" alt="Название камеры" src="images/u109-4.png" data-image-width="236"/><!-- rasterized frame -->
                         </div>
-                        <img class="grpelem" id="u101-4" alt="IP адрес камеры" src="images/u101-4.png" data-image-width="201"/><!-- rasterized frame -->
-                    </div>
+                    </h:form>
                 </div>
                 <a class="nonblock nontext Button transition clearfix" id="buttonu1886" href="counters.xhtml?faces-redirect=true"><!-- container box --><img class="grpelem" id="u1889-4" alt="Счетчики" src="resources/images//u1889-4.png" data-image-width="77"/><!-- rasterized frame --><div class="clip_frame grpelem" id="u1887"><!-- image --><img class="block" id="u1887_img" src="resources/images//counters-new.png" alt="" data-image-width="25" data-image-height="25"/></div></a>
                 <a class="nonblock nontext Button transition clearfix" id="buttonu1890" href="sensors.xhtml?faces-redirect=true"><!-- container box --><img class="grpelem" id="u1891-4" alt="Датчики" src="resources/images//u1891-4.png" data-image-width="76"/><!-- rasterized frame --><div class="clip_frame grpelem" id="u1892"><!-- image --><img class="block" id="u1892_img" src="resources/images//sensors-new.png" alt="" data-image-width="25" data-image-height="25"/></div></a>

@@ -55,13 +55,28 @@
                             <div class="clearfix grpelem" id="u530"><!-- group -->
                                 <div class="clearfix grpelem" id="u531"><!-- group -->
                                     <div class="clearfix grpelem" id="u534"><!-- group -->
-
-                                        <div class="grpelem" id="u533"><!-- simple frame --></div>
-                                        <div class="grpelem" id="u532"><!-- simple frame --></div>
-                                        <div class="grpelem" id="u535"><!-- simple frame --></div>
-                                        <div class="grpelem" id="u536"><!-- simple frame --></div>
-
-
+                                        <h:form>
+                                            <h:commandLink action="cameras.xhtml?faces-redirect=true" >
+                                                <div class="grpelem" id="u533"><!-- simple frame -->
+                                                    <p:graphicImage alt="No signal" value="#{homePageController.oneCameraLink}" cache="false" />
+                                                </div>
+                                                <c:if test="#{homePageController.twoCamera}">
+                                                    <div class="grpelem" id="u532"><!-- simple frame -->
+                                                        <p:graphicImage alt="No signal" value="#{homePageController.twoCameraLink}" cache="false" />
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="#{homePageController.threeCamera}">
+                                                    <div class="grpelem" id="u535"><!-- simple frame -->
+                                                        <p:graphicImage alt="No signal" value="#{homePageController.threeCameraLink}" cache="false" />
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="#{homePageController.fourCamera}">
+                                                    <div class="grpelem" id="u536"><!-- simple frame -->
+                                                        <p:graphicImage alt="No signal" value="#{homePageController.fourCameraLink}" cache="false" />
+                                                    </div>
+                                                </c:if>
+                                            </h:commandLink>
+                                        </h:form>
                                     </div>
                                 </div>
                                 <div class="shadow grpelem" id="u537"><!-- simple frame --></div>
