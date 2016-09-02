@@ -63,7 +63,7 @@
                                             <p:graphicImage cache="false" value="#{camera.JPGLink}" alt="Камера не доступна в данный момент" />
                                         </div>
                                     </div>
-                                    <h:commandLink action="cameras.xhtml?faces-redirect=true;">
+                                    <h:commandLink action="#{camerasPageController.removeCamera(camera)}">
                                         <div class="Button shadow clearfix colelem" id="buttonu4673" style="width: 150px;top: -50px"><!-- container box -->
                                             <img class="grpelem" id="u4674-4" alt="Удалить" src="resources/images/u4674-4.png" data-image-width="167"/><!-- rasterized frame -->
                                         </div>

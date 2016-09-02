@@ -5,6 +5,7 @@
  */
 package info.microsityv6.microsityv6.entitys;
 
+import info.microsityv6.microsityv6.enums.CounterType;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,7 @@ public class Counter implements Serializable {
     private double valueNow;
     private double earlyValue;
     private String espId;
+    private CounterType counterType;
     
     private List<String> alarmMails;
     private List<String> alarmPhones;
@@ -131,6 +133,16 @@ public class Counter implements Serializable {
         if(events==null)events=new ArrayList<>();
         events.add(event);
     }
+
+    public CounterType getCounterType() {
+        return counterType;
+    }
+
+    public void setCounterType(CounterType counterType) {
+        this.counterType = counterType;
+    }
+    
+    
     
     @Override
     public int hashCode() {
