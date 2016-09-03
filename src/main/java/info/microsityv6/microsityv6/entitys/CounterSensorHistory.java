@@ -30,7 +30,7 @@ public class CounterSensorHistory implements Serializable {
     private double recordValue;
     @Column(name = "j_State")
     private boolean state;
-    
+            
     public Long getId() {
         return id;
     }

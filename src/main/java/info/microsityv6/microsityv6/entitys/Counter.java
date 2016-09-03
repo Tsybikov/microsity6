@@ -8,11 +8,14 @@ package info.microsityv6.microsityv6.entitys;
 import info.microsityv6.microsityv6.enums.CounterType;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -25,14 +28,17 @@ public class Counter implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String title;
     private String espId;
     private CounterType counterType;
-    
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<TariffZone> tariffZones;
+
     private List<String> alarmMails;
     private List<String> alarmPhones;
-            
+
     public Long getId() {
         return id;
     }
@@ -73,13 +79,17 @@ public class Counter implements Serializable {
         this.alarmPhones = alarmPhones;
     }
 
-    public void addAlarmMail(String mail){
-        if(alarmMails==null)alarmMails=new ArrayList<>();
+    public void addAlarmMail(String mail) {
+        if (alarmMails == null) {
+            alarmMails = new ArrayList<>();
+        }
         alarmMails.add(mail);
     }
-    
-    public void addAlarmPhones(String phone){
-        if(alarmPhones==null)alarmPhones=new ArrayList<>();
+
+    public void addAlarmPhones(String phone) {
+        if (alarmPhones == null) {
+            alarmPhones = new ArrayList<>();
+        }
         alarmPhones.add(phone);
     }
 
@@ -90,9 +100,34 @@ public class Counter implements Serializable {
     public void setCounterType(CounterType counterType) {
         this.counterType = counterType;
     }
-    
-    
-    
+
+    public List<TariffZone> getTariffZones() {
+        return tariffZones;
+    }
+
+    public void setTariffZones(List<TariffZone> tariffZones) {
+        this.tariffZones = tariffZones;
+    }
+
+    public void addValue(double value) {
+        for (TariffZone tariffZone : tariffZones) {
+            Calendar now = Calendar.getInstance();
+            if (now.get(Calendar.HOUR) >= tariffZone.getHourStart() && now.get(Calendar.HOUR) <= tariffZone.getHourEnd()
+                    && now.get(Calendar.MINUTE) >= tariffZone.getMinuteStart() && now.get(Calendar.MINUTE) <= tariffZone.getMinuteEnd()) {
+                tariffZone.addValue(value);                
+            }
+        }
+    }
+    public void addValue(boolean state) {
+        for (TariffZone tariffZone : tariffZones) {
+            Calendar now = Calendar.getInstance();
+            if (now.get(Calendar.HOUR) >= tariffZone.getHourStart() && now.get(Calendar.HOUR) <= tariffZone.getHourEnd()
+                    && now.get(Calendar.MINUTE) >= tariffZone.getMinuteStart() && now.get(Calendar.MINUTE) <= tariffZone.getMinuteEnd()) {
+                tariffZone.addValue(state);                
+            }
+        }
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -117,19 +152,5 @@ public class Counter implements Serializable {
     public String toString() {
         return "info.microsityv6.microsityv6.entitys.Counter[ id=" + id + " ]";
     }
-    
-    private class TariffZone{
-        int hourStart;
-        int minuteStart;
-        int hourEnd;
-        int minuteEnd;
-        String nameTariff;
-        
-        private List <CounterSensorHistory> counterSensorHistorys;
-        private List <Event> events;
-        
-        
-        
-    }
-    
+
 }
