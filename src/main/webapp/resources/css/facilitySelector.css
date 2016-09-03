@@ -35,19 +35,39 @@
 #u114
 {
     z-index: 3;
-    height: 655px;
+    height: auto;
     -pie-box-shadow: none;
     box-shadow: 6px 6px 8px rgba(0,0,0,0.5);
     background-color: #4C5760;
-    opacity: 0.46;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=46)";
     filter: alpha(opacity=46);
     position: relative;
     margin-right: -10000px;
     width: 100%;
+    padding-bottom: 15px;
 }
 
 #buttonu106
+{
+    z-index: 4;
+    -pie-box-shadow: 4px 4px 8px #7F7F7F;
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+    border-width: 0px;
+    background-color: #3F698A;
+    padding-bottom: 4px;
+    position: relative;
+    width: 34.72%;
+    left: 290px;
+}
+
+#buttonu106:hover
+{
+    background-color: #12456D;
+    min-height: 0px;
+    width: 34.72%;
+    margin: 160px -10000px 0px 0%;
+}
+#buttonu106-1
 {
     z-index: 4;
     -pie-box-shadow: 4px 4px 8px #7F7F7F;
@@ -61,7 +81,7 @@
     left: 290px;
 }
 
-#buttonu106:hover
+#buttonu106-1:hover
 {
     background-color: #12456D;
     min-height: 0px;
@@ -78,6 +98,16 @@
 }
 
 #u107-4
+{
+    z-index: 5;
+    display: block;
+    vertical-align: top;
+    position: relative;
+    margin-right: -10000px;
+    margin-top: 6px;
+    width: 100%;
+}
+#u107-5
 {
     z-index: 5;
     display: block;

@@ -9,12 +9,10 @@ import info.microsityv6.microsityv6.enums.CounterType;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -29,20 +27,12 @@ public class Counter implements Serializable {
     private Long id;
     
     private String title;
-    private double valueNow;
-    private double earlyValue;
     private String espId;
     private CounterType counterType;
     
     private List<String> alarmMails;
     private List<String> alarmPhones;
-    
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<CounterSensorHistory> counterHistorys;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Event> events;
-
-        
+            
     public Long getId() {
         return id;
     }
@@ -65,34 +55,6 @@ public class Counter implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public double getValueNow() {
-        return valueNow;
-    }
-
-    public void setValueNow(double valueNow) {
-        CounterSensorHistory csh=new CounterSensorHistory();
-        csh.setRecordValue(valueNow);
-        if(counterHistorys==null)counterHistorys=new ArrayList<>();
-        counterHistorys.add(csh);
-        this.valueNow = valueNow;
-    }
-
-    public double getEarlyValue() {
-        return earlyValue;
-    }
-
-    public void setEarlyValue(double earlyValue) {
-        this.earlyValue = earlyValue;
-    }
-
-    public List<CounterSensorHistory> getCounterHistorys() {
-        return counterHistorys;
-    }
-
-    public void setCounterHistorys(List<CounterSensorHistory> counterHistorys) {
-        this.counterHistorys = counterHistorys;
     }
 
     public List<String> getAlarmMails() {
@@ -119,19 +81,6 @@ public class Counter implements Serializable {
     public void addAlarmPhones(String phone){
         if(alarmPhones==null)alarmPhones=new ArrayList<>();
         alarmPhones.add(phone);
-    }
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
-    
-    public void addEvent(Event event){
-        if(events==null)events=new ArrayList<>();
-        events.add(event);
     }
 
     public CounterType getCounterType() {
@@ -167,6 +116,20 @@ public class Counter implements Serializable {
     @Override
     public String toString() {
         return "info.microsityv6.microsityv6.entitys.Counter[ id=" + id + " ]";
+    }
+    
+    private class TariffZone{
+        int hourStart;
+        int minuteStart;
+        int hourEnd;
+        int minuteEnd;
+        String nameTariff;
+        
+        private List <CounterSensorHistory> counterSensorHistorys;
+        private List <Event> events;
+        
+        
+        
     }
     
 }
