@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -26,12 +27,14 @@ public class TariffZone implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    int hourStart;
-    int minuteStart;
-    int hourEnd;
-    int minuteEnd;
-    String nameTariff;
-    int timeZone;
+    private int hourStart;
+    private int minuteStart;
+    private int hourEnd;
+    private int minuteEnd;
+    private String nameTariff;
+    private int timeZone;
+    
+    
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<CounterSensorHistory> counterSensorHistorys;
@@ -101,7 +104,9 @@ public class TariffZone implements Serializable {
     public void setTimeZone(int timeZone) {
         this.timeZone = timeZone;
     }
+    
 
+    
     public void addValue(double recordValue) {
         if (counterSensorHistorys == null) {
             counterSensorHistorys = new ArrayList<>();

@@ -14,6 +14,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,7 +33,9 @@ public class Controller implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
-    private String espID;
+    private String esp_id;
+    private int pinNum;
+    @Column(name = "J_STATE")
     private boolean state;
     private List<String> alarmMails;
     private List<String> alarmPhones;
@@ -57,14 +60,7 @@ public class Controller implements Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
-
-    public String getEspID() {
-        return espID;
-    }
-
-    public void setEspID(String espID) {
-        this.espID = espID;
-    }
+    
 
     public boolean isState() {
         return state;
@@ -74,7 +70,7 @@ public class Controller implements Serializable {
         String line = "";
         if (state) {
             Runtime runtime = Runtime.getRuntime();
-            String cmd[] = {"mosquitto_pub", "-u", "micro", "-P", "microcity", "-t", "sensors/" + espID + "/0/action", "-m", "1"};
+            String cmd[] = {"mosquitto_pub", "-u", "micro", "-P", "microcity", "-t", "sensors/" + esp_id + "/0/action", "-m", "1"};
             try {
                 Process process = runtime.exec(cmd);
                 BufferedReader br_e = new BufferedReader(new InputStreamReader(process.getErrorStream()));
@@ -95,7 +91,7 @@ public class Controller implements Serializable {
             }
         } else{
             Runtime runtime = Runtime.getRuntime();
-            String cmd[] = {"mosquitto_pub", "-u", "micro", "-P", "microcity", "-t", "sensors/" + espID + "/0/action", "-m", "0"};
+            String cmd[] = {"mosquitto_pub", "-u", "micro", "-P", "microcity", "-t", "sensors/" + esp_id + "/0/action", "-m", "0"};
             try {
                 Process process = runtime.exec(cmd);
                 BufferedReader br_e = new BufferedReader(new InputStreamReader(process.getErrorStream()));
@@ -172,6 +168,24 @@ public class Controller implements Serializable {
         return hash;
     }
 
+    public String getEsp_id() {
+        return esp_id;
+    }
+
+    public void setEsp_id(String esp_id) {
+        this.esp_id = esp_id;
+    }
+
+    public int getPinNum() {
+        return pinNum;
+    }
+
+    public void setPinNum(int pinNum) {
+        this.pinNum = pinNum;
+    }
+    
+    
+    
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set

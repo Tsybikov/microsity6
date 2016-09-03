@@ -9,11 +9,14 @@ import info.microsityv6.microsityv6.enums.DeviceType;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -29,10 +32,6 @@ public class ESP implements Serializable {
     private Long id;
     @Column(name = "ESP_ID")
     private String espId;
-    @Column(name = "DEVICE_TYPE")
-    private DeviceType deviceType;
-    @Column(name = "PIN_NUM")
-    private int pinNum;
     @Column(name = "LAST_IP")
     private String lastIp;
     @Column(name="LAST_AP")
@@ -47,7 +46,7 @@ public class ESP implements Serializable {
     @Column(name="UPDATE_DATE")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar update_date;
-    @Column(name="ESP_DEVICES")
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Pin> pins;
 
     public Long getId() {
@@ -64,22 +63,6 @@ public class ESP implements Serializable {
 
     public void setEspId(String espId) {
         this.espId = espId;
-    }
-
-    public DeviceType getDeviceType() {
-        return deviceType;
-    }
-
-    public void setDeviceType(DeviceType deviceType) {
-        this.deviceType = deviceType;
-    }
-
-    public int getPinNum() {
-        return pinNum;
-    }
-
-    public void setPinNum(int pinNum) {
-        this.pinNum = pinNum;
     }
 
     public String getLastIp() {
@@ -148,38 +131,6 @@ public class ESP implements Serializable {
         return hash;
     }
     
-    private class Pin{
-        DeviceType type;
-        int pin_num;
-        String relay_id;
-
-        public DeviceType getType() {
-            return type;
-        }
-
-        public void setType(DeviceType type) {
-            this.type = type;
-        }
-
-        public int getPin_num() {
-            return pin_num;
-        }
-
-        public void setPin_num(int pin_num) {
-            this.pin_num = pin_num;
-        }
-
-        public String getRelay_id() {
-            return relay_id;
-        }
-
-        public void setRelay_id(String relay_id) {
-            this.relay_id = relay_id;
-        }
-        
-        
-    }
-
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set

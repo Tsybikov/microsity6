@@ -30,8 +30,10 @@ public class Counter implements Serializable {
     private Long id;
 
     private String title;
-    private String espId;
     private CounterType counterType;
+    private boolean showInTheMap;
+    private String esp_id;
+    private int pin;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<TariffZone> tariffZones;
@@ -45,14 +47,6 @@ public class Counter implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getEspId() {
-        return espId;
-    }
-
-    public void setEspId(String espId) {
-        this.espId = espId;
     }
 
     public String getTitle() {
@@ -109,6 +103,33 @@ public class Counter implements Serializable {
         this.tariffZones = tariffZones;
     }
 
+    public boolean isShowInTheMap() {
+        return showInTheMap;
+    }
+
+    public void setShowInTheMap(boolean showInTheMap) {
+        this.showInTheMap = showInTheMap;
+    }
+
+    public String getEsp_id() {
+        return esp_id;
+    }
+
+    public void setEsp_id(String esp_id) {
+        this.esp_id = esp_id;
+    }
+
+    public int getPin() {
+        return pin;
+    }
+
+    public void setPin(int pin) {
+        this.pin = pin;
+    }
+    
+    
+    
+    
     public void addValue(double value) {
         for (TariffZone tariffZone : tariffZones) {
             Calendar now = Calendar.getInstance();

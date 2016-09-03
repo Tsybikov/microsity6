@@ -5,34 +5,28 @@
  */
 package info.microsityv6.microsityv6.entitys;
 
+import info.microsityv6.microsityv6.enums.DeviceType;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
  * @author Panker-RDP
  */
 @Entity
-public class ESPS implements Serializable {
+public class Pin implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<ESP> notReadedData;
-    
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<ESP> readedData;
-            
+    private DeviceType type;
+    private int pin_num;
+    private String relay_id;
+
     public Long getId() {
         return id;
     }
@@ -41,23 +35,6 @@ public class ESPS implements Serializable {
         this.id = id;
     }
 
-    public List<ESP> getNotReadedData() {
-        return notReadedData;
-    }
-
-    public void setNotReadedData(List<ESP> notReadedData) {
-        this.notReadedData = notReadedData;
-    }
-
-    public List<ESP> getReadedData() {
-        return readedData;
-    }
-
-    public void setReadedData(List<ESP> readedData) {
-        this.readedData = readedData;
-    }
-
-    
     
     @Override
     public int hashCode() {
@@ -69,10 +46,10 @@ public class ESPS implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ESPS)) {
+        if (!(object instanceof Pin)) {
             return false;
         }
-        ESPS other = (ESPS) object;
+        Pin other = (Pin) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -81,7 +58,31 @@ public class ESPS implements Serializable {
 
     @Override
     public String toString() {
-        return "info.microsityv6.microsityv6.entitys.ESPS[ id=" + id + " ]";
+        return "info.microsityv6.microsityv6.entitys.Pin[ id=" + id + " ]";
     }
-    
+
+    public DeviceType getType() {
+        return type;
+    }
+
+    public void setType(DeviceType type) {
+        this.type = type;
+    }
+
+    public int getPin_num() {
+        return pin_num;
+    }
+
+    public void setPin_num(int pin_num) {
+        this.pin_num = pin_num;
+    }
+
+    public String getRelay_id() {
+        return relay_id;
+    }
+
+    public void setRelay_id(String relay_id) {
+        this.relay_id = relay_id;
+    }
+
 }

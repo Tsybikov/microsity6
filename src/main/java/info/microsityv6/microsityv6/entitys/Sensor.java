@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,14 +28,12 @@ public class Sensor implements Serializable {
     private Long id;
     
     private String title;
-    @Column(name="j_value")
-    private String value;
-    private boolean state;
     private boolean showInTheMap;
-    private String espID;
+    private String esp_id;
+    private int pinNum;
     
     @OneToMany(cascade = CascadeType.ALL)
-    private List<CounterSensorHistory> cshs;
+    private List<CounterSensorHistory> counterSensorHistorys;
     
     private List<String> alarmMails;
     private List<String> alarmPhones;
@@ -59,44 +56,13 @@ public class Sensor implements Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        if(cshs==null)cshs=new ArrayList<>();
-        CounterSensorHistory csh = new CounterSensorHistory();
-        try{
-            csh.setRecordValue(Double.parseDouble(value));
-        }catch(NumberFormatException ex){
-            
-        }
-        this.value = value;
-    }
-
-    public boolean isState() {
-        return state;
-    }
-
-    public void setState(boolean state) {
-        this.state = state;
-    }
-
+    
     public boolean isShowInTheMap() {
         return showInTheMap;
     }
 
     public void setShowInTheMap(boolean showInTheMap) {
         this.showInTheMap = showInTheMap;
-    }
-
-    public String getEspID() {
-        return espID;
-    }
-
-    public void setEspID(String espID) {
-        this.espID = espID;
     }
 
     public List<String> getAlarmMails() {
@@ -137,6 +103,47 @@ public class Sensor implements Serializable {
         if(events==null)events=new ArrayList<>();
         events.add(event);
     }
+
+    public String getEsp_id() {
+        return esp_id;
+    }
+
+    public void setEsp_id(String esp_id) {
+        this.esp_id = esp_id;
+    }
+
+    public int getPinNum() {
+        return pinNum;
+    }
+
+    public void setPinNum(int pinNum) {
+        this.pinNum = pinNum;
+    }
+
+    public List<CounterSensorHistory> getCshs() {
+        return counterSensorHistorys;
+    }
+
+    public void setCshs(List<CounterSensorHistory> cshs) {
+        this.counterSensorHistorys = cshs;
+    }
+    
+    public void addValue(double recordValue) {
+        if (counterSensorHistorys == null) {
+            counterSensorHistorys = new ArrayList<>();
+        }
+        CounterSensorHistory addedValue = new CounterSensorHistory();
+        addedValue.setRecordValue(recordValue);
+    }
+
+    public void addValue(boolean recordState) {
+        if (counterSensorHistorys == null) {
+            counterSensorHistorys = new ArrayList<>();
+        }
+        CounterSensorHistory addedValue = new CounterSensorHistory();
+        addedValue.setState(recordState);
+    }
+    
     
     
     @Override

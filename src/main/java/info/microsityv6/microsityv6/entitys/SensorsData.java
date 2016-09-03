@@ -7,7 +7,6 @@ package info.microsityv6.microsityv6.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -52,6 +50,8 @@ public class SensorsData implements Serializable {
     private boolean isAction;
     @Column(name = "TIMING")
     private int timing;
+    @Column(name="IS_BOOL")
+    private boolean bool;
 
     public String getSensorId() {
         return sensorId;
@@ -108,6 +108,15 @@ public class SensorsData implements Serializable {
     public void setTiming(int timing) {
         this.timing = timing;
     }
+
+    public boolean isBool() {
+        return bool;
+    }
+
+    public void setBool(boolean bool) {
+        this.bool = bool;
+    }
+    
     
     
     
