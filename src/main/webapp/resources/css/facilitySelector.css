@@ -38,7 +38,7 @@
     height: auto;
     -pie-box-shadow: none;
     box-shadow: 6px 6px 8px rgba(0,0,0,0.5);
-    background-color: #4C5760;
+    background-color: #424E58;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=46)";
     filter: alpha(opacity=46);
     position: relative;
@@ -65,7 +65,8 @@
     background-color: #12456D;
     min-height: 0px;
     width: 34.72%;
-    margin: 160px -10000px 0px 0%;
+    position: relative;
+    margin: auto -10000px 0px 0%;
 }
 #buttonu106-1
 {

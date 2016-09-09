@@ -7,8 +7,11 @@ package info.microsityv6.microsityv6.entitys;
 
 import info.microsityv6.microsityv6.enums.DeviceType;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +21,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -26,10 +30,21 @@ import javax.persistence.Temporal;
 @Entity
 public class ESP implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID")
     private Long id;
+    @Column(name = "STATUS")
+    private Boolean status;
+    @Column(name = "INPUT_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date inputDate;
+    @Column(name = "UPDATE_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updateDate;
+
+    private static final long serialVersionUID = 1L;
     @Column(name = "ESP_ID")
     private String espId;
     @Column(name = "LAST_IP")
@@ -38,14 +53,6 @@ public class ESP implements Serializable {
     private String lastAP;
     @Column(name = "FIRMWARE_ID")
     private String firmware_id;
-    @Column(name = "STATUS")
-    private boolean status;
-    @Column(name="INPUT_DATE")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar input_date;
-    @Column(name="UPDATE_DATE")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar update_date;
     @OneToMany(cascade = CascadeType.ALL)
     private List<Pin> pins;
 
@@ -89,31 +96,9 @@ public class ESP implements Serializable {
         this.firmware_id = firmware_id;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public Calendar getInput_date() {
-        return input_date;
-    }
-
-    public void setInput_date(Calendar input_date) {
-        this.input_date = input_date;
-    }
-
-    public Calendar getUpdate_date() {
-        return update_date;
-    }
-
-    public void setUpdate_date(Calendar update_date) {
-        this.update_date = update_date;
-    }
 
     public List<Pin> getPins() {
+        if(pins==null)pins=new ArrayList<>();
         return pins;
     }
 
@@ -148,5 +133,36 @@ public class ESP implements Serializable {
     public String toString() {
         return "info.microsityv6.microsityv6.entitys.ESP[ id=" + id + " ]";
     }
+
+    public ESP() {
+    }
+
+    public ESP(Long id) {
+        this.id = id;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public Date getInputDate() {
+        return inputDate;
+    }
+
+    public void setInputDate(Date inputDate) {
+        this.inputDate = inputDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }    
     
 }

@@ -5,6 +5,7 @@
  */
 package info.microsityv6.microsityv6.entitys;
 
+import info.microsityv6.microsityv6.enums.CounterType;
 import info.microsityv6.microsityv6.enums.DeviceType;
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -24,6 +25,7 @@ public class Pin implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private DeviceType type;
+    private CounterType counterType;
     private int pin_num;
     private String relay_id;
 
