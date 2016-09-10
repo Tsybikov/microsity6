@@ -31,9 +31,11 @@ public class ParserESP {
         List<ESPBase> espbs = espbf.findAll();
         for (SensorsData sensorsData : sdf.findAll()) {
             for (ESPBase espb : espbs) {
-                if (sensorsData.getSensorId().equals(espb.getEspId())) {
+                if (sensorsData.getSensorId().equals(espb.getEspId())&&!sensorsData.isWasRead()) {
                     addValue(sensorsData);
-                    sdf.remove(sensorsData);
+                    sensorsData.setWasRead(true);
+                    sdf.edit(sensorsData);
+                    System.out.println("Data is succesfull read");
                     break;
                 }
             }
@@ -52,8 +54,12 @@ public class ParserESP {
                     if (counter.getEsp_id().equals(sensorsData.getSensorId())) {
                         if (sensorsData.isBool()) {
                             counter.addValue(sensorsData.getValue().equals("1"));
+                            System.out.println("Data added");
+                            uf.edit(user);
                         } else {
                             counter.addValue(Double.parseDouble(sensorsData.getValue()));
+                            System.out.println("Data added");
+                            uf.edit(user);
                         }
                     }
                 }

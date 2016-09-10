@@ -36,7 +36,7 @@ public class CounterPageController extends PageController implements Serializabl
 
     public List<Counter> getWattMeters() {
         wattMeters = new ArrayList<>();
-        if (hasWattMeter) {
+        if (isHasWattMeter()) {
             for (Counter counter : super.getCurrentFacility().getCounters()) {
                 if (counter.getCounterType().equals(CounterType.WATT)) {
                     wattMeters.add(counter);
@@ -52,7 +52,7 @@ public class CounterPageController extends PageController implements Serializabl
 
     public List<Counter> getGasMeters() {
         gasMeters = new ArrayList<>();
-        if (hasGasMeter) {
+        if (isHasGasMeter()) {
             for (Counter counter : super.getCurrentFacility().getCounters()) {
                 if (counter.getCounterType().equals(CounterType.GAS)) {
                     gasMeters.add(counter);
@@ -68,7 +68,7 @@ public class CounterPageController extends PageController implements Serializabl
 
     public List<Counter> getWaterMeters() {
         waterMeters = new ArrayList<>();
-        if (hasWaterMeter) {
+        if (isHasWaterMeter()) {
             for (Counter counter : super.getCurrentFacility().getCounters()) {
                 if (counter.getCounterType().equals(CounterType.WATER)) {
                     waterMeters.add(counter);
@@ -84,7 +84,7 @@ public class CounterPageController extends PageController implements Serializabl
 
     public List<Counter> getWarmMeters() {
         warmMeters = new ArrayList<>();
-        if (hasWarmMeter) {
+        if (isHasWarmMeter()) {
             for (Counter counter : super.getCurrentFacility().getCounters()) {
                 if (counter.getCounterType().equals(CounterType.WARM)) {
                     warmMeters.add(counter);

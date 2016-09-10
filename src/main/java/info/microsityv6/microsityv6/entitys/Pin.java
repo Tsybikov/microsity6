@@ -87,4 +87,13 @@ public class Pin implements Serializable {
         this.relay_id = relay_id;
     }
 
+    public CounterType getCounterType() {
+        return counterType;
+    }
+
+    public void setCounterType(CounterType counterType) {
+        this.counterType = counterType;
+    }
+    
+    
 }

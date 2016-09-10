@@ -70,14 +70,13 @@ public class Kit implements Serializable {
                 case 5:
                 case 6:
                 case 7:
-                case 8:
-                case 9: value+=i+1;break;
-                case 10: value+="a";break;
-                case 11: value+="b";break;
-                case 12: value+="c";break;
-                case 13: value+="d";break;
-                case 14: value+="e";break;
-                case 15: value+="f";break;
+                case 8: value+=i+1;break;
+                case 9: value+="a";break;
+                case 10: value+="b";break;
+                case 11: value+="c";break;
+                case 12: value+="d";break;
+                case 13: value+="e";break;
+                case 14: value+="f";break;
                 default:break;
             }
         }

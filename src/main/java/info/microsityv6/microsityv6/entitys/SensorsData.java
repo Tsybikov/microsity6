@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
  *
  * @author Panker-RDP
  */
-@Entity(name = "SENSOR_DATA")
+@Entity(name = "SENSORS_DATA")
 public class SensorsData implements Serializable {
 
     private static final long serialVersionUID = 1L;
