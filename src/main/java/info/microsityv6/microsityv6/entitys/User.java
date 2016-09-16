@@ -183,7 +183,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "info.microsityv6.microsityv6.entitys.User[ id=" + id + " ]";
+        return "info.microsityv6.microsityv6.entitys.User[ name=" + mainEmail + " ]";
     }
     
 }

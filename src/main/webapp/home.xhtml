@@ -48,7 +48,14 @@
             <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1926" href="login.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u1927"><!-- image --><img class="block" id="u1927_img" src="resources/images/logout.png" alt="" data-image-width="30" data-image-height="30"/></div></a>
             <div class="verticalspacer"></div>
             <div class="browser_width grpelem" id="u2064-bw">
-                <div id="u2064"><!-- simple frame --></div>
+                <div id="u2064"><!-- simple frame -->
+                    <c:if test="#{userController.admin}">
+                        <h:form>
+                            <h:commandButton value="Start forcibly parse SensorsData" actionListener="#{Timer.parseSensorsData()}" styleClass="grpelem" /><br/>
+                            <h:commandButton value="Start forcibly clean SensorsData" actionListener="#{Timer.cleanSensorsData()}" styleClass="grpelem" />
+                        </h:form>
+                    </c:if>
+                </div>
             </div>
         </div>
     </h:body>

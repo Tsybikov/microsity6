@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://xmlns.jcp.org/jsf/composite"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <!-- INTERFACE -->
     <cc:interface>
@@ -18,7 +19,17 @@
         <h:outputText value="#{userController.current.balance}"
                       style="z-index: 336;position: fixed;top: 24px;
                       left: 334px;width: 4.26%;max-width: 63px;font-size: 14px;color: white;" />
-        
-        
+        <c:if test="#{userController.admin}">
+            <a class="nonblock nontext Button transition shadow clearfix" id="buttonu5684" href="admin.xhtml" style="position: fixed;top: 14px;right: 402px;z-index: 336;"><!-- container box -->
+                <div class="clip_frame grpelem" id="u5685"><!-- image -->
+                    <img class="block" id="u5685_img" src="resources/images/admin.png" alt="" data-image-width="30" data-image-height="30"/>
+                </div>
+                <img class="grpelem" id="u5687-4" alt="Панель администратора" src="resources/images/u5687-4.png" data-image-width="191"/>
+                <!-- rasterized frame -->
+            </a>
+        </c:if>
+
+
+
     </cc:implementation>
 </html>

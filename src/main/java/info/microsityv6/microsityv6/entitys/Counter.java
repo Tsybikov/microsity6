@@ -31,7 +31,7 @@ public class Counter implements Serializable {
 
     private String title;
     private CounterType counterType;
-    private boolean showInTheMap;
+    private boolean showInTheMap=true;
     private String esp_id;
     private int pin;
 
@@ -131,6 +131,7 @@ public class Counter implements Serializable {
     
     
     public void addValue(double value) {
+        checkEmptyList () ;
         for (TariffZone tariffZone : tariffZones) {
             Calendar now = Calendar.getInstance();
             if (now.get(Calendar.HOUR) >= tariffZone.getHourStart() && now.get(Calendar.HOUR) <= tariffZone.getHourEnd()
@@ -140,12 +141,26 @@ public class Counter implements Serializable {
         }
     }
     public void addValue(boolean state) {
+        checkEmptyList () ;
         for (TariffZone tariffZone : tariffZones) {
             Calendar now = Calendar.getInstance();
             if (now.get(Calendar.HOUR) >= tariffZone.getHourStart() && now.get(Calendar.HOUR) <= tariffZone.getHourEnd()
                     && now.get(Calendar.MINUTE) >= tariffZone.getMinuteStart() && now.get(Calendar.MINUTE) <= tariffZone.getMinuteEnd()) {
                 tariffZone.addValue(state);                
             }
+        }
+    }
+    
+    private void checkEmptyList () {
+        if (tariffZones.isEmpty()){
+            TariffZone defaultTarrif=new TariffZone();
+            defaultTarrif.setHourStart(0);
+            defaultTarrif.setMinuteStart(0);
+            defaultTarrif.setHourEnd(23);
+            defaultTarrif.setMinuteEnd(59);
+            defaultTarrif.setNameTariff("Default All Day");
+            defaultTarrif.setStartValue(0);
+            tariffZones.add(defaultTarrif);
         }
     }
 

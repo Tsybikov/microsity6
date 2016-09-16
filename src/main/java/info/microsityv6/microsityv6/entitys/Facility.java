@@ -2,6 +2,7 @@
 package info.microsityv6.microsityv6.entitys;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -137,6 +138,7 @@ public class Facility implements Serializable {
     }
 
     public List<Counter> getCounters() {
+        if(counters==null)counters=new ArrayList<>();
         return counters;
     }
 

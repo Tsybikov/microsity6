@@ -127,7 +127,7 @@ public class Kit implements Serializable {
 
     @Override
     public String toString() {
-        return "info.microsityv6.microsityv6.entitys.Kit[ id=" + id + " ]";
+        return "info.microsityv6.microsityv6.entitys.Kit[ idHex=" + kitHexId + " "+"@"+(sold?"Sold!":"freeToSold")+" ]";
     }
     
 }

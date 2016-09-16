@@ -6,15 +6,19 @@
 package info.microsityv6.microsityv6.entitys;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  *
@@ -33,6 +37,9 @@ public class TariffZone implements Serializable {
     private int minuteEnd;
     private String nameTariff;
     private int timeZone;
+    private int startValue;
+    private int nowValue;
+    
     
     
 
@@ -82,6 +89,7 @@ public class TariffZone implements Serializable {
     }
 
     public List<CounterSensorHistory> getCounterSensorHistorys() {
+        if(counterSensorHistorys==null)counterSensorHistorys=new ArrayList<>();
         return counterSensorHistorys;
     }
 
@@ -104,7 +112,22 @@ public class TariffZone implements Serializable {
     public void setTimeZone(int timeZone) {
         this.timeZone = timeZone;
     }
+
+    public int getStartValue() {
+        return startValue;
+    }
+
+    public void setStartValue(int startValue) {
+        this.startValue = startValue;
+    }
     
+    public String getNowPeriodValue(int Month){
+        String value="";
+        for (CounterSensorHistory counterSensorHistory : counterSensorHistorys) {
+            value+=counterSensorHistory.getRecordValue();
+        }
+        return value;
+    }
 
     
     public void addValue(double recordValue) {
@@ -113,6 +136,7 @@ public class TariffZone implements Serializable {
         }
         CounterSensorHistory addedValue = new CounterSensorHistory();
         addedValue.setRecordValue(recordValue);
+        counterSensorHistorys.add(addedValue);
     }
 
     public void addValue(boolean recordState) {
@@ -121,6 +145,7 @@ public class TariffZone implements Serializable {
         }
         CounterSensorHistory addedValue = new CounterSensorHistory();
         addedValue.setState(recordState);
+        counterSensorHistorys.add(addedValue);
     }
 
     public Long getId() {
@@ -129,6 +154,28 @@ public class TariffZone implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getNowValue(Date startDate, Date endDate) {
+        int value=startValue;
+        for (CounterSensorHistory counterSensorHistory : counterSensorHistorys) {
+            if(counterSensorHistory.getRecordDate().after(startDate)&&counterSensorHistory.getRecordDate().before(endDate)){
+                value+=counterSensorHistory.getRecordValue();
+            }
+        }
+        return value;
+    }
+    
+    public int getNowValue(){
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        Date start=new Date();
+        try {
+            start=sdf.parse("2016-01-01");
+        } catch (ParseException ex) {
+            System.out.println("Can not parse date in getValueNow");
+        }
+        
+        return getNowValue(start,new Date());
     }
 
     @Override

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package info.microsityv6.microsityv6.entitysControllers;
 
 import info.microsityv6.microsityv6.entitys.Log;
@@ -24,12 +19,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.apache.commons.codec.digest.DigestUtils;
 
-/**
- *
- * @author Panker-RDP
- */
 @Named(value = "userController")
 @SessionScoped
 public class UserController implements Serializable {
@@ -178,6 +168,17 @@ public class UserController implements Serializable {
         admin = false;
         return ("index");
     }
+    
+    public String demo(){
+        current=new User();
+        current.setMainEmail("demo@microsity.info");
+        current.setPasswordHash("demodemo");
+        return login();
+    }
+    
+    public void saveCurrent(){
+        uf.edit(current);        
+    }
 
     public User getCurrent() {
         return current;
@@ -235,17 +236,7 @@ public class UserController implements Serializable {
         this.userMail = userMail;
     }
     
-    public String demo(){
-        current=new User();
-        current.setMainEmail("demo@microsity.info");
-        current.setPasswordHash("demodemo");
-        return login();
-    }
     
-    public void saveCurrent(User current){
-        if(current==null)current=this.current;
-        uf.edit(current);
-    }
 
     public String getNewPassword() {
         return newPassword;
@@ -254,9 +245,5 @@ public class UserController implements Serializable {
     public void setNewPassword(String newPassword) {
         this.newPassword = newPassword;
     }
-    
-    public void updateBean(){
-        current=uf.find(current.getId());
-    }
-    
+        
 }

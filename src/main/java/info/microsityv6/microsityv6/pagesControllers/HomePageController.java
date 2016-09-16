@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package info.microsityv6.microsityv6.pagesControllers;
 
 import info.microsityv6.microsityv6.facades.FacilityFacade;
@@ -11,10 +6,6 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 
-/**
- *
- * @author Panker-RDP
- */
 @Named(value = "homePageController")
 @SessionScoped
 public class HomePageController extends PageController implements Serializable {
@@ -41,10 +32,7 @@ public class HomePageController extends PageController implements Serializable {
 
     public boolean isNeedRender() {
 
-        if (super.getCurrentFacility() != null) {
-            return true;
-        }
-        return false;
+        return super.getCurrentFacility() != null;
     }
 
     public void setNeedRender(boolean needRender) {
@@ -52,11 +40,7 @@ public class HomePageController extends PageController implements Serializable {
     }
 
     public boolean isHaveCameras() {
-        if (super.getCurrentFacility().getCameras().isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
+        return !super.getCurrentFacility().getCameras().isEmpty();
 
     }
 
@@ -65,11 +49,7 @@ public class HomePageController extends PageController implements Serializable {
     }
 
     public boolean isHaveControllers() {
-        if (super.getCurrentFacility().getControllers().isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
+        return !super.getCurrentFacility().getControllers().isEmpty();
     }
 
     public void setHaveControllers(boolean haveControllers) {
@@ -77,11 +57,7 @@ public class HomePageController extends PageController implements Serializable {
     }
 
     public boolean isHaveCounters() {
-        if (super.getCurrentFacility().getCounters().isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
+        return !super.getCurrentFacility().getCounters().isEmpty();
     }
 
     public void setHaveCounters(boolean haveCounters) {
@@ -89,11 +65,7 @@ public class HomePageController extends PageController implements Serializable {
     }
 
     public boolean isHaveSensors() {
-        if (super.getCurrentFacility().getSensors().isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
+        return !super.getCurrentFacility().getSensors().isEmpty();
     }
 
     public void setHaveSensors(boolean haveSensors) {
@@ -117,10 +89,7 @@ public class HomePageController extends PageController implements Serializable {
     }
 
     public boolean isTwoCamera() {
-        if (super.getCurrentFacility().getCameras().size() > 1) {
-            return true;
-        }
-        return false;
+        return super.getCurrentFacility().getCameras().size() > 1;
     }
 
     public void setTwoCamera(boolean twoCamera) {
@@ -136,10 +105,7 @@ public class HomePageController extends PageController implements Serializable {
     }
 
     public boolean isThreeCamera() {
-        if (super.getCurrentFacility().getCameras().size() > 2) {
-            return true;
-        }
-        return false;
+        return super.getCurrentFacility().getCameras().size() > 2;
     }
 
     public void setThreeCamera(boolean threeCamera) {
@@ -155,10 +121,7 @@ public class HomePageController extends PageController implements Serializable {
     }
 
     public boolean isFourCamera() {
-        if (super.getCurrentFacility().getCameras().size() > 3) {
-            return true;
-        }
-        return false;
+        return super.getCurrentFacility().getCameras().size() > 3;
     }
 
     public void setFourCamera(boolean fourCamera) {
