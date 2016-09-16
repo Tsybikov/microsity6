@@ -1,11 +1,17 @@
 package info.microsityv6.microsityv6.pagesControllers;
 
 import info.microsityv6.microsityv6.entitys.Counter;
+import info.microsityv6.microsityv6.entitys.CounterSensorHistory;
+import info.microsityv6.microsityv6.entitys.TariffZone;
 import info.microsityv6.microsityv6.enums.CounterType;
+import info.microsityv6.microsityv6.support.TariffSummInfo;
+import info.microsityv6.microsityv6.support.TariffViewClass;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 @Named(value = "counterPageController")
@@ -21,8 +27,59 @@ public class CounterPageController extends PageController implements Serializabl
     private boolean hasWaterMeter;
     private boolean hasWarmMeter;
     private boolean show;
+    private List<TariffSummInfo> tsis;
 
     public CounterPageController() {
+    }
+
+    public List<TariffViewClass> getTariffValues(Counter counter) {
+        List<TariffViewClass> tariffViewClasses = new ArrayList<>();
+        for (TariffZone tariffZone : counter.getTariffZones()) {
+            Iterator cshs = tariffZone.getCounterSensorHistorys().iterator();
+            while (cshs.hasNext()) {
+                CounterSensorHistory csh = (CounterSensorHistory) cshs.next();
+                if (tariffViewClasses.isEmpty()) {
+                    TariffViewClass tvc = new TariffViewClass(csh);
+                    tariffViewClasses.add(tvc);
+                }
+                Iterator tvcIt = tariffViewClasses.iterator();
+                while (tvcIt.hasNext()) {
+                    TariffViewClass tvc = (TariffViewClass) tvcIt.next();
+                    String controlMark = csh.getRecordDate().get(Calendar.YEAR) + "" + csh.getRecordDate().get(Calendar.MONTH);
+                    if (tvc.getControlMark().equals(controlMark)) {
+                        tvc.sendData(csh, tariffZone.getNameTariff());
+                        tariffViewClasses.set(tariffViewClasses.indexOf(tvc), tvc);
+                    } else {
+                        boolean find = false;
+                        for (TariffViewClass tariffViewClasse : tariffViewClasses) {
+                            if (tariffViewClasse.getControlMark().equals(controlMark)) {
+                                find = true;
+                                break;
+                            }
+                        }
+                        if (!find) {
+                            TariffViewClass tvcPlus = new TariffViewClass(csh);
+                            tvcPlus.sendData(csh, tariffZone.getNameTariff());
+                            tariffViewClasses.add(tvcPlus);
+                        }
+                    }
+                }
+            }
+
+        }
+        for (TariffZone tariffZone : counter.getTariffZones()) {
+            int startValue=tariffZone.getStartValue();
+            for (TariffViewClass tvc : tariffViewClasses) {
+                for (TariffSummInfo tsi : tvc.getTsis()) {
+                    if(tsi.getTariffName().equals(tariffZone.getNameTariff())){
+                        if(tsi.getStartValue()==0)tsi.setStartValue(startValue);
+                        startValue+=tsi.getSummValue();
+                    }
+                }
+            }
+        }
+        
+        return tariffViewClasses;
     }
 
     public List<Counter> getWattMeters() {
@@ -168,6 +225,21 @@ public class CounterPageController extends PageController implements Serializabl
     public void setShow(boolean show) {
         this.show = show;
     }
+
+    public List<TariffSummInfo> getTsis(TariffViewClass tvc) {
+        tsis=new ArrayList<>();
+        for (TariffSummInfo tsi : tvc.getTsis()) {
+            tsis.add(tsi);
+        }
+        return tsis;
+    }
+    
+    private void setTsis(TariffViewClass tvc){
+        
+    }
+
     
     
+    
+
 }

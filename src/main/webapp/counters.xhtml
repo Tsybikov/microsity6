@@ -63,37 +63,7 @@
                                                                   color:white;margin-right: -10000000000px;margin-top: 5px;
                                                                   margin-left: 10px;
                                                                   " styleClass="grpelem" />
-                                                    <h:outputText value="Текущий месяц" style="
-                                                                  color:white;margin-right: -10000000000px;margin-top: 20px;
-                                                                  margin-left: 15px;
-                                                                  " styleClass="grpelem" />
-                                                    <h:outputText value="Начало периода" style="
-                                                                  color:white;margin-right: -10000000000px;margin-top: 35px;
-                                                                  margin-left: 25px;
-                                                                  " styleClass="grpelem" />
-                                                    <c:forEach items="#{wattCounter.tariffZones}" var="tariff">
-                                                        <p:panelGrid columns="2" styleClass="grpelem" style="border: none;" >
-                                                            <h:outputText value="#{tariff.nameTariff}" style="color: white;" />
-                                                            <h:outputText value="#{tariff.startValue}" style="color: white;" />
-                                                        </p:panelGrid>                                                        
-                                                    </c:forEach>
-                                                    <div class="clearfix colelem" id="pu5391-4"><!-- group -->
-                                                        <img class="grpelem" id="u5391-4" alt="Пик" src="resources/images/u5391-4.png" data-image-width="111"/><!-- rasterized frame -->
-                                                        <img class="grpelem" id="u5381-4" alt="100500" src="resources/images/u5381-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                                    </div>
-                                                    <div class="clearfix colelem" id="pu5390-4"><!-- group -->
-                                                        <img class="grpelem" id="u5390-4" alt="Полупик" src="resources/images/u5390-4.png" data-image-width="111"/><!-- rasterized frame -->
-                                                        <img class="grpelem" id="u5389-4" alt="100500" src="resources/images/u5389-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                                    </div>
-                                                    <img class="colelem" id="u5385-4" alt="Конец периода" src="resources/images/u5385-4.png" data-image-width="115"/><!-- rasterized frame -->
-                                                    <div class="clearfix colelem" id="pu5380-4"><!-- group -->
-                                                        <img class="grpelem" id="u5380-4" alt="Пик" src="resources/images/u5380-4.png" data-image-width="111"/><!-- rasterized frame -->
-                                                        <img class="grpelem" id="u5377-4" alt="100501" src="resources/images/u5377-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                                    </div>
-                                                    <div class="clearfix colelem" id="pu5384-4"><!-- group -->
-                                                        <img class="grpelem" id="u5384-4" alt="Полупик" src="resources/images/u5384-4.png" data-image-width="111"/><!-- rasterized frame -->
-                                                        <img class="grpelem" id="u5386-4" alt="100501" src="resources/images/u5386-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                                    </div>
+                                                    <comp:tariffsView/>
                                                 </div>
                                                 <div class="clearfix grpelem" id="pu5387"><!-- column -->
                                                     <div class="shadow colelem" id="u5387"><!-- simple frame --></div>

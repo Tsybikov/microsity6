@@ -21,7 +21,9 @@ public class AddFacilityController extends PageController implements Serializabl
             super.getUserController().getCurrent().addFacility(addedFacility);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Объект успешно добавлен"));
             super.saveChanges();
+            addedFacility=new Facility();
             return "home.xhtml?faces-redirect=true";
+            
         }
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Что-то пошло не так"));
         return "";

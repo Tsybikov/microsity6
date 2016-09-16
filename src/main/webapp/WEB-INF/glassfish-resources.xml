@@ -21,4 +21,5 @@
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/jdbc/mc6" object-type="user" pool-name="mysql_microsityv6_pankerPool_1"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/jdbc/microsity_Server" object-type="user" pool-name="mysql_microsityv6_pankerPool_1"/>
 </resources>

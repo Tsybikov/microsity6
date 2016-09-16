@@ -7,12 +7,14 @@ package info.microsityv6.microsityv6.entitys;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -25,8 +27,9 @@ public class CounterSensorHistory implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar recordDate;
+    @Column(name = "recordDate", columnDefinition = "DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar recordDate=Calendar.getInstance();
     private double recordValue;
     @Column(name = "j_State")
     private boolean state;
@@ -47,6 +50,10 @@ public class CounterSensorHistory implements Serializable {
         this.recordValue = recordValue;
         recordDate=Calendar.getInstance();
     }
+    public void setRecordValue(double recordValue,Date recordDate) {
+        this.recordValue = recordValue;
+        this.recordDate.setTime(recordDate);
+    }
 
     public Calendar getRecordDate() {
         return recordDate;
@@ -59,6 +66,11 @@ public class CounterSensorHistory implements Serializable {
     public void setState(boolean state) {
         this.state = state;
         recordDate=Calendar.getInstance();
+    }
+    
+    public void setState(boolean state,Date recordDate) {
+        this.state = state;
+        this.recordDate.setTime(recordDate);
     }
     
     

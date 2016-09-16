@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package info.microsityv6.microsityv6.entitys;
 
 import java.io.Serializable;
@@ -11,8 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,10 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-/**
- *
- * @author Panker-RDP
- */
 @Entity
 public class TariffZone implements Serializable {
 
@@ -130,21 +119,21 @@ public class TariffZone implements Serializable {
     }
 
     
-    public void addValue(double recordValue) {
+    public void addValue(double recordValue,Date recordDate) {
         if (counterSensorHistorys == null) {
             counterSensorHistorys = new ArrayList<>();
         }
         CounterSensorHistory addedValue = new CounterSensorHistory();
-        addedValue.setRecordValue(recordValue);
+        addedValue.setRecordValue(recordValue,recordDate);
         counterSensorHistorys.add(addedValue);
     }
 
-    public void addValue(boolean recordState) {
+    public void addValue(boolean recordState,Date recordDate) {
         if (counterSensorHistorys == null) {
             counterSensorHistorys = new ArrayList<>();
         }
         CounterSensorHistory addedValue = new CounterSensorHistory();
-        addedValue.setState(recordState);
+        addedValue.setState(recordState,recordDate);
         counterSensorHistorys.add(addedValue);
     }
 

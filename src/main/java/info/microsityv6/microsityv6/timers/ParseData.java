@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package info.microsityv6.microsityv6.timers;
 
 import info.microsityv6.microsityv6.entitys.Counter;
@@ -10,19 +5,15 @@ import info.microsityv6.microsityv6.entitys.ESPBase;
 import info.microsityv6.microsityv6.entitys.Facility;
 import info.microsityv6.microsityv6.entitys.SensorsData;
 import info.microsityv6.microsityv6.entitys.SensorsDataReaded;
-import info.microsityv6.microsityv6.entitys.TariffZone;
 import info.microsityv6.microsityv6.entitys.User;
-import info.microsityv6.microsityv6.enums.CounterType;
 import info.microsityv6.microsityv6.facades.ESPBaseFacade;
 import info.microsityv6.microsityv6.facades.SensorsDataFacade;
 import info.microsityv6.microsityv6.facades.SensorsDataReadedFacade;
 import info.microsityv6.microsityv6.facades.UserFacade;
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.EJB;
@@ -31,10 +22,6 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Named;
 
-/**
- *
- * @author Panker-RDP
- */
 @Named("Timer")
 @Singleton
 @Startup
@@ -49,7 +36,7 @@ public class ParseData implements Serializable {
     @EJB
     SensorsDataReadedFacade readedFacade;
     List<ESPBase> espbs;
-
+    
     @PostConstruct
     public void init() {
         System.out.println("Started");
@@ -63,7 +50,6 @@ public class ParseData implements Serializable {
     @Schedule(minute = "*")
     public void parseSensorsData() {
         System.out.println("Server started");
-
         Iterator sds = sdf.findAll().iterator();
         while (sds.hasNext()) {
             SensorsData sd = (SensorsData) sds.next();
@@ -73,10 +59,11 @@ public class ParseData implements Serializable {
                         for (Counter counter : fasility.getCounters()) {
                             if (counter.getEsp_id().equals(sd.getSensorId())) {
                                 if (sd.getIsBool()) {
-                                    counter.addValue(sd.getValue().equals("1"));
+                                    counter.addValue(sd.getValue().equals("1"),sd.getDt());
                                     sd.setWasRead(true);
                                 } else {
-                                    counter.addValue(Double.parseDouble(sd.getValue()));
+                                    counter.addValue(Double.parseDouble(sd.getValue()),sd.getDt());
+                                    
                                     sd.setWasRead(true);
                                 }
                             }
@@ -122,8 +109,7 @@ public class ParseData implements Serializable {
                 sdr.setTiming(sd.getTiming());
                 sdr.setValue(sd.getValue());
                 sdr.setWasRead(sd.getWasRead());
-                readedFacade.create(sdr);
-                sdf.remove(sd);
+                readedFacade.create(sdr);                
             }
         }
         System.out.println("Parse data finished");
@@ -170,76 +156,8 @@ public class ParseData implements Serializable {
             }
         }
         System.out.println("Cleaned " + mount + " records");
-    }
+    }  
 
-    // Not use in future
-    private Counter generateStartData(Counter counter) {
-        if (counter.getCounterType().equals(CounterType.WATT)) {
-            TariffZone day = new TariffZone();
-            day.setNameTariff("День");
-            day.setHourStart(7);
-            day.setMinuteStart(0);
-            day.setHourEnd(23);
-            day.setMinuteEnd(59);
-            Random rnd = new Random();
-            day.setStartValue(rnd.nextInt(13500));
-            counter.getTariffZones().add(day);
-            TariffZone night = new TariffZone();
-            night.setNameTariff("Ноч");
-            night.setHourStart(23);
-            night.setMinuteStart(00);
-            night.setHourEnd(7);
-            night.setMinuteEnd(59);
-            night.setStartValue(rnd.nextInt(13500));
-            counter.getTariffZones().add(night);
-        }
-        if (counter.getCounterType().equals(CounterType.WATER)) {
-            TariffZone allDay = new TariffZone();
-            allDay.setNameTariff("Весь день");
-            allDay.setHourStart(0);
-            allDay.setMinuteStart(0);
-            allDay.setHourEnd(24);
-            allDay.setMinuteEnd(59);
-            Random rnd = new Random();
-            allDay.setMinuteStart(rnd.nextInt(13500));
-            counter.getTariffZones().add(allDay);
-        }
-        if (counter.getCounterType().equals(CounterType.GAS)) {
-            TariffZone allDay = new TariffZone();
-            allDay.setNameTariff("Весь день");
-            allDay.setHourStart(0);
-            allDay.setMinuteStart(0);
-            allDay.setHourEnd(24);
-            allDay.setMinuteEnd(59);
-            Random rnd = new Random();
-            allDay.setMinuteStart(rnd.nextInt(13500));
-            counter.getTariffZones().add(allDay);
-        }
-        if (counter.getCounterType().equals(CounterType.WARM)) {
-            TariffZone allDay = new TariffZone();
-            allDay.setNameTariff("Весь день");
-            allDay.setHourStart(0);
-            allDay.setMinuteStart(0);
-            allDay.setHourEnd(24);
-            allDay.setMinuteEnd(59);
-            Random rnd = new Random();
-            allDay.setMinuteStart(rnd.nextInt(13500));
-            counter.getTariffZones().add(allDay);
-        }
-        return counter;
-    }
-
-    private Counter generateNextData(Counter counter) {
-        Random rnd = new Random();
-        Calendar cal = Calendar.getInstance();
-        if (cal.get(Calendar.SECOND) == 1
-                || cal.get(Calendar.SECOND) == 15
-                || cal.get(Calendar.SECOND) == 30
-                || cal.get(Calendar.SECOND) == 45) {
-            counter.addValue((rnd.nextBoolean() && rnd.nextBoolean() ? rnd.nextInt(5) : 0));
-            System.out.println("Added new data");
-        }
-        return counter;
-    }
+    
 
 }

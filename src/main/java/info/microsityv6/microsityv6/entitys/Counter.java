@@ -9,6 +9,7 @@ import info.microsityv6.microsityv6.enums.CounterType;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -130,23 +131,23 @@ public class Counter implements Serializable {
     
     
     
-    public void addValue(double value) {
+    public void addValue(double value,Date recordDate) {
         checkEmptyList () ;
         for (TariffZone tariffZone : tariffZones) {
             Calendar now = Calendar.getInstance();
             if (now.get(Calendar.HOUR) >= tariffZone.getHourStart() && now.get(Calendar.HOUR) <= tariffZone.getHourEnd()
                     && now.get(Calendar.MINUTE) >= tariffZone.getMinuteStart() && now.get(Calendar.MINUTE) <= tariffZone.getMinuteEnd()) {
-                tariffZone.addValue(value);                
+                tariffZone.addValue(value,recordDate);                
             }
         }
     }
-    public void addValue(boolean state) {
+    public void addValue(boolean state, Date recordDate) {
         checkEmptyList () ;
         for (TariffZone tariffZone : tariffZones) {
             Calendar now = Calendar.getInstance();
             if (now.get(Calendar.HOUR) >= tariffZone.getHourStart() && now.get(Calendar.HOUR) <= tariffZone.getHourEnd()
                     && now.get(Calendar.MINUTE) >= tariffZone.getMinuteStart() && now.get(Calendar.MINUTE) <= tariffZone.getMinuteEnd()) {
-                tariffZone.addValue(state);                
+                tariffZone.addValue(state,recordDate);                
             }
         }
     }
