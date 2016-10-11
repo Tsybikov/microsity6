@@ -4,7 +4,8 @@
       xmlns:cc="http://xmlns.jcp.org/jsf/composite"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp">
 
     <!-- INTERFACE -->
     <cc:interface>
@@ -42,7 +43,9 @@
                                         <h:outputText value="#{facility.controllers.size()}" styleClass="grpelem value" />
                                     </div>
                                 </div>
-                                <div class="shadow grpelem" id="u120"><!-- simple frame --></div>
+                                <div class="shadow grpelem" id="u120" style="overflow: hidden;">
+                                    <ezcomp:map fromObject="#{facility}" class="small_map" zoom="11"/>
+                                </div>
                             </div> 
                         </p:commandLink>
                     </c:forEach>

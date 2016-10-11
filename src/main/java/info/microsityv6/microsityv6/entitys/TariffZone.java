@@ -20,10 +20,10 @@ public class TariffZone implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int hourStart;
-    private int minuteStart;
-    private int hourEnd;
-    private int minuteEnd;
+    private int hourStart=0;
+    private int minuteStart=0;
+    private int hourEnd=23;
+    private int minuteEnd=59;
     private String nameTariff;
     private int timeZone;
     private int startValue;
@@ -189,7 +189,7 @@ public class TariffZone implements Serializable {
 
     @Override
     public String toString() {
-        return "info.microsityv6.microsityv6.entitys.TariffZone[ id=" + id + " ]";
+        return "TariffZone["+nameTariff+"@"+hourStart+":"+minuteStart+"=>"+hourEnd+":"+minuteEnd+" ]";
     }
 
 }

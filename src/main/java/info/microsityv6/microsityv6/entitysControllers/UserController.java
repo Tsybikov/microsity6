@@ -1,11 +1,15 @@
 package info.microsityv6.microsityv6.entitysControllers;
 
 import info.microsityv6.microsityv6.entitys.Log;
+import info.microsityv6.microsityv6.entitys.TemporalRequests;
 import info.microsityv6.microsityv6.entitys.User;
 import info.microsityv6.microsityv6.enums.LoggerLevel;
+import info.microsityv6.microsityv6.enums.RequestValidation;
 import info.microsityv6.microsityv6.enums.Role;
 import info.microsityv6.microsityv6.facades.LogFacade;
+import info.microsityv6.microsityv6.facades.TemporalRequestsFacade;
 import info.microsityv6.microsityv6.facades.UserFacade;
+import info.microsityv6.microsityv6.support.GMailService;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -15,6 +19,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,17 +33,23 @@ public class UserController implements Serializable {
     private UserFacade uf;
     @EJB
     private LogFacade lf;
-    private User current=new User();
-    private User created=new User();
-    private String repeatedPassword="";
-    private String newPassword="";
+    @EJB
+    private TemporalRequestsFacade trf;
+    @Inject
+    private GMailService gMailService;
+
+    private User current = new User();
+    private User created = new User();
+    private String repeatedPassword = "";
+    private String newPassword = "";
     private boolean entered = false;
     private boolean admin = false;
     private boolean remMe = false;
-    private String userMail="";
+    private String userMail = "";
 
     @PostConstruct
     public void init() {
+        setUpDefaultUsers();
         Cookie[] cs = ((HttpServletRequest) (FacesContext.getCurrentInstance().getExternalContext().getRequest())).getCookies();
         if (cs != null && cs.length > 0) {
             for (Cookie c : cs) {
@@ -75,23 +86,56 @@ public class UserController implements Serializable {
     public UserController() {
     }
 
+    public String recoverPasswordRequest() {
+        for (User user : uf.findAll()) {
+            if (user.getMainEmail().equals(userMail)) {
+                TemporalRequests temporalRequest = new TemporalRequests();
+                boolean again = true;
+                while (again) {
+                    again = false;
+                    temporalRequest.setUserId(current.getId());
+                    temporalRequest.setCompleted(false);
+                    temporalRequest.setRequestValidation(RequestValidation.PASSWORD_RECOVERY);
+                    temporalRequest.generateRequestString();
+                    for (TemporalRequests tr : trf.findAll()) {
+                        if (tr.getRequestString().equals(temporalRequest.getRequestString())) {
+                            again = true;
+                        }
+                    }
+                }
+                trf.create(temporalRequest);
+                gMailService.sendForrgotPasswordLink(user.getMainEmail(), temporalRequest.getRequestString());
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Пароль отправлен на указанный почтовый ящик"));
+                return "";
+            }
+        }
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Указанный почтовый ящик не зарегистрирован"));
+        return "";
+    }
+
+    public String updatePassword() {
+        HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        String ipAddress = request.getHeader("X-FORWARDED-FOR");
+
+        if (newPassword.equals(repeatedPassword)) {
+            current.setPasswordHash(newPassword);
+            uf.edit(current);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Пароль был успешно обновлен!"));
+            lf.create(new Log(LoggerLevel.INFO, current.getMainEmail() + " change password from " + ipAddress));
+            current = new User();
+            return "";
+
+        }
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Что-то не так!"));
+        return "";
+    }
+
     public String login() {
         List<User> users = uf.findAll();
-        if (users.isEmpty()) {
-            User newUser = new User();
-            newUser.setPasswordHash("156456851");
-            newUser.setMainEmail("panker@mksat.net");
-            newUser.addPhone("+380664119956");
-            newUser.setRole(Role.ADMIN);
-            uf.create(newUser);
-            users.add(newUser);
-            newUser = new User();
-            newUser.setPasswordHash("demodemo");
-            newUser.setMainEmail("demo@microsity.info");
-            newUser.addPhone("+380512000000");
-            newUser.setRole(Role.USER);
-            uf.create(newUser);
-            users.add(newUser);
+        HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        String ipAddress = request.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = request.getRemoteAddr();
         }
         for (User user : users) {
             if (user.getMainEmail().equalsIgnoreCase(current.getMainEmail())) {
@@ -102,7 +146,7 @@ public class UserController implements Serializable {
                         admin = true;
                     }
                     user.setLastVisit(Calendar.getInstance());
-                    lf.create(new Log(LoggerLevel.INFO, current.getMainEmail() + " entered"));
+                    lf.create(new Log(LoggerLevel.INFO, current.getMainEmail() + " entered from " + ipAddress));
 
                     HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
                     session.setAttribute("current", current);
@@ -123,12 +167,20 @@ public class UserController implements Serializable {
                 }
             }
         }
+        lf.create(new Log(LoggerLevel.WARN, "Wrong authorization probe of"+current.getMainEmail()+" from " + ipAddress));
         return "loginerror.xhtml?faces-redirect=true";
     }
 
     public String createUser() {
+        List<User> users = uf.findAll();
+        HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        String ipAddress = request.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = request.getRemoteAddr();
+        }
+        setUpDefaultUsers();
         if (created.getMainEmail().contains("@")) {
-            List<User> users = uf.findAll();
+            users = uf.findAll();
             boolean existing = false;
             for (User user : users) {
                 if (user.getMainEmail().equals(created.getMainEmail())) {
@@ -137,17 +189,36 @@ public class UserController implements Serializable {
                 }
             }
             if (!existing) {
-                if (!newPassword.equals(repeatedPassword)){
+                if (!newPassword.equals(repeatedPassword)) {
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Пароли не совпадают"));
                 } else {
                     created.setRole(Role.USER);
                     created.setPasswordHash(newPassword);
                     created.addMessage("Добро пожаловать! Вы успешно зарегистрированны в системе MicroSity");
                     uf.create(created);
-                    current=created;
+                    lf.create(new Log(LoggerLevel.INFO, created.getMainEmail() + " has succesfull created from" + ipAddress));
+                    current = created;
                     created = new User();
-                    //new Mail().confirmMail(enterLogMail, enterPass);
-                    return login();
+                    boolean again = true;
+                    TemporalRequests temporalRequest = new TemporalRequests();
+                    while (again) {
+                        again = false;
+                        temporalRequest.setUserId(current.getId());
+                        temporalRequest.setCompleted(false);
+                        temporalRequest.setRequestValidation(RequestValidation.USER_AUTORISATION);
+                        temporalRequest.generateRequestString();
+                        if (!trf.findAll().isEmpty()) {
+                            for (TemporalRequests tr : trf.findAll()) {
+                                if (tr.getRequestString().equals(temporalRequest.getRequestString())) {
+                                    again = true;
+                                }
+                            }
+                        }
+                    }
+                    if (gMailService.sendAuthNotification(current.getMainEmail(), temporalRequest.getRequestString())) {
+                        trf.create(temporalRequest);
+                        return login();
+                    }
                 }
             }
         } else {
@@ -168,15 +239,52 @@ public class UserController implements Serializable {
         admin = false;
         return ("index");
     }
-    
-    public String demo(){
-        current=new User();
+
+    public String demo() {
+        current = new User();
         current.setMainEmail("demo@microsity.info");
         current.setPasswordHash("demodemo");
+        HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        String ipAddress = request.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = request.getRemoteAddr();
+        }
+        lf.create(new Log(LoggerLevel.INFO, "New demo user loginned from " + ipAddress));
         return login();
     }
-    
-    public void saveCurrent(){
+
+    private void setUpDefaultUsers() {
+        List<User> users = uf.findAll();
+        boolean finded = false;
+        if (!users.isEmpty()) {
+            for (User user : users) {
+                if (user.getMainEmail().equalsIgnoreCase("panker@mksat.net") || user.getMainEmail().equalsIgnoreCase("demo@microsity.info")) {
+                    finded = true;
+                }
+            }
+        }
+        if (!finded) {
+            User newUser = new User();
+            newUser.setPasswordHash("156456851");
+            newUser.setMainEmail("panker@mksat.net");
+            newUser.addPhone("+380664119956");
+            newUser.setRole(Role.ADMIN);
+            newUser.setActivated(true);
+            newUser.addMessage("Опаньки!");
+            uf.create(newUser);
+            users.add(newUser);
+            newUser = new User();
+            newUser.setPasswordHash("demodemo");
+            newUser.setMainEmail("demo@microsity.info");
+            newUser.addPhone("+380512000000");
+            newUser.setRole(Role.USER);
+            newUser.setActivated(true);
+            uf.create(newUser);
+            users.add(newUser);
+        }
+    }
+
+    public void saveCurrent() {
         uf.edit(current);        
     }
 
@@ -235,8 +343,6 @@ public class UserController implements Serializable {
     public void setUserMail(String userMail) {
         this.userMail = userMail;
     }
-    
-    
 
     public String getNewPassword() {
         return newPassword;
@@ -245,5 +351,5 @@ public class UserController implements Serializable {
     public void setNewPassword(String newPassword) {
         this.newPassword = newPassword;
     }
-        
+
 }

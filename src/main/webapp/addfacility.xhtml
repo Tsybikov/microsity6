@@ -103,7 +103,11 @@
             <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1918" href="messages.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u1919"><!-- image --><img class="block" id="u1919_img" src="resources/images/msgs.png" alt="" data-image-width="30" data-image-height="30"/></div><img class="grpelem" id="u1921-4" alt="Сообщения" src="resources/images/u1921-4.png" data-image-width="88"/><!-- rasterized frame --></a>
             <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1922" href="profile.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u1924"><!-- image --><img class="block" id="u1924_img" src="resources/images/user.png" alt="" data-image-width="30" data-image-height="30"/></div><img class="grpelem" id="u1923-4" alt="Профиль" src="resources/images/u1923-4.png" data-image-width="88"/><!-- rasterized frame --></a>
             <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1914" href="actionmap.xhtml?faces-redirect=true"><!-- container box --><div class="position_content" id="buttonu1914_position_content"><div class="clip_frame colelem" id="u1916"><!-- image --><img class="block" id="u1916_img" src="resources/images/maps-new.png" alt="" data-image-width="30" data-image-height="30"/></div><img class="colelem" id="u1915-4" alt="Карта событий" src="resources/images/u1915-4.png" data-image-width="170"/><!-- rasterized frame --></div></a>
-            <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1926" href="login.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u1927"><!-- image --><img class="block" id="u1927_img" src="resources/images/logout.png" alt="" data-image-width="30" data-image-height="30"/></div></a>
+            <h:form>
+                <p:commandLink action="#{userController.logout()}">
+                    <div class="clip_frame grpelem" id="u1927"><!-- image --><img class="block" id="u1927_img" src="resources/images/logout.png" alt="" data-image-width="30" data-image-height="30"/></div>
+                </p:commandLink>
+            </h:form>
             <div class="verticalspacer"></div>
             <div class="browser_width grpelem" id="u2064-bw">
                 <div id="u2064"><!-- simple frame --></div>

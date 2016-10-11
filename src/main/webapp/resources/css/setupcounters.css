@@ -1,0 +1,31 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18.09.2016, 14:16:35
+    Author     : Panker-RDP
+*/
+
+.ui-inputfield{
+    width: 20px;
+}
+
+.text-output{
+    color:white;
+    margin: 15px 10px;
+}
+.text-input{
+    margin: 12px 10px;
+    font-size: 14px;
+}
+
+.block1{
+    width: 90%;
+    padding-left: 15px;
+}
+
+.spinner-input{
+    margin-top: 10px;
+}

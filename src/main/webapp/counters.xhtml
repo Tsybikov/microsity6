@@ -5,17 +5,10 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:comp="http://xmlns.jcp.org/jsf/composite/ezcomp"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>MicroSity Version 6</title>
-        <h:outputStylesheet library="css" name="master-a.css" />
-        <h:outputStylesheet library="css" name="facilitySelector.css" />
-        <h:outputStylesheet library="css" name="addfacility.css" />
-        <h:outputStylesheet library="css" name="counters.css" id="pagesheet" />
-        <h:outputStylesheet library="css" name="site_global.css"  />
-        <c:if test="#{!userController.entered}">
-            <meta http-equiv="refresh" content="0; url=login.xhtml?faces-redirect=true" />
-        </c:if>
+        <comp:head />
     </h:head>
     <h:body>
         <p:growl autoUpdate="true" />
@@ -56,23 +49,7 @@
                                                 </div>
                                             </div>
                                         </f:facet>
-                                        <div class="clearfix colelem" id="u5376"><!-- group -->
-                                            <div class="clearfix grpelem" id="u5388"><!-- group -->
-                                                <div class="clearfix grpelem" id="pu5392-4"><!-- column -->
-                                                    <h:outputText value="#{wattCounter.title}" style="
-                                                                  color:white;margin-right: -10000000000px;margin-top: 5px;
-                                                                  margin-left: 10px;
-                                                                  " styleClass="grpelem" />
-                                                    <comp:tariffsView/>
-                                                </div>
-                                                <div class="clearfix grpelem" id="pu5387"><!-- column -->
-                                                    <div class="shadow colelem" id="u5387"><!-- simple frame --></div>
-                                                    <div class="Button shadow clearfix colelem" id="buttonu5378"><!-- container box -->
-                                                        <img class="grpelem" id="u5379-4" alt="Настроить" src="resources/images/u5428-4.png" data-image-width="167"/><!-- rasterized frame -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <comp:counterDisplay actionElement="#{wattCounter}"/>
                                     </p:carousel>
                                 </div>
                                 <div class="clearfix colelem" id="u5354">
@@ -85,38 +62,7 @@
                                                 </div>
                                             </div>
                                         </f:facet>
-                                        <div class="clearfix colelem" id="u5358"><!-- group -->
-                                            <div class="clearfix grpelem" id="u5368"><!-- group -->
-                                                <div class="clearfix grpelem" id="pu5359-4"><!-- column -->
-                                                    <img class="colelem" id="u5359-4" alt="Название счетчика" src="resources/images/u5359-4.png" data-image-width="217"/><!-- rasterized frame -->
-                                                    <img class="colelem" id="u5362-4" alt="Текущий месяц" src="resources/images/u5362-4.png" data-image-width="134"/><!-- rasterized frame -->
-                                                    <img class="colelem" id="u5372-4" alt="Начало периода" src="resources/images/u5372-4.png" data-image-width="115"/><!-- rasterized frame -->
-                                                    <div class="clearfix colelem" id="pu5374-4"><!-- group -->
-                                                        <img class="grpelem" id="u5374-4" alt="Пик" src="resources/images/u5374-4.png" data-image-width="111"/><!-- rasterized frame -->
-                                                        <img class="grpelem" id="u5369-4" alt="100500" src="resources/images/u5369-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                                    </div>
-                                                    <div class="clearfix colelem" id="pu5367-4"><!-- group -->
-                                                        <img class="grpelem" id="u5367-4" alt="Полупик" src="resources/images/u5367-4.png" data-image-width="111"/><!-- rasterized frame -->
-                                                        <img class="grpelem" id="u5363-4" alt="100500" src="resources/images/u5363-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                                    </div>
-                                                    <img class="colelem" id="u5366-4" alt="Конец периода" src="resources/images/u5366-4.png" data-image-width="115"/><!-- rasterized frame -->
-                                                    <div class="clearfix colelem" id="pu5370-4"><!-- group -->
-                                                        <img class="grpelem" id="u5370-4" alt="Пик" src="resources/images/u5370-4.png" data-image-width="111"/><!-- rasterized frame -->
-                                                        <img class="grpelem" id="u5371-4" alt="100501" src="resources/images/u5371-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                                    </div>
-                                                    <div class="clearfix colelem" id="pu5364-4"><!-- group -->
-                                                        <img class="grpelem" id="u5364-4" alt="Полупик" src="resources/images/u5364-4.png" data-image-width="111"/><!-- rasterized frame -->
-                                                        <img class="grpelem" id="u5365-4" alt="100501" src="resources/images/u5365-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                                    </div>
-                                                </div>
-                                                <div class="clearfix grpelem" id="pu5373"><!-- column -->
-                                                    <div class="shadow colelem" id="u5373"><!-- simple frame --></div>
-                                                    <div class="Button shadow clearfix colelem" id="buttonu5360"><!-- container box -->
-                                                        <img class="grpelem" id="u5361-4" alt="Настроить" src="resources/images/u5428-4.png" data-image-width="167"/><!-- rasterized frame -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>                            
+                                        <comp:counterDisplay actionElement="#{gasMeter}"/>                 
                                     </p:carousel>
                                 </div>
                                 <div class="clearfix colelem" id="u5397"><!-- column -->
@@ -128,38 +74,7 @@
                                                 </div>
                                             </div>
                                         </f:facet>
-                                        <div class="clearfix colelem" id="u5398"><!-- group -->
-                                            <div class="clearfix grpelem" id="u5404"><!-- group -->
-                                                <div class="clearfix grpelem" id="pu5414-4"><!-- column -->
-                                                    <img class="colelem" id="u5414-4" alt="Название счетчика" src="resources/images/u5414-4.png" data-image-width="217"/><!-- rasterized frame -->
-                                                    <img class="colelem" id="u5408-4" alt="Текущий месяц" src="resources/images/u5408-4.png" data-image-width="134"/><!-- rasterized frame -->
-                                                    <img class="colelem" id="u5405-4" alt="Начало периода" src="resources/images/u5405-4.png" data-image-width="115"/><!-- rasterized frame -->
-                                                    <div class="clearfix colelem" id="pu5402-4"><!-- group -->
-                                                        <img class="grpelem" id="u5402-4" alt="Пик" src="resources/images/u5402-4.png" data-image-width="111"/><!-- rasterized frame -->
-                                                        <img class="grpelem" id="u5401-4" alt="100500" src="resources/images/u5401-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                                    </div>
-                                                    <div class="clearfix colelem" id="pu5410-4"><!-- group -->
-                                                        <img class="grpelem" id="u5410-4" alt="Полупик" src="resources/images/u5410-4.png" data-image-width="111"/><!-- rasterized frame -->
-                                                        <img class="grpelem" id="u5399-4" alt="100500" src="resources/images/u5399-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                                    </div>
-                                                    <img class="colelem" id="u5409-4" alt="Конец периода" src="resources/images/u5409-4.png" data-image-width="115"/><!-- rasterized frame -->
-                                                    <div class="clearfix colelem" id="pu5411-4"><!-- group -->
-                                                        <img class="grpelem" id="u5411-4" alt="Пик" src="resources/images/u5411-4.png" data-image-width="111"/><!-- rasterized frame -->
-                                                        <img class="grpelem" id="u5403-4" alt="100501" src="resources/images/u5403-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                                    </div>
-                                                    <div class="clearfix colelem" id="pu5407-4"><!-- group -->
-                                                        <img class="grpelem" id="u5407-4" alt="Полупик" src="resources/images/u5407-4.png" data-image-width="111"/><!-- rasterized frame -->
-                                                        <img class="grpelem" id="u5406-4" alt="100501" src="resources/images/u5406-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                                    </div>
-                                                </div>
-                                                <div class="clearfix grpelem" id="pu5400"><!-- column -->
-                                                    <div class="shadow colelem" id="u5400"><!-- simple frame --></div>
-                                                    <div class="Button shadow clearfix colelem" id="buttonu5412"><!-- container box -->
-                                                        <img class="grpelem" id="u5413-4" alt="Настроить" src="resources/images/u5428-4.png" data-image-width="167"/><!-- rasterized frame -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <comp:counterDisplay actionElement="#{waterMeter}"/>
                                     </p:carousel>
                                 </div>
                                 <div class="clearfix colelem" id="u5418"><!-- column -->
@@ -171,38 +86,7 @@
                                                 </div>
                                             </div>
                                         </f:facet>
-                                        <div class="clearfix colelem" id="u5419"><!-- group -->
-                                            <div class="clearfix grpelem" id="u5424"><!-- group -->
-                                                <div class="clearfix grpelem" id="pu5421-4"><!-- column -->
-                                                    <img class="colelem" id="u5421-4" alt="Название счетчика" src="resources/images/u5421-4.png" data-image-width="217"/><!-- rasterized frame -->
-                                                    <img class="colelem" id="u5420-4" alt="Текущий месяц" src="resources/images/u5420-4.png" data-image-width="134"/><!-- rasterized frame -->
-                                                    <img class="colelem" id="u5434-4" alt="Начало периода" src="resources/images/u5434-4.png" data-image-width="115"/><!-- rasterized frame -->
-                                                    <div class="clearfix colelem" id="pu5425-4"><!-- group -->
-                                                        <img class="grpelem" id="u5425-4" alt="Пик" src="resources/images/u5425-4.png" data-image-width="111"/><!-- rasterized frame -->
-                                                        <img class="grpelem" id="u5431-4" alt="100500" src="resources/images/u5431-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                                    </div>
-                                                    <div class="clearfix colelem" id="pu5426-4"><!-- group -->
-                                                        <img class="grpelem" id="u5426-4" alt="Полупик" src="resources/images/u5426-4.png" data-image-width="111"/><!-- rasterized frame -->
-                                                        <img class="grpelem" id="u5430-4" alt="100500" src="resources/images/u5430-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                                    </div>
-                                                    <img class="colelem" id="u5432-4" alt="Конец периода" src="resources/images/u5432-4.png" data-image-width="115"/><!-- rasterized frame -->
-                                                    <div class="clearfix colelem" id="pu5433-4"><!-- group -->
-                                                        <img class="grpelem" id="u5433-4" alt="Пик" src="resources/images/u5433-4.png" data-image-width="111"/><!-- rasterized frame -->
-                                                        <img class="grpelem" id="u5429-4" alt="100501" src="resources/images/u5429-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                                    </div>
-                                                    <div class="clearfix colelem" id="pu5422-4"><!-- group -->
-                                                        <img class="grpelem" id="u5422-4" alt="Полупик" src="resources/images/u5422-4.png" data-image-width="111"/><!-- rasterized frame -->
-                                                        <img class="grpelem" id="u5435-4" alt="100501" src="resources/images/u5435-4.png" data-image-width="66"/><!-- rasterized frame -->
-                                                    </div>
-                                                </div>
-                                                <div class="clearfix grpelem" id="pu5423"><!-- column -->
-                                                    <div class="shadow colelem" id="u5423"><!-- simple frame --></div>
-                                                    <div class="Button shadow clearfix colelem" id="buttonu5427"><!-- container box -->
-                                                        <img class="grpelem" id="u5428-4" alt="Настроить" src="resources/images/u5428-4.png" data-image-width="167"/><!-- rasterized frame -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <comp:counterDisplay actionElement="#{warmMeter}"/>
                                     </p:carousel>
                                 </div>
                                 <h:commandLink action="adddevice.xhtml?faces-redirect=true">
@@ -220,7 +104,11 @@
                 <a class="nonblock nontext Button transition clearfix" id="buttonu1922" href="profile.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u1924"><!-- image --><img class="block" id="u1924_img" src="resources/images//user.png" alt="" data-image-width="30" data-image-height="30"/></div><img class="grpelem" id="u1923-4" alt="Профиль" src="resources/images//u1923-4.png" data-image-width="88"/><!-- rasterized frame --></a>
             </div>
             <a class="nonblock nontext Button transition clearfix" id="buttonu1914" href="actionmap.xhtml?faces-redirect=true"><!-- container box --><div class="position_content" id="buttonu1914_position_content"><div class="clip_frame colelem" id="u1916"><!-- image --><img class="block" id="u1916_img" src="resources/images//maps-new.png" alt="" data-image-width="30" data-image-height="30"/></div><img class="colelem" id="u1915-4" alt="Карта событий" src="resources/images//u1915-4.png" data-image-width="170"/><!-- rasterized frame --></div></a>
-            <a class="nonblock nontext Button transition clearfix" id="buttonu1926" href="login.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u1927"><!-- image --><img class="block" id="u1927_img" src="resources/images//logout.png" alt="" data-image-width="30" data-image-height="30"/></div></a>
+            <h:form>
+                <p:commandLink action="#{userController.logout()}">
+                    <div class="clip_frame grpelem" id="u1927"><!-- image --><img class="block" id="u1927_img" src="resources/images/logout.png" alt="" data-image-width="30" data-image-height="30"/></div>
+                </p:commandLink>
+            </h:form>
             <div class="verticalspacer"></div>
             <div class="browser_width grpelem" id="u2064-bw">
                 <div id="u2064"><!-- simple frame --></div>

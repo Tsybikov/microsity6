@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:comp="http://xmlns.jcp.org/jsf/composite/ezcomp"
+      xmlns:p="http://primefaces.org/ui">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="actionElement" />
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <div class="clearfix colelem" id="u5376"><!-- group -->
+            <div class="clearfix grpelem" id="u5388"><!-- group -->
+                <div class="clearfix grpelem" id="pu5392-4"><!-- column -->
+                    <h:outputText value="#{cc.attrs.actionElement.title}" style="
+                                  color:white;margin-right: -10000000000px;margin-top: 5px;
+                                  margin-left: 10px;
+                                  " styleClass="grpelem" />
+                    <p:carousel var="tvc" value="#{counterPageController.getTariffValues(cc.attrs.actionElement)}" 
+                                firstVisible="#{counterPageController.firstVisible}"  
+                                numVisible="1" style="width: 280px;margin-top: 5px;margin-left: 15px;" >
+                        <h:outputText value="#{tvc.month}" style="color: white" />
+                        <p:dataGrid var="tsi" value="#{counterPageController.getTsis(tvc)}" style="margin-left: 5px;margin-top: 5px;" columns="1">
+                            <h:panelGrid columns="1">
+                                <h:outputText value="Тарифный план: #{tsi.tariffName}" style="color:white" />
+                                <h:outputText value="Начало периода: #{tsi.startValue}" style="color:white" />
+                                <h:outputText value="Конец периода: #{tsi.summValue}" style="color:white" />
+                            </h:panelGrid>                
+                        </p:dataGrid>            
+                    </p:carousel>
+                </div>
+                <div class="clearfix grpelem" id="pu5387"><!-- column -->
+                    <div class="shadow colelem" id="u5387">
+                        <p:carousel var="chart" value="#{chartController.getCharts(cc.attrs.actionElement)}" circular="true" autoPlayInterval="5000" numVisible="1" style="width: 380px;">
+                            <p:chart type="#{chart.chartType}" model="#{chart.chartModel}" style="height: 190px;width: 350px;" />
+                        </p:carousel>
+                    </div>
+                    <p:commandLink action="setupcounter.xhtml?faces-redirect=true" actionListener="#{setupCounterController.setSetupCounter(cc.attrs.actionElement)}">
+                        <div class="Button shadow clearfix colelem" id="buttonu5378"><!-- container box -->
+                            <img class="grpelem" id="u5379-4" alt="Настроить" src="resources/images/u5428-4.png" data-image-width="167"/><!-- rasterized frame -->
+                        </div>
+                    </p:commandLink>
+                </div>
+            </div>
+        </div>
+    </cc:implementation>
+</html>

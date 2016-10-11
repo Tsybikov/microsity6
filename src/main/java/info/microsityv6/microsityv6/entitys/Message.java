@@ -6,6 +6,7 @@
 package info.microsityv6.microsityv6.entitys;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,9 +29,10 @@ public class Message implements Serializable {
     @Column(name = "j_Date")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar date;
-    private String title;
-    private String message;
+    private String title="";
+    private String message="";
     private boolean readed=false;
+    private boolean deleted=false;
 
     public Message() {
     }
@@ -63,10 +65,34 @@ public class Message implements Serializable {
     public Calendar getDate() {
         return date;
     }
+    
+    public String getDateAsString(){
+        SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+        return sdf.format(date.getTime());
+    }
 
     public boolean isReaded() {
         return readed;
     }
+
+    public String getTitle() {
+        if(title==null)return "Без темы";
+        if(title.length()<1)return "Без темы";
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+    
     
     
     

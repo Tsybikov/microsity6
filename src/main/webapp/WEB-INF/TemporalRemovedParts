@@ -1,0 +1,197 @@
+<div class="clearfix colelem" id="pu530"><!-- group -->
+                        <c:if test="#{homePageController.haveCameras}">
+
+                            <div class="clearfix grpelem" id="u530"><!-- group -->
+                                <div class="clearfix grpelem" id="u531"><!-- group -->
+                                    <div class="clearfix grpelem" id="u534"><!-- group -->
+                                        <h:form>
+                                            <h:commandLink action="cameras.xhtml?faces-redirect=true" >
+                                                <div class="grpelem" id="u533"><!-- simple frame -->
+                                                    <p:graphicImage alt="No signal" value="#{homePageController.oneCameraLink}" cache="false" />
+                                                </div>
+                                                <c:if test="#{homePageController.twoCamera}">
+                                                    <div class="grpelem" id="u532"><!-- simple frame -->
+                                                        <p:graphicImage alt="No signal" value="#{homePageController.twoCameraLink}" cache="false" />
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="#{homePageController.threeCamera}">
+                                                    <div class="grpelem" id="u535"><!-- simple frame -->
+                                                        <p:graphicImage alt="No signal" value="#{homePageController.threeCameraLink}" cache="false" />
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="#{homePageController.fourCamera}">
+                                                    <div class="grpelem" id="u536"><!-- simple frame -->
+                                                        <p:graphicImage alt="No signal" value="#{homePageController.fourCameraLink}" cache="false" />
+                                                    </div>
+                                                </c:if>
+                                            </h:commandLink>
+                                        </h:form>
+                                    </div>
+                                </div>
+                                <div class="shadow grpelem" id="u537"><!-- simple frame --></div>
+                                <div class="clearfix grpelem" id="u539"><!-- group -->
+                                    <img class="grpelem" id="u538-4" alt="Камеры" src="resources/images/u538-4.png" data-image-width="310"/><!-- rasterized frame -->
+                                </div>
+                            </div>
+                        </c:if>
+                        <c:if test="#{homePageController.haveControllers}">
+                            <div class="clearfix grpelem" id="u628"><!-- group -->
+                                <div class="shadow grpelem" id="u629"><!-- simple frame --></div>
+                                <div class="clearfix grpelem" id="u634"><!-- group -->
+                                    <img class="grpelem" id="u635-4" alt="Контроллеры" src="resources/images/u635-4.png" data-image-width="310"/><!-- rasterized frame -->
+                                </div>
+
+                                <div class="clearfix grpelem" id="u630"><!-- group -->
+                                    <div class="clearfix grpelem" id="u632"><!-- group -->
+
+                                        <div class="clearfix grpelem" id="u633"><!-- group -->                                    
+                                            <img class="grpelem" id="u631-4" alt="Контроллер №1" src="resources/images/u631-4.png" data-image-width="201"/><!-- rasterized frame -->                                                                        
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </c:if>  
+                    </div>
+
+                    <c:if test="#{homePageController.haveCounters}">
+                        <div class="clearfix colelem" id="u541"><!-- group -->
+                            <div class="clearfix grpelem" id="u542"><!-- group -->
+                                <div class="clearfix grpelem" id="u543"><!-- group -->
+                                    <div class="shadow grpelem" id="u545"><!-- simple frame --></div>
+                                    <div class="grpelem" id="u544"><!-- simple frame --></div>
+                                </div>
+                                <img class="grpelem" id="u546-4" alt="Счетчики" src="resources/images/u546-4.png" data-image-width="280"/><!-- rasterized frame -->
+                            </div>
+
+                            <div class="clearfix grpelem" id="u571"><!-- group -->
+                                <div class="clearfix grpelem" id="u576"><!-- column -->
+                                    <div class="clearfix colelem" id="u575"><!-- group -->
+                                        <img class="grpelem" id="u578-4" alt="Водяной счетчик " src="resources/images/u578-4.png" data-image-width="236"/><!-- rasterized frame -->
+                                    </div>
+                                    <div class="clearfix colelem" id="pu573-4"><!-- group -->
+                                        <img class="grpelem" id="u573-4" alt="Показания на начало периода" src="resources/images/u573-4.png" data-image-width="209"/><!-- rasterized frame -->
+                                        <img class="grpelem" id="u572-4" alt="100500" src="resources/images/u572-4.png" data-image-width="68"/><!-- rasterized frame -->
+                                    </div>
+                                    <div class="clearfix colelem" id="pu574-4"><!-- group -->
+                                        <img class="grpelem" id="u574-4" alt="Показания текущие" src="resources/images/u574-4.png" data-image-width="209"/><!-- rasterized frame -->
+                                        <img class="grpelem" id="u577-4" alt="100500" src="resources/images/u577-4.png" data-image-width="68"/><!-- rasterized frame -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix grpelem" id="u554"><!-- group -->
+                                <div class="clearfix grpelem" id="u555"><!-- group -->
+                                    <div class="clearfix grpelem" id="u563"><!-- group -->
+                                        <div class="clearfix grpelem" id="u566"><!-- group -->
+                                            <div class="clearfix grpelem" id="u565"><!-- group -->
+                                                <img class="grpelem" id="u564-4" alt="Электросчетчик" src="resources/images/u564-4.png" data-image-width="236"/><!-- rasterized frame -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img class="grpelem" id="u569-4" alt="Пик :" src="resources/images/u569-4.png" data-image-width="38"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u556-4" alt="100500" src="resources/images/u556-4.png" data-image-width="91"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u567-4" alt="Полу-пик :" src="resources/images/u567-4.png" data-image-width="81"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u557-4" alt="100500" src="resources/images/u557-4.png" data-image-width="91"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u562-4" alt="Показания текущие" src="resources/images/u562-4.png" data-image-width="201"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u561-4" alt="Пик :" src="resources/images/u561-4.png" data-image-width="38"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u558-4" alt="100501" src="resources/images/u558-4.png" data-image-width="91"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u560-4" alt="Полу-пик :" src="resources/images/u560-4.png" data-image-width="81"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u559-4" alt="100501" src="resources/images/u559-4.png" data-image-width="91"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u568-4" alt="Тип двух тарифный" src="resources/images/u568-4.png" data-image-width="236"/><!-- rasterized frame -->
+                                </div>
+                                <img class="grpelem" id="u570-4" alt="Показания на начало периода" src="resources/images/u570-4.png" data-image-width="201"/><!-- rasterized frame -->
+                            </div>
+                            <div class="clearfix grpelem" id="u547"><!-- group -->
+                                <div class="clearfix grpelem" id="u548"><!-- column -->
+                                    <div class="clearfix colelem" id="u551"><!-- group -->
+                                        <img class="grpelem" id="u549-4" alt="Газовый счетчик" src="resources/images/u549-4.png" data-image-width="236"/><!-- rasterized frame -->
+                                    </div>
+                                    <img class="colelem" id="u550-4" alt="Показания на начало периода" src="resources/images/u550-4.png" data-image-width="209"/><!-- rasterized frame -->
+                                    <div class="clearfix colelem" id="pu552-4"><!-- group -->
+                                        <img class="grpelem" id="u552-4" alt="Показания текущие" src="resources/images/u552-4.png" data-image-width="209"/><!-- rasterized frame -->
+                                        <img class="grpelem" id="u553-4" alt="100500" src="resources/images/u553-4.png" data-image-width="68"/><!-- rasterized frame -->
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </c:if>
+                    <c:if test="#{homePageController.haveSensors}">
+                        <div class="clearfix colelem" id="u579"><!-- group -->
+                            <div class="shadow grpelem" id="u584"><!-- simple frame --></div>
+                            <div class="clearfix grpelem" id="u603"><!-- group -->
+                                <img class="grpelem" id="u613-4" alt="Датчики" src="resources/images/u613-4.png" data-image-width="280"/><!-- rasterized frame -->
+                            </div>
+
+                            <div class="clearfix grpelem" id="u608"><!-- group -->
+                                <div class="clearfix grpelem" id="u610"><!-- column -->
+                                    <div class="clearfix colelem" id="u612"><!-- group -->
+                                        <img class="grpelem" id="u609-4" alt="Датчик движения" src="resources/images/u609-4.png" data-image-width="236"/><!-- rasterized frame -->
+                                    </div>
+                                    <img class="colelem" id="u611-4" alt="Норма" src="resources/images/u611-4.png" data-image-width="209"/><!-- rasterized frame -->
+                                </div>
+                            </div>
+                            <div class="clearfix grpelem" id="u587"><!-- group -->
+                                <div class="clearfix grpelem" id="u589"><!-- group -->
+                                    <div class="clearfix grpelem" id="u591"><!-- group -->
+                                        <div class="clearfix grpelem" id="u593"><!-- group -->
+                                            <div class="grpelem" id="u592"><!-- simple frame --></div>
+                                        </div>
+                                    </div>
+                                    <img class="grpelem" id="u590-4" alt="Температура №1" src="resources/images/u590-4.png" data-image-width="236"/><!-- rasterized frame -->
+                                </div>
+                                <img class="grpelem" id="u588-6" alt="+29 оС" src="resources/images/u588-6.png" data-image-width="140"/><!-- rasterized frame -->
+                            </div>
+                            <div class="clearfix grpelem" id="u625"><!-- column -->
+                                <div class="clearfix colelem" id="u602"><!-- group -->
+                                    <img class="grpelem" id="u623-4" alt="Power Max" src="resources/images/u623-4.png" data-image-width="236"/><!-- rasterized frame -->
+                                </div>
+                                <img class="colelem" id="u600-4" alt="Тревожная кнопка 1" src="resources/images/u600-4.png" data-image-width="209"/><!-- rasterized frame -->
+                                <div class="clearfix colelem" id="pu615-4"><!-- group -->
+                                    <img class="grpelem" id="u615-4" alt="Норма" src="resources/images/u615-4.png" data-image-width="56"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u626-4" alt="Последняя тревога" src="resources/images/u626-4.png" data-image-width="132"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u627-4" alt="10.07.2016" src="resources/images/u627-4.png" data-image-width="73"/><!-- rasterized frame -->
+                                </div>
+                                <img class="colelem" id="u617-4" alt="Тревожная кнопка 2" src="resources/images/u617-4.png" data-image-width="209"/><!-- rasterized frame -->
+                                <div class="clearfix colelem" id="pu624-4"><!-- group -->
+                                    <img class="grpelem" id="u624-4" alt="Норма" src="resources/images/u624-4.png" data-image-width="56"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u607-4" alt="Последняя тревога" src="resources/images/u607-4.png" data-image-width="132"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u618-4" alt="09.07.2016" src="resources/images/u618-4.png" data-image-width="73"/><!-- rasterized frame -->
+                                </div>
+                                <img class="colelem" id="u585-4" alt="Датчик открытия двери" src="resources/images/u585-4.png" data-image-width="209"/><!-- rasterized frame -->
+                                <div class="clearfix colelem" id="pu597-4"><!-- group -->
+                                    <img class="grpelem" id="u597-4" alt="Норма" src="resources/images/u597-4.png" data-image-width="56"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u601-4" alt="Последняя тревога" src="resources/images/u601-4.png" data-image-width="132"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u605-4" alt="10.07.2016" src="resources/images/u605-4.png" data-image-width="73"/><!-- rasterized frame -->
+                                </div>
+                                <img class="colelem" id="u614-4" alt="Датчик затопления" src="resources/images/u614-4.png" data-image-width="209"/><!-- rasterized frame -->
+                                <div class="clearfix colelem" id="pu622-4"><!-- group -->
+                                    <img class="grpelem" id="u622-4" alt="Норма" src="resources/images/u622-4.png" data-image-width="56"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u595-4" alt="Последняя тревога" src="resources/images/u595-4.png" data-image-width="132"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u586-4" alt="нет данных" src="resources/images/u586-4.png" data-image-width="73"/><!-- rasterized frame -->
+                                </div>
+                                <img class="colelem" id="u594-4" alt="Датчик батареи" src="resources/images/u594-4.png" data-image-width="209"/><!-- rasterized frame -->
+                                <div class="clearfix colelem" id="pu596-4"><!-- group -->
+                                    <img class="grpelem" id="u596-4" alt="Норма" src="resources/images/u596-4.png" data-image-width="56"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u598-4" alt="Последняя тревога" src="resources/images/u598-4.png" data-image-width="132"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u580-4" alt="нет данных" src="resources/images/u580-4.png" data-image-width="73"/><!-- rasterized frame -->
+                                </div>
+                                <img class="colelem" id="u620-4" alt="Датчик помех" src="resources/images/u620-4.png" data-image-width="209"/><!-- rasterized frame -->
+                                <div class="clearfix colelem" id="pu619-4"><!-- group -->
+                                    <img class="grpelem" id="u619-4" alt="Норма" src="resources/images/u619-4.png" data-image-width="56"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u581-4" alt="Последняя тревога" src="resources/images/u581-4.png" data-image-width="132"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u621-4" alt="нет данных" src="resources/images/u621-4.png" data-image-width="73"/><!-- rasterized frame -->
+                                </div>
+                                <img class="colelem" id="u582-4" alt="Датчик вскрытия" src="resources/images/u582-4.png" data-image-width="209"/><!-- rasterized frame -->
+                                <div class="clearfix colelem" id="pu599-4"><!-- group -->
+                                    <img class="grpelem" id="u599-4" alt="Норма" src="resources/images/u599-4.png" data-image-width="56"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u604-4" alt="Последняя тревога" src="resources/images/u604-4.png" data-image-width="132"/><!-- rasterized frame -->
+                                    <img class="grpelem" id="u606-4" alt="нет данных" src="resources/images/u606-4.png" data-image-width="73"/><!-- rasterized frame -->
+                                </div>
+                            </div>
+                            <img class="grpelem" id="u616-4" alt="Последняя тревога" src="resources/images/u616-4.png" data-image-width="146"/><!-- rasterized frame -->
+                            <img class="grpelem" id="u583-4" alt="11.08.2016 13:42" src="resources/images/u583-4.png" data-image-width="114"/><!-- rasterized frame -->
+
+
+                        </div></c:if>

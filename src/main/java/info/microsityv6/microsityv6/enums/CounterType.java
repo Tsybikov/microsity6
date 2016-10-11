@@ -10,7 +10,7 @@ package info.microsityv6.microsityv6.enums;
  * @author Panker-RDP
  */
 public enum CounterType {
-    WATT("Электросчетчик"),GAS("Газовый счетчик"),WATER("Водяной счетчик"),WARM("Тепловой счетчик");
+    WATT("Электросчетчик"),GAS("Газовый счетчик"),WATER("Водяной счетчик"),WARM("Тепловой счетчик"),NOT_SET_UP("Не настроено");
     
     private String about;
 

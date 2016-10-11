@@ -11,8 +11,10 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 @Named(value = "counterPageController")
 @SessionScoped
@@ -22,6 +24,7 @@ public class CounterPageController extends PageController implements Serializabl
     private List<Counter> gasMeters;
     private List<Counter> waterMeters;
     private List<Counter> warmMeters;
+    private int firstVisible;
     private boolean hasWattMeter;
     private boolean hasGasMeter;
     private boolean hasWaterMeter;
@@ -34,7 +37,9 @@ public class CounterPageController extends PageController implements Serializabl
 
     public List<TariffViewClass> getTariffValues(Counter counter) {
         List<TariffViewClass> tariffViewClasses = new ArrayList<>();
-        for (TariffZone tariffZone : counter.getTariffZones()) {
+        Iterator tzIt=counter.getTariffZones().iterator();
+        while(tzIt.hasNext()) {
+            TariffZone tariffZone=(TariffZone)tzIt.next();
             Iterator cshs = tariffZone.getCounterSensorHistorys().iterator();
             while (cshs.hasNext()) {
                 CounterSensorHistory csh = (CounterSensorHistory) cshs.next();
@@ -42,13 +47,17 @@ public class CounterPageController extends PageController implements Serializabl
                     TariffViewClass tvc = new TariffViewClass(csh);
                     tariffViewClasses.add(tvc);
                 }
-                Iterator tvcIt = tariffViewClasses.iterator();
+                ListIterator tvcIt = tariffViewClasses.listIterator();
                 while (tvcIt.hasNext()) {
                     TariffViewClass tvc = (TariffViewClass) tvcIt.next();
                     String controlMark = csh.getRecordDate().get(Calendar.YEAR) + "" + csh.getRecordDate().get(Calendar.MONTH);
                     if (tvc.getControlMark().equals(controlMark)) {
-                        tvc.sendData(csh, tariffZone.getNameTariff());
-                        tariffViewClasses.set(tariffViewClasses.indexOf(tvc), tvc);
+                        try{
+                        tvc.sendData(csh, tariffZone.getNameTariff());}
+                        catch(ConcurrentModificationException ex){
+                            System.out.println(csh.toString()+tariffZone.getNameTariff());
+                        }
+                        tvcIt.set(tvc);
                     } else {
                         boolean find = false;
                         for (TariffViewClass tariffViewClasse : tariffViewClasses) {
@@ -78,7 +87,7 @@ public class CounterPageController extends PageController implements Serializabl
                 }
             }
         }
-        
+        setFirstVisible(tariffViewClasses.size()-1);
         return tariffViewClasses;
     }
 
@@ -236,6 +245,14 @@ public class CounterPageController extends PageController implements Serializabl
     
     private void setTsis(TariffViewClass tvc){
         
+    }
+
+    public int getFirstVisible() {
+        return firstVisible;
+    }
+
+    public void setFirstVisible(int firstVisible) {
+        this.firstVisible = firstVisible;
     }
 
     

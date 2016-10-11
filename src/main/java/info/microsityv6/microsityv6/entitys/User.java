@@ -42,6 +42,7 @@ public class User implements Serializable {
     private double balance;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar lastVisit;
+    private boolean activated;
     
     @OneToMany(cascade = CascadeType.ALL)
     private List<Facility> facilitys;
@@ -69,6 +70,11 @@ public class User implements Serializable {
         Message ms=new Message();
         ms.setMessage(message);
         messages.add(ms);
+    }
+    
+    public List<Message> getMessages(){
+        if(messages==null)return new ArrayList<>();
+        else return messages;
     }
     
     public Long getId() {
@@ -159,6 +165,15 @@ public class User implements Serializable {
         this.facilitys = fasilitys;
     }
 
+    public boolean isActivated() {
+        return activated;
+    }
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
+    }
+
+    
     
     
     @Override

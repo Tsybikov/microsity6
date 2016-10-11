@@ -1,6 +1,8 @@
 package info.microsityv6.microsityv6.pagesControllers;
 
 import info.microsityv6.microsityv6.entitys.Facility;
+import info.microsityv6.microsityv6.entitys.Log;
+import info.microsityv6.microsityv6.enums.LoggerLevel;
 import java.io.Serializable;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -20,6 +22,7 @@ public class AddFacilityController extends PageController implements Serializabl
         if (addedFacility != null && addedFacility.getTitle().length() > 0) {
             super.getUserController().getCurrent().addFacility(addedFacility);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Объект успешно добавлен"));
+            super.logFacade.create(new Log(LoggerLevel.INFO, super.getCurrent().getMainEmail()+" added new facility "+addedFacility.getTitle()));
             super.saveChanges();
             addedFacility=new Facility();
             return "home.xhtml?faces-redirect=true";
@@ -32,7 +35,7 @@ public class AddFacilityController extends PageController implements Serializabl
     public void deleteFacility(Facility facility) {
         if (facility == null) {
             addedFacility = new Facility();
-            FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("all");//TODO: Вставить ухо
+            FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("@all");
 
         }
         int i = 0;
@@ -44,6 +47,8 @@ public class AddFacilityController extends PageController implements Serializabl
             i++;
         }
         super.getUserController().getCurrent().getFasilitys().remove(i);
+        super.logFacade.create(new Log(LoggerLevel.INFO, super.getCurrent().getMainEmail()+" delete facility "+facility.getTitle()));
+            
         super.saveChanges();        
     }
 

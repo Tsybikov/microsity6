@@ -10,7 +10,7 @@ package info.microsityv6.microsityv6.enums;
  * @author Panker-RDP
  */
 public enum DeviceType {
-    SECURITY("Безопасность"),ALERT("Тревожный датчик"),RELAY("Контролер"),COUNTER("Счетчик"),DATA("Датчик");
+    SECURITY("Безопасность"),ALERT("Тревожный датчик"),RELAY("Контролер"),COUNTER("Счетчик"),DATA("Датчик"),NOT_SET_UP("Не настроено");
     String itIs;
 
     private DeviceType(String itIs) {

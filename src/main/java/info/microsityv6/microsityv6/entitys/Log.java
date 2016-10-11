@@ -7,10 +7,14 @@ package info.microsityv6.microsityv6.entitys;
 
 import info.microsityv6.microsityv6.enums.LoggerLevel;
 import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -25,6 +29,10 @@ public class Log implements Serializable {
     private Long id;
     private LoggerLevel loggerLevel;
     private String mess;
+    @Column(columnDefinition = "DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
+    private Throwable exception;
 
     public Log() {
     }
@@ -32,6 +40,14 @@ public class Log implements Serializable {
     public Log(LoggerLevel loggerLevel, String mess) {
         this.loggerLevel = loggerLevel;
         this.mess = mess;
+        this.date=new Date();
+    }
+    
+    public Log(LoggerLevel loggerLevel, String mess, Throwable ex) {
+        this.loggerLevel = loggerLevel;
+        this.mess = mess;
+        this.date=new Date();
+        this.exception=ex;
     }
     
     
@@ -56,6 +72,23 @@ public class Log implements Serializable {
     public LoggerLevel getLoggerLevel() {
         return loggerLevel;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getException() {
+        return exception.getMessage();
+    }
+
+    public void setException(Throwable exception) {
+        this.exception = exception;
+    }
+    
     
     
     
