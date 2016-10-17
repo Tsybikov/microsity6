@@ -4,17 +4,9 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:comp="http://xmlns.jcp.org/jsf/composite/ezcomp">
+      xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp">
     <h:head>
-        <title>MicroSity Version 6</title>
-        <h:outputStylesheet library="css" name="master-a.css" />
-        <h:outputStylesheet library="css" name="addcamera.css" />
-        <h:outputStylesheet library="css" name="addfacility.css" />
-        <h:outputStylesheet library="css" name="cameras.css" id="pagesheet" />
-        <h:outputStylesheet library="css" name="site_global.css"  />
-        <c:if test="#{!userController.entered}">
-            <meta http-equiv="refresh" content="0; url=login.xhtml?faces-redirect=true" />
-        </c:if>
+        <ezcomp:head />
     </h:head>
     <h:body>
         <p:growl autoUpdate="true" />
@@ -27,7 +19,7 @@
                 <div class="browser_width" id="u1885-bw">
                     <div id="u1885"><!-- simple frame --></div>
                 </div>
-                <comp:personal />
+                <ezcomp:personal />
                 <div class="clearfix colelem" id="u94"><!-- group -->
                     <div class="clearfix grpelem" id="u95"><!-- group -->
                         <div class="clearfix grpelem" id="u96" style="width: 600px;"><!-- group -->
@@ -104,11 +96,7 @@
                     <a class="nonblock nontext Button transition clearfix" id="buttonu1914" href="actionmap.xhtml?faces-redirect=true"><!-- container box --><div class="position_content" id="buttonu1914_position_content"><div class="clip_frame colelem" id="u1916"><!-- image --><img class="block" id="u1916_img" src="resources/images//maps-new.png" alt="" data-image-width="30" data-image-height="30"/></div><img class="colelem" id="u1915-4" alt="Карта событий" src="resources/images//u1915-4.png" data-image-width="170"/><!-- rasterized frame --></div></a>
                     <a class="nonblock nontext Button transition clearfix" id="buttonu1918" href="messages.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u1919"><!-- image --><img class="block" id="u1919_img" src="resources/images//msgs.png" alt="" data-image-width="30" data-image-height="30"/></div><img class="grpelem" id="u1921-4" alt="Сообщения" src="resources/images//u1921-4.png" data-image-width="88"/><!-- rasterized frame --></a>
                     <a class="nonblock nontext Button transition clearfix" id="buttonu1922" href="profile.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u1924"><!-- image --><img class="block" id="u1924_img" src="resources/images//user.png" alt="" data-image-width="30" data-image-height="30"/></div><img class="grpelem" id="u1923-4" alt="Профиль" src="resources/images//u1923-4.png" data-image-width="88"/><!-- rasterized frame --></a>
-                    <h:form>
-                <p:commandLink action="#{userController.logout()}">
-                    <div class="clip_frame grpelem" id="u1927"><!-- image --><img class="block" id="u1927_img" src="resources/images/logout.png" alt="" data-image-width="30" data-image-height="30"/></div>
-                </p:commandLink>
-            </h:form>
+                    <ezcomp:logout/>
                 </div>
                 <div class="verticalspacer"></div>
                 <div class="browser_width grpelem" id="u2064-bw">

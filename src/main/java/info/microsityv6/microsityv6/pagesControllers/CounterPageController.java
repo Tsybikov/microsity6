@@ -30,6 +30,7 @@ public class CounterPageController extends PageController implements Serializabl
     private boolean hasWaterMeter;
     private boolean hasWarmMeter;
     private boolean show;
+    private boolean showCharts;
     private List<TariffSummInfo> tsis;
 
     public CounterPageController() {
@@ -43,6 +44,7 @@ public class CounterPageController extends PageController implements Serializabl
             Iterator cshs = tariffZone.getCounterSensorHistorys().iterator();
             while (cshs.hasNext()) {
                 CounterSensorHistory csh = (CounterSensorHistory) cshs.next();
+                
                 if (tariffViewClasses.isEmpty()) {
                     TariffViewClass tvc = new TariffViewClass(csh);
                     tariffViewClasses.add(tvc);
@@ -254,6 +256,18 @@ public class CounterPageController extends PageController implements Serializabl
     public void setFirstVisible(int firstVisible) {
         this.firstVisible = firstVisible;
     }
+
+    public boolean isShowCharts(Counter counter) {
+        if(counter==null)return false;
+        if(counter.getTariffZones().get(0).getCounterSensorHistorys().size()<4320)return false;
+        return true;
+    }
+
+    public void setShowCharts(boolean showCharts) {
+        this.showCharts = showCharts;
+    }
+    
+    
 
     
     

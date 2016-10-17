@@ -10,8 +10,6 @@ import info.microsityv6.microsityv6.facades.UserFacade;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;

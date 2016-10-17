@@ -56,7 +56,7 @@ public class AddDeviceControler extends PageController implements Serializable {
                         for (Pin pin : esp.getPins()) {
                             if (pin.getType().equals(DeviceType.COUNTER)) {
                                 Counter addedCounter = new Counter();
-                                addedCounter.setTitle("Новый " + pin.getCounterType().getAbout());
+                                addedCounter.setTitle("Новый " + pin.getCounterType().getAbout()+"_"+esp.getId());
                                 addedCounter.setCounterType(pin.getCounterType());
                                 addedCounter.setEsp_id(esp.getEspId());
                                 addedCounter.setPin(pin.getPin_num());

@@ -124,6 +124,7 @@ public class SensorsData implements Serializable {
     }
 
     public Integer getTiming() {
+        if(timing==null)timing=0;
         return timing;
     }
 

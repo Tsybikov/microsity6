@@ -48,6 +48,8 @@ public class ParseData implements Serializable {
     LogFacade logFacade;
     List<ESPBase> espbs;
     
+    private boolean lock=false;
+    
     @PostConstruct
     public void init() {
         System.out.println("Timer start");        
@@ -60,6 +62,8 @@ public class ParseData implements Serializable {
 
     @Schedule(dayOfWeek = "*", hour = "*", minute = "*/10")
     public void parseSensorsData() {
+        if(isLock())return;
+        else setLock(true);
         Iterator sds = sdf.findAll().iterator();
         while (sds.hasNext()) {
             SensorsData sd = (SensorsData) sds.next();
@@ -75,7 +79,7 @@ public class ParseData implements Serializable {
         }
         int size = sdf.findAll().size();
         logFacade.create(new Log(LoggerLevel.INFO, "Parsed " + size + " element"));
-
+        setLock(false);
     }
     
     private boolean haveOwner(SensorsData sd) {
@@ -194,6 +198,8 @@ public class ParseData implements Serializable {
 
     @Schedule(dayOfWeek = "*", hour = "23")
     public void cleanSensorsData() {
+        if(isLock())return;
+        else setLock(true);
         int count = 0;
         Iterator sds = sdf.findAll().iterator();
         while (sds.hasNext()) {
@@ -232,6 +238,17 @@ public class ParseData implements Serializable {
             }
         }
         logFacade.create(new Log(LoggerLevel.INFO, "Cleaned " + count + " element"));
+        setLock(false);
+        
+    }
+
+    public boolean isLock() {
+        return lock;
+    }
+
+    public void setLock(boolean lock) {
+        logFacade.create(new Log(LoggerLevel.DEBUG,"Lock is "+String.valueOf(lock)));
+        this.lock = lock;
     }
 
     

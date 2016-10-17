@@ -237,7 +237,7 @@ public class UserController implements Serializable {
         current = new User();
         entered = false;
         admin = false;
-        return ("index");
+        return ("login.xhtml?faces-redirect=true");
     }
 
     public String demo() {
