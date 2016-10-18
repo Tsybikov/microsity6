@@ -2,19 +2,20 @@ package info.microsityv6.microsityv6.pagesControllers;
 
 import info.microsityv6.microsityv6.entitys.Counter;
 import info.microsityv6.microsityv6.support.Chart;
-import info.microsityv6.microsityv6.support.TariffSummInfo;
 import info.microsityv6.microsityv6.support.TariffViewClass;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import org.primefaces.model.chart.LineChartModel;
 
 @Named(value = "chartController")
-@RequestScoped
-public class ChartController {
+@SessionScoped
+public class ChartController implements Serializable{
     
     @Inject
     CounterPageController cpc;

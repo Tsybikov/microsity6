@@ -34,21 +34,23 @@
                         </p:dataGrid>            
                     </p:carousel>
                 </div>
-                
+
                 <div class="clearfix grpelem" id="pu5387"><!-- column -->
-                    <c:if test="#{counterPageController.isShowCharts(cc.attrs.actionElement)}">
-                     <div class="shadow colelem" id="u5387" >
-                         <p:carousel var="chart" value="#{chartController.getCharts(cc.attrs.actionElement)}" numVisible="1">
-                             <p:chart type="#{chart.chartType}" model="#{chart.chartModel}" style="height: 190px;width: 350px;" />
-                         </p:carousel>
-                     </div>
-                    </c:if>
+
+                    <div class="shadow colelem" id="u5387" >
+                        <p:carousel var="chart" itemStyle="width:350px;" value="#{chartController.getCharts(cc.attrs.actionElement)}" vertical="true" autoPlayInterval="5000" numVisible="1" >
+                            <div style="position: relative;width: 360px">
+                                <p:chart type="#{chart.chartType}" model="#{chart.chartModel}" style="height: 190px;width: 350px;" />
+                            </div>
+                        </p:carousel>
+                    </div>
+                    <!--
                     <c:if test="#{!counterPageController.isShowCharts(cc.attrs.actionElement)}">
                      <div class="shadow colelem" id="u5387" >
                          <h:graphicImage library="images" name="chart-grey.png" style="width: 128px;margin-left: 130px;margin-right: 10000px;" />
                          <h:outputText value="Мало данных для построения графика" style="color: red" />
                      </div>
-                    </c:if>
+                    </c:if>-->
                     <p:commandLink action="setupcounter.xhtml?faces-redirect=true" actionListener="#{setupCounterController.setSetupCounter(cc.attrs.actionElement)}">
                         <div class="Button shadow clearfix colelem" id="buttonu5378"><!-- container box -->
                             <img class="grpelem" id="u5379-4" alt="Настроить" src="resources/images/u5428-4.png" data-image-width="167"/>

@@ -24,6 +24,7 @@
         <h:outputStylesheet library="css" name="counters.css" />
         <h:outputStylesheet library="css" name="gps.css" />
         <h:outputStylesheet library="css" name="profile.css" />
+        
         <c:if test="#{!userController.entered}">
             <meta http-equiv="refresh" content="#{cc.attrs.redirect}; url=login.xhtml?faces-redirect=true" />
         </c:if>

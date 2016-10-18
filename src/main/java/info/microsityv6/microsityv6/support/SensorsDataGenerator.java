@@ -53,7 +53,7 @@ public class SensorsDataGenerator extends PageController {
     SensorsData engine2Controller = new SensorsData();
     SensorsData engine3Controller = new SensorsData();
     List<SensorsData> sensors = new ArrayList<>();
-    private int iteration;
+    private int iteration=0;
     private Calendar dateToSet = Calendar.getInstance();
     private Kit demokit = new Kit();
     private String temp = "22";
@@ -69,6 +69,11 @@ public class SensorsDataGenerator extends PageController {
     public void startGenetaror() {
         createFile();
         GeneratorThread gt = new GeneratorThread();
+    }
+    
+    public void startSmallGeneration(){
+        iteration=50;
+        startGenetaror();
     }
 
     private void createFile() {
@@ -103,14 +108,122 @@ public class SensorsDataGenerator extends PageController {
         @Override
         public void run() {
             System.out.println("Thread is run");
+            initiateSensors();
+            if (!sensorsIsExist()) {
+                for (SensorsData sensor : sensors) {
+                    createESP(sensor);
+                }
+                demokit.setKitHexId("FFFFFFFF");
+                kitFacade.create(demokit);
+            }
             generateSensorsData();
             System.out.println("Thread is finish");
+        }
+
+        private void createESP(SensorsData sensor) {
+            if (sensor.getSensorId().contains("Meter")) {
+                createNewCounterESP(sensor);
+            }
+            if (sensor.getSensorId().contains("Sensor")) {
+                createNewSensorESP(sensor);
+            }
+            if (sensor.getSensorId().contains("Controller")) {
+                createNewControllerESP(sensor);
+            }
+        }
+
+        private void createNewCounterESP(SensorsData sensor) {
+            ESP esp = new ESP();
+            esp.setEspId(sensor.getSensorId());
+            esp.setFirmware_id("Dummy");
+            esp.setInputDate(new Date());
+            esp.setLastIp("localhost");
+            esp.setLastAP("DirectConnect");
+            Pin pin = new Pin();
+            List<Pin> pins = new ArrayList<>();
+            if (sensor.getSensorId().contains("Watt")) {
+                pin.setCounterType(CounterType.WATT);
+            }
+            if (sensor.getSensorId().contains("Water")) {
+                pin.setCounterType(CounterType.WATER);
+            }
+            if (sensor.getSensorId().contains("Gas")) {
+                pin.setCounterType(CounterType.GAS);
+            }
+            if (sensor.getSensorId().contains("Warm")) {
+                pin.setCounterType(CounterType.WARM);
+            }
+            pin.setPin_num(sensor.getPinNum());
+            pin.setType(DeviceType.COUNTER);
+            pins.add(pin);
+            esp.setPins(pins);
+            demokit.addEsp(esp);
+            logFacade.create(new Log(LoggerLevel.INFO, "Added new ESP. ID: " + esp.getEspId()));
+        }
+
+        private void createNewSensorESP(SensorsData sensor) {
+            ESP esp = new ESP();
+            esp.setEspId(sensor.getSensorId());
+            esp.setFirmware_id("Dummy");
+            esp.setInputDate(new Date());
+            esp.setLastIp("localhost");
+            esp.setLastAP("DirectConnect");
+            Pin pin = new Pin();
+            pin.setCounterType(CounterType.NOT_SET_UP);
+            List<Pin> pins = new ArrayList<>();
+            if (sensor.getSensorId().contains("Temp")) {
+                pin.setType(DeviceType.DATA);
+            }
+            if (sensor.getSensorId().contains("Humidity")) {
+                pin.setType(DeviceType.DATA);
+            }
+            if (sensor.getSensorId().contains("Motion")) {
+                pin.setType(DeviceType.SECURITY);
+                pin.setRelay_id("ESP_Dummy_EngineOne");
+            }
+            if (sensor.getSensorId().contains("DoorOpen")) {
+                pin.setType(DeviceType.SECURITY);
+                pin.setRelay_id("ESP_Dummy_EngineTwo");
+            }
+            pin.setPin_num(sensor.getPinNum());
+            pins.add(pin);
+            esp.setPins(pins);
+            demokit.addEsp(esp);
+            logFacade.create(new Log(LoggerLevel.INFO, "Added new ESP. ID: " + esp.getEspId()));
+        }
+
+        private void createNewControllerESP(SensorsData sensor) {
+            ESP esp = new ESP();
+            esp.setEspId(sensor.getSensorId());
+            esp.setFirmware_id("Dummy");
+            esp.setInputDate(new Date());
+            esp.setLastIp("localhost");
+            esp.setLastAP("DirectConnect");
+            Pin pin = new Pin();
+            pin.setCounterType(CounterType.NOT_SET_UP);
+            pin.setType(DeviceType.RELAY);
+            pin.setPin_num(sensor.getPinNum());
+            List<Pin> pins = new ArrayList<>();
+            pin.setPin_num(sensor.getPinNum());
+            pins.add(pin);
+            esp.setPins(pins);
+            demokit.addEsp(esp);
+            logFacade.create(new Log(LoggerLevel.INFO, "Added new ESP. ID: " + esp.getEspId()));
+        }
+
+        private boolean sensorsIsExist() {
+            try {
+                return !kitFacade.findAll().isEmpty();
+            } catch (EJBTransactionRolledbackException ex) {
+
+            }
+            return false;
         }
 
         public void generateSensorsData() {
             int hour = -1;
             int day = -1;
-            int countDay=0;
+            int countDay = 0;
 
             int minusMonth = 0;
             switch (dateToSet.get(Calendar.MONTH)) {
@@ -126,6 +239,8 @@ public class SensorsDataGenerator extends PageController {
                     minusMonth = 3;
             }
             
+            
+
             dateToSet.set(Calendar.MONTH, dateToSet.get(Calendar.MONTH) - minusMonth);
             while (dateToSet.before(Calendar.getInstance())) {
                 if (dateToSet.get(Calendar.DAY_OF_MONTH) != day) {
@@ -139,6 +254,9 @@ public class SensorsDataGenerator extends PageController {
                 dateToSet.setTimeInMillis(dateToSet.getTimeInMillis() + 1800000);
             }
             dateToSet.set(Calendar.MONTH, dateToSet.get(Calendar.MONTH) - minusMonth);
+            if(iteration!=0){
+                dateToSet.set(Calendar.MONTH, dateToSet.get(Calendar.MONTH) - iteration*1000);
+            }
             Date shiftDate = dateToSet.getTime();
             while (shiftDate.getTime() < Calendar.getInstance().getTimeInMillis()) {
                 dateToSet.setTimeInMillis(shiftDate.getTime());

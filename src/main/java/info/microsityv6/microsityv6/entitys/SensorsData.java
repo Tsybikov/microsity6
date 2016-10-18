@@ -18,7 +18,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -54,19 +53,19 @@ public class SensorsData implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dt;
     @Column(name = "IS_ACTION")
-    private Boolean isAction;
+    private Boolean isAction=false;
     @Column(name = "PIN_NUM")
-    private Short pinNum;
+    private Short pinNum=-1;
     @Size(max = 255)
     @Column(name = "SENSOR_ID")
-    private String sensorId;
+    private String sensorId="";
     @Column(name = "TIMING")
-    private Integer timing;
+    private Integer timing=0;
     @Size(max = 255)
     @Column(name = "VALUE")
-    private String value;
+    private String value="0";
     @Column(name = "WAS_READ")
-    private Boolean wasRead;
+    private Boolean wasRead=false;
 
     public SensorsData() {
     }

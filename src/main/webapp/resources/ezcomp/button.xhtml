@@ -9,13 +9,12 @@
     <cc:interface>
         <cc:attribute name="actionButton" />
         <cc:attribute name="actionDestination" method-signature="java.lang.Object action()" default="null"/>
-        <cc:attribute name="float"/>
-        <cc:attribute name="update" default="null"/>
+        <cc:attribute name="float"/>        
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-        <p:commandLink action="#{cc.attrs.actionDestination}" update="#{cc.attrs.update}">
+        <p:commandLink action="#{cc.attrs.actionDestination}" >
             <div class="Button shadow clearfix buttonTemplate" style="float: #{cc.attrs.float}" ><!-- container box -->
                 <img class="grpelem" id="u120-4" alt="#{cc.attrs.actionButton}" src="resources/images/#{cc.attrs.actionButton}.png" data-image-width="167"/><!-- rasterized frame -->
             </div>

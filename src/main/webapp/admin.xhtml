@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html class="html js" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <ezcomp:head />
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandLink action="home.xhtml?faces-redirect=true">
+                <h:outputText value="Назад" />
+            </h:commandLink>
+        </h:form>
+        <h:form>
+            <h:commandButton value="Show debug" action="#{logController.setSelectedLevelAsDebug()}" style="margin: 5px;" />
+            <h:commandButton value="Show error" action="#{logController.setSelectedLevelAsError()}" style="margin: 5px;"/>
+            <h:commandButton value="Show fatal" action="#{logController.setSelectedLevelAsFatal()}" style="margin: 5px;" />
+            <h:commandButton value="Show info" action="#{logController.setSelectedLevelAsInfo()}" style="margin: 5px;" />
+            <h:commandButton value="Show warning" action="#{logController.setSelectedLevelAsWarn()}" style="margin: 5px;" />
+            <h:commandButton value="Show all" action="#{logController.setSelectedLevelAsEmpty()}"  style="margin: 5px;"/>
+            <h:panelGrid columns="2">
+                <c:forEach var="log" items="#{logController.logs}">
+                    <h:outputText value="#{log.date}" style="margin: 5px;color:white;" />
+                    <h:outputText value="#{log.mess}" style="margin: 5px;color:white;" />                    
+                </c:forEach>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

@@ -5,6 +5,7 @@ import info.microsityv6.microsityv6.entitys.SensorsData;
 import info.microsityv6.microsityv6.enums.LoggerLevel;
 import info.microsityv6.microsityv6.facades.LogFacade;
 import info.microsityv6.microsityv6.facades.SensorsDataFacade;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -21,13 +22,14 @@ import javax.inject.Named;
 @Singleton
 @Startup
 public class DummyDateGenerator {
+
     @Inject
     ParseData parseData;
     @EJB
     SensorsDataFacade sdf;
     @EJB
     LogFacade logFacade;
-    private List<SensorsData> sensors=new ArrayList<>();
+    private List<SensorsData> sensors = new ArrayList<>();
     SensorsData wattMeter1 = new SensorsData();
     SensorsData wattMeter2 = new SensorsData();
     SensorsData waterMeter = new SensorsData();
@@ -42,31 +44,28 @@ public class DummyDateGenerator {
     SensorsData engine3Controller = new SensorsData();
     private String temp = "22";
     private String hum = "80";
-    
-    @Schedule(dayOfWeek = "*", month = "*", hour = "*", dayOfMonth = "*", year = "*", minute = "*/10", second = "0", persistent = false)
-    
+
+    @Schedule(dayOfWeek = "*", month = "*", hour = "*", dayOfMonth = "*", year = "*", minute = "*", second = "0", persistent = false)
+
     public void myTimer() {
-        if(parseData.isLock())return;
-        else parseData.setLock(true);
-        generateSensorsData();        
+        if (parseData.isLock()) {
+            return;
+        } else {
+            parseData.setLock(true);
+        }
+        generateSensorsData();
         logFacade.create(new Log(LoggerLevel.INFO, "Newdata generated for DummySensors"));
         parseData.setLock(false);
     }
-    
+
     private void generateSensorsData() {
-        Calendar dateToSet=Calendar.getInstance();
-        dateToSet.setTimeInMillis(dateToSet.getTimeInMillis()-600000);
+        Calendar dateToSet = Calendar.getInstance();
         Date shiftDate = dateToSet.getTime();
-        int iteration=10;
-        System.out.println("Generated "+iteration+"values");
-        int count=0;
+        int iteration = 1;
+        System.out.println("Generated " + iteration + "values");
         for (int minute = 0; minute < iteration; minute++) {
-            if(count==(int)(iteration/10)){
-                int percent=(int)(100-((iteration-minute)/100));
-                count=1;
-            }
-            else count++;
-            shiftDate = getNextDate(shiftDate);
+            SimpleDateFormat sdf=new SimpleDateFormat("HH:mm:ss");
+            logFacade.create(new Log(LoggerLevel.DEBUG,sdf.format(shiftDate)));
             initiateSensors();
             for (SensorsData sensor : sensors) {
                 sensor.setDt(shiftDate);
@@ -82,13 +81,13 @@ public class DummyDateGenerator {
             }
         }
     }
-    
+
     private Date getNextDate(Date incom) {
         long time = incom.getTime() + (long) 60000;
         incom.setTime(time);
         return incom;
     }
-    
+
     private void initiateSensors() {
         sensors.clear();
         wattMeter1 = generateNewCounter("WattMeter1");
@@ -104,7 +103,7 @@ public class DummyDateGenerator {
         engine2Controller = generateNewController("EngineTwo");
         engine3Controller = generateNewController("EngineThree");
     }
-    
+
     private SensorsData generateNewCounter(String name) {
         SensorsData counter = new SensorsData();
         counter.setIsAction(false);
@@ -140,7 +139,7 @@ public class DummyDateGenerator {
         sensors.add(sensor);
         return sensor;
     }
-    
+
     private void generateNewCounterData(SensorsData sensor) {
         if (new Random().nextBoolean()) {
             sensor.setValue(String.valueOf(new Random().nextInt(3)));
