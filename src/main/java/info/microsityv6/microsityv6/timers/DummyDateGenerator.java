@@ -54,7 +54,6 @@ public class DummyDateGenerator {
             parseData.setLock(true);
         }
         generateSensorsData();
-        logFacade.create(new Log(LoggerLevel.INFO, "Newdata generated for DummySensors"));
         parseData.setLock(false);
     }
 

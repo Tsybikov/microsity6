@@ -247,7 +247,6 @@ public class ParseData implements Serializable {
     }
 
     public void setLock(boolean lock) {
-        logFacade.create(new Log(LoggerLevel.DEBUG,"Lock is "+String.valueOf(lock)));
         this.lock = lock;
     }
 
