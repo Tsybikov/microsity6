@@ -90,4 +90,5 @@ public class CounterSensorHistory implements Serializable {
         return ""+recordDate.toString()+recordValue;
     }
     
+    
 }

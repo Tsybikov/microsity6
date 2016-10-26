@@ -5,6 +5,7 @@ import info.microsityv6.microsityv6.entitys.ESP;
 import info.microsityv6.microsityv6.entitys.Kit;
 import info.microsityv6.microsityv6.entitys.Log;
 import info.microsityv6.microsityv6.entitys.Pin;
+import info.microsityv6.microsityv6.entitys.Sensor;
 import info.microsityv6.microsityv6.enums.CounterType;
 import info.microsityv6.microsityv6.enums.DeviceType;
 import info.microsityv6.microsityv6.enums.LoggerLevel;
@@ -56,17 +57,25 @@ public class AddDeviceControler extends PageController implements Serializable {
                         for (Pin pin : esp.getPins()) {
                             if (pin.getType().equals(DeviceType.COUNTER)) {
                                 Counter addedCounter = new Counter();
-                                addedCounter.setTitle("Новый " + pin.getCounterType().getAbout()+"_"+esp.getId());
+                                addedCounter.setTitle("Новый " + pin.getCounterType().getAbout() + "_" + esp.getId());
                                 addedCounter.setCounterType(pin.getCounterType());
                                 addedCounter.setEsp_id(esp.getEspId());
                                 addedCounter.setPin(pin.getPin_num());
                                 super.getCurrentFacility().getCounters().add(addedCounter);
                                 super.saveChanges();
-                                added = true;
-                                addedKit = kit;
-                                addedKit.setSold(true);
-                                addedKitHexId = "";
                             }
+                            if (pin.getType().equals(DeviceType.DATA)) {
+                                Sensor addedSensor = new Sensor();
+                                addedSensor.setTitle("Новый " + pin.getCounterType().getAbout() + "_" + esp.getId());
+                                addedSensor.setEsp_id(esp.getEspId());
+                                addedSensor.setPinNum(pin.getPin_num());
+                                super.getCurrentFacility().getSensors().add(addedSensor);
+                                super.saveChanges();
+                            }
+                            added = true;
+                            addedKit = kit;
+                            addedKit.setSold(true);
+                            addedKitHexId = "";
                         }
                     }
                 }

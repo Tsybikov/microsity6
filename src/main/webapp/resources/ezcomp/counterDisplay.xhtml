@@ -36,14 +36,26 @@
                 </div>
 
                 <div class="clearfix grpelem" id="pu5387"><!-- column -->
-
-                    <div class="shadow colelem" id="u5387" >
-                        <p:carousel var="chart" itemStyle="width:350px;" value="#{chartController.getCharts(cc.attrs.actionElement)}" vertical="true" autoPlayInterval="5000" numVisible="1" >
+                    <c:if test="#{!chartController.mozilla}">
+                        <div class="shadow colelem" id="u5387" >
+                            <p:carousel var="chart" itemStyle="width:350px;" value="#{chartController.getCharts(cc.attrs.actionElement)}" vertical="true" autoPlayInterval="5000" numVisible="1" >
+                                <div style="position: relative;width: 360px">
+                                    <p:chart type="#{chart.chartType}" model="#{chart.chartModel}" style="height: 190px;width: 350px;" />
+                                </div>
+                            </p:carousel>
+                        </div>
+                    </c:if>
+                    <c:if test="#{chartController.mozilla}">
+                        <div class="shadow colelem" id="u5387" >
                             <div style="position: relative;width: 360px">
-                                <p:chart type="#{chart.chartType}" model="#{chart.chartModel}" style="height: 190px;width: 350px;" />
-                            </div>
-                        </p:carousel>
-                    </div>
+                                <p:scrollPanel style="width: 350px;height: 190px;">
+                                    <c:forEach var="chartM" items="#{chartController.getCharts(cc.attrs.actionElement)}">
+                                        <p:chart type="#{chartM.chartType}" model="#{chartM.chartModel}" style="height: 190px;width: 350px;" />
+                                    </c:forEach>
+                                </p:scrollPanel>
+                            </div>                            
+                        </div>
+                    </c:if>
                     <!--
                     <c:if test="#{!counterPageController.isShowCharts(cc.attrs.actionElement)}">
                      <div class="shadow colelem" id="u5387" >

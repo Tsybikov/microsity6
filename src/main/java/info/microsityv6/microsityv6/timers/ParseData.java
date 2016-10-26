@@ -6,6 +6,7 @@ import info.microsityv6.microsityv6.entitys.ESPBase;
 import info.microsityv6.microsityv6.entitys.Facility;
 import info.microsityv6.microsityv6.entitys.Log;
 import info.microsityv6.microsityv6.entitys.Pin;
+import info.microsityv6.microsityv6.entitys.Sensor;
 import info.microsityv6.microsityv6.entitys.SensorsData;
 import info.microsityv6.microsityv6.entitys.SensorsDataReaded;
 import info.microsityv6.microsityv6.entitys.User;
@@ -67,7 +68,7 @@ public class ParseData implements Serializable {
         Iterator sds = sdf.findAll().iterator();
         while (sds.hasNext()) {
             SensorsData sd = (SensorsData) sds.next();
-            if(sd.getWasRead()==null)sd.setWasRead(Boolean.FALSE);
+            if(sd.getWasRead()==null)sd.setWasRead(false);
             if (!sd.getWasRead()) {
                 if (!haveOwner(sd)) {
                     checkMayBeItIsNewDevice(sd);
@@ -96,9 +97,22 @@ public class ParseData implements Serializable {
                             sd.setWasRead(true);
                             return true;
                         }
-                    }
-                    uf.edit(user);
+                    }                    
                 }
+                for (Sensor sensor : fasility.getSensors()) {
+                    if(sensor.getEsp_id().equals(sd.getSensorId())){
+                        if(sd.getIsBool()){
+                            sensor.addValue(sd.getValue().equals("1"));
+                            sd.setWasRead(true);
+                            return true;
+                        }else{
+                            sensor.addValue(Double.parseDouble(sd.getValue()));
+                            sd.setWasRead(true);
+                            return true;
+                        }
+                    }
+                }
+                uf.edit(user);
             }
 
         }

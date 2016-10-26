@@ -42,8 +42,53 @@
                             <div class="clearfix colelem" id="u5353"><!-- group -->
                                 <h:outputText value="#{sensorsPageController.currentFacility.title}" styleClass="grpelem" style="color: white;margin-top: 7px;margin-left: 7px;" />
                             </div>
-                            <h:form>
-                                
+                            <c:if test="#{sensorsPageController.show}">
+                                <c:forEach var="sensor" items="#{sensorsPageController.sensors}">
+                                    <div class="clearfix colelem" id="u5393"><!-- group -->
+                                        <div class="clearfix grpelem" id="u5394"><!-- group -->
+                                            <h:outputText value="#{sensor.title}" styleClass="grpelem" style="color: white;margin:4px 0px 7px 7px;" />
+                                        </div>
+                                        <h:outputText value="#{sensorsPageController.getLastValue(sensor)}" style="color:white" />
+                                        <c:if test="#{sensorsPageController.isBoolean(sensor)}">
+                                        </c:if>
+                                        <c:if test="#{!sensorsPageController.isBoolean(sensor)}">
+                                            <p:carousel var="sopv" value="#{sensorsPageController.getPeriods(sensor)}" numVisible="1">
+                                                <h:panelGrid columns="1">
+                                                    <h:outputText value="Месяц: #{sopv.month}" style="color:white" />
+                                                    <h:outputText value="Начало периода: #{sopv.startValue}" style="color:white" />
+                                                    <h:outputText value="Конец периода: #{sopv.endValue}" style="color:white" />
+                                                </h:panelGrid>
+                                                <div class="clearfix grpelem" id="pu5387"><!-- column -->
+                                                    <c:if test="#{!chartController.mozilla}">
+                                                        <div class="shadow colelem" id="u5387" >
+                                                            <div style="position: relative;width: 360px">
+                                                                <p:chart type="#{sopv.chartType}" model="#{sopv.cm}" style="height: 190px;width: 350px;" />
+                                                            </div>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="#{chartController.mozilla}">
+                                                        <div class="shadow colelem" id="u5387" >
+                                                            <div style="position: relative;width: 360px">
+                                                                <p:scrollPanel style="width: 350px;height: 190px;">
+                                                                    <p:chart type="#{sopv.chartType}" model="#{sopv.cm}" style="height: 190px;width: 350px;" />
+                                                                </p:scrollPanel>
+                                                            </div>                            
+                                                        </div>
+                                                    </c:if>
+                                                    <p:commandLink action="setupsensor.xhtml?faces-redirect=true" actionListener="#{setupSensorController.setSetupSensor(sensor)}">
+                                                        <div class="Button shadow clearfix colelem" id="buttonu5378"><!-- container box -->
+                                                            <img class="grpelem" id="u5379-4" alt="Настроить" src="resources/images/u5428-4.png" data-image-width="167"/>
+                                                        </div>
+                                                    </p:commandLink>
+                                                </div>
+                                            </p:carousel>
+                                        </c:if>
+                                    </div>
+                                </c:forEach>
+                            </c:if>
+                            <c:if test="#{!sensorsPageController.show}">
+                            </c:if>
+                            <h:form>                                
                                 <h:commandLink action="adddevice.xhtml?faces-redirect=true">
                                     <div class="Button shadow clearfix colelem" id="buttonu5351"><!-- container box -->
                                         <img class="grpelem" id="u5352-4" alt="Добавить" src="resources/images/u5352-4.png" data-image-width="167"/><!-- rasterized frame -->

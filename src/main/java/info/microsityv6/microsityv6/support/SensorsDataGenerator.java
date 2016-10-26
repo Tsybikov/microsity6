@@ -21,14 +21,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBTransactionRolledbackException;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 
 @Named(value = "sensorsDataGenerator")
 @RequestScoped
@@ -213,9 +209,12 @@ public class SensorsDataGenerator extends PageController {
 
         private boolean sensorsIsExist() {
             try {
-                return !kitFacade.findAll().isEmpty();
+                if(kitFacade.findAll().isEmpty())return false;
             } catch (EJBTransactionRolledbackException ex) {
 
+            }
+            for (Kit kit : kitFacade.findAll()) {
+                if(kit.getKitHexId().equalsIgnoreCase("FFFFFFFF"))return true;
             }
             return false;
         }
@@ -388,23 +387,23 @@ public class SensorsDataGenerator extends PageController {
         }
 
         private void saveToFile(SensorsData sensor) {
-            File file;
-            if (System.getProperty("os.name").contains("Wind")) {
-                file = new File("C:\\Users\\Panker-RDP\\Documents\\createdDataBase.csv");
-            } else {
-                file = new File("~/dataBasesave/createdDataBase.csv");
-            }
-            try (FileWriter fileWriter = new FileWriter(file, true)) {
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String txt = (startId++) + ";" + (sensor.getIsBool() ? "1" : "0") + ";" + "\"" + sdf.format(sensor.getDt()) + "\""
-                        + ";" + (sensor.getIsAction() ? "1" : "0") + ";" + sensor.getPinNum() + ";\"" + sensor.getSensorId() + "\""
-                        + ";" + sensor.getTiming() + ";\"" + sensor.getValue() + "\";" + (sensor.getWasRead() ? "1" : "0");
-                fileWriter.write(txt);
-                fileWriter.append('\n');
-                fileWriter.flush();
-            } catch (IOException ex) {
-                System.out.println(ex);
-            }
+//            File file;
+//            if (System.getProperty("os.name").contains("Wind")) {
+//                file = new File("C:\\Users\\Panker-RDP\\Documents\\createdDataBase.csv");
+//            } else {
+//                file = new File("~/dataBasesave/createdDataBase.csv");
+//            }
+//            try (FileWriter fileWriter = new FileWriter(file, true)) {
+//                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//                String txt = (startId++) + ";" + (sensor.getIsBool() ? "1" : "0") + ";" + "\"" + sdf.format(sensor.getDt()) + "\""
+//                        + ";" + (sensor.getIsAction() ? "1" : "0") + ";" + sensor.getPinNum() + ";\"" + sensor.getSensorId() + "\""
+//                        + ";" + sensor.getTiming() + ";\"" + sensor.getValue() + "\";" + (sensor.getWasRead() ? "1" : "0");
+//                fileWriter.write(txt);
+//                fileWriter.append('\n');
+//                fileWriter.flush();
+//            } catch (IOException ex) {
+//                System.out.println(ex);
+//            }
         }
 
     }

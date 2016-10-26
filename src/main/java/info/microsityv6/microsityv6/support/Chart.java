@@ -5,6 +5,7 @@
  */
 package info.microsityv6.microsityv6.support;
 
+import info.microsityv6.microsityv6.entitys.Sensor;
 import java.util.List;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartModel;
@@ -24,6 +25,7 @@ public class Chart<T> {
     private String title;
 
 //Business Logic
+    //Charts for Counters
     public Chart(TariffSummInfo tsi, String title) {
         LineChartModel chartModel = new LineChartModel();
         chartModel.setTitle(title + " Динамика потребления");
@@ -69,7 +71,11 @@ public class Chart<T> {
         this.chartModel=chartModel;
         chartType="bar";
     }
-
+    //Charts for Sensors
+    public Chart(Sensor sensor, String title){
+        LineChartModel chartModel= new LineChartModel();
+        
+    }
 //Getters&Setters
     public ChartModel getChartModel() {
         return chartModel;

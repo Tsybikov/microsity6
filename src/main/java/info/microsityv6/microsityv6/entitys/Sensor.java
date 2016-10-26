@@ -31,6 +31,8 @@ public class Sensor implements Serializable {
     private boolean showInTheMap;
     private String esp_id;
     private int pinNum;
+    private boolean isBool;
+    private boolean isCounter;
     
     @OneToMany(cascade = CascadeType.ALL)
     private List<CounterSensorHistory> counterSensorHistorys;
@@ -143,6 +145,24 @@ public class Sensor implements Serializable {
         CounterSensorHistory addedValue = new CounterSensorHistory();
         addedValue.setState(recordState);
     }
+
+    public boolean isAsBool() {
+        return isBool;
+    }
+
+    public void setAsBool(boolean isBool) {
+        this.isBool = isBool;
+    }
+
+    public boolean isAsCounter() {
+        return isCounter;
+    }
+
+    public void setAsCounter(boolean isCounter) {
+        if(isCounter)setAsBool(false);
+        this.isCounter = isCounter;
+    }
+    
     
     
     

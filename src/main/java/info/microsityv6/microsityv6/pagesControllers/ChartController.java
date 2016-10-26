@@ -1,6 +1,9 @@
 package info.microsityv6.microsityv6.pagesControllers;
 
 import info.microsityv6.microsityv6.entitys.Counter;
+import info.microsityv6.microsityv6.entitys.Log;
+import info.microsityv6.microsityv6.entitys.Sensor;
+import info.microsityv6.microsityv6.enums.LoggerLevel;
 import info.microsityv6.microsityv6.support.Chart;
 import info.microsityv6.microsityv6.support.TariffViewClass;
 import java.io.Serializable;
@@ -10,22 +13,29 @@ import java.util.Random;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import org.primefaces.model.chart.LineChartModel;
 
 @Named(value = "chartController")
 @SessionScoped
-public class ChartController implements Serializable{
+public class ChartController extends PageController implements Serializable{
     
     @Inject
     CounterPageController cpc;
     private List<Chart> charts;
     private String effect;
+    private boolean mozilla;
     
     public ChartController() {
     }
     
     public List<Chart> getCharts(Counter counter){
+        if(counter==null){
+            logFacade.create(new Log(LoggerLevel.ERROR, "ChartController.getCharts.Controller is null. Need investigate"));
+            return new ArrayList<>();
+        }
         charts=new ArrayList<>();
         List<TariffViewClass> tvcs=cpc.getTariffValues(counter);
         for (TariffViewClass tvc : tvcs) {
@@ -48,6 +58,15 @@ public class ChartController implements Serializable{
         return charts;
     }
 
+    public List<Chart> getCharts(Sensor sensor){
+        charts=new ArrayList<>();
+        if(sensor==null){
+            logFacade.create(new Log(LoggerLevel.ERROR, "ChartController.getCharts.Sensor is null. Need investigate"));
+            return new ArrayList<>();
+        }
+        
+        return charts;
+    }
     public String getEffect() {
         Random rnd=new Random();
         switch(rnd.nextInt(3)){
@@ -62,6 +81,17 @@ public class ChartController implements Serializable{
     public void setEffect(String effect) {
         this.effect = effect;
     }
+
+    public boolean isMozilla() {
+        String userAgent=((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getHeader("User-Agent");
+        System.out.println(userAgent);
+        return userAgent.contains("Firefox");
+    }
+
+    public void setMozilla(boolean mozilla) {
+        this.mozilla = mozilla;
+    }
+    
     
     
 }
