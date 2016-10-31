@@ -1,8 +1,6 @@
 package info.microsityv6.microsityv6.timers;
 
-import info.microsityv6.microsityv6.entitys.Log;
 import info.microsityv6.microsityv6.entitys.SensorsData;
-import info.microsityv6.microsityv6.enums.LoggerLevel;
 import info.microsityv6.microsityv6.facades.LogFacade;
 import info.microsityv6.microsityv6.facades.SensorsDataFacade;
 import java.text.SimpleDateFormat;
@@ -64,7 +62,6 @@ public class DummyDateGenerator {
         System.out.println("Generated " + iteration + "values");
         for (int minute = 0; minute < iteration; minute++) {
             SimpleDateFormat sdf=new SimpleDateFormat("HH:mm:ss");
-            logFacade.create(new Log(LoggerLevel.DEBUG,sdf.format(shiftDate)));
             initiateSensors();
             for (SensorsData sensor : sensors) {
                 sensor.setDt(shiftDate);

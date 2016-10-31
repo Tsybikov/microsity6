@@ -11,7 +11,6 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -21,6 +20,7 @@ public class SensorsPageController extends PageController implements Serializabl
 
     private List<Sensor> sensors;
     private boolean show;
+    private boolean showChart=true;
 
     public SensorsPageController() {
     }
@@ -28,7 +28,8 @@ public class SensorsPageController extends PageController implements Serializabl
     public String getLastValue(Sensor sensor) {
         String value = "";
         if (sensor.getCshs().isEmpty()) {
-            return "Нет доступных занчений";
+            showChart=false;
+            return "Нет доступных значений";
         }
         int lastValueIndex = sensor.getCshs().size() - 1;
         try {
@@ -37,7 +38,7 @@ public class SensorsPageController extends PageController implements Serializabl
             value = sensor.getCshs().get(lastValueIndex).isState() ? "Включено" : "Выключено";
         }
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy HH:mm");
-        return value + " от " + sdf.format(sensor.getCshs().get(lastValueIndex).getRecordDate());
+        return value + " от " + sdf.format(sensor.getCshs().get(lastValueIndex).getRecordDate().getTime());
     }
 
     public List<SensorOnePeriodView> getPeriods(Sensor sensor) {
@@ -118,4 +119,13 @@ public class SensorsPageController extends PageController implements Serializabl
         this.show = show;
     }
 
+    public boolean isShowChart() {
+        return showChart;
+    }
+
+    public void setShowChart(boolean showChart) {
+        this.showChart = showChart;
+    }
+    
+    
 }

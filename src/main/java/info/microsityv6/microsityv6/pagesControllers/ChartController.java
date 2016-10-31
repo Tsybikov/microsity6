@@ -20,60 +20,75 @@ import org.primefaces.model.chart.LineChartModel;
 
 @Named(value = "chartController")
 @SessionScoped
-public class ChartController extends PageController implements Serializable{
-    
+public class ChartController extends PageController implements Serializable {
+
     @Inject
     CounterPageController cpc;
     private List<Chart> charts;
     private String effect;
     private boolean mozilla;
-    
+
     public ChartController() {
     }
-    
-    public List<Chart> getCharts(Counter counter){
-        if(counter==null){
+
+    public List<Chart> getCharts(Object obj) {
+        if (obj instanceof Counter) {
+            return getCharts((Counter) obj);
+        }
+        if(obj instanceof Sensor){
+            return getCharts((Sensor)obj);
+        }
+        return new ArrayList<>();
+    }
+
+    private List<Chart> getCharts(Counter counter) {
+        if (counter == null) {
             logFacade.create(new Log(LoggerLevel.ERROR, "ChartController.getCharts.Controller is null. Need investigate"));
             return new ArrayList<>();
         }
-        charts=new ArrayList<>();
-        List<TariffViewClass> tvcs=cpc.getTariffValues(counter);
+        charts = new ArrayList<>();
+        List<TariffViewClass> tvcs = cpc.getTariffValues(counter);
         for (TariffViewClass tvc : tvcs) {
-            if(tvc.getTsis().size()>1){
-                charts.add(new Chart(tvc,tvc.getMonth()));//Сравнение потребления по тарифным планам
-                Chart complexChart=new Chart(tvc.getTsis().get(0),tvc.getMonth());//Динамика потребления по тарифным планам
-                for(int i=1;i<tvc.getTsis().size();i++){
-                    ((LineChartModel)complexChart.getChartModel()).addSeries(((LineChartModel)new Chart(tvc.getTsis().get(i),tvc.getMonth()).getChartModel()).getSeries().get(0));//Ипануца сложный код
+            if (tvc.getTsis().size() > 1) {
+                charts.add(new Chart(tvc, tvc.getMonth()));//Сравнение потребления по тарифным планам
+                Chart complexChart = new Chart(tvc.getTsis().get(0), tvc.getMonth());//Динамика потребления по тарифным планам
+                for (int i = 1; i < tvc.getTsis().size(); i++) {
+                    ((LineChartModel) complexChart.getChartModel()).addSeries(((LineChartModel) new Chart(tvc.getTsis().get(i), tvc.getMonth()).getChartModel()).getSeries().get(0));//Ипануца сложный код
                 }
                 complexChart.getChartModel().setLegendPosition("se");
                 charts.add(complexChart);
             }
-            if(tvc.getTsis().size()==1){
-                charts.add(new Chart(tvc.getTsis().get(0),tvc.getMonth()));
-            }            
+            if (tvc.getTsis().size() == 1) {
+                charts.add(new Chart(tvc.getTsis().get(0), tvc.getMonth()));
+            }
         }
-        if(tvcs.size()>3){
+        if (tvcs.size() > 3) {
             charts.add(new Chart(tvcs));
         }
         return charts;
     }
 
-    public List<Chart> getCharts(Sensor sensor){
-        charts=new ArrayList<>();
-        if(sensor==null){
+    private List<Chart> getCharts(Sensor sensor) {
+        charts = new ArrayList<>();
+        if (sensor == null) {
             logFacade.create(new Log(LoggerLevel.ERROR, "ChartController.getCharts.Sensor is null. Need investigate"));
             return new ArrayList<>();
         }
-        
+
         return charts;
     }
+
     public String getEffect() {
-        Random rnd=new Random();
-        switch(rnd.nextInt(3)){
-            case 0: return"fade";
-            case 1: return"zoom";
-            case 2: return"turnDown";
-            case 3: return"shuffle";
+        Random rnd = new Random();
+        switch (rnd.nextInt(3)) {
+            case 0:
+                return "fade";
+            case 1:
+                return "zoom";
+            case 2:
+                return "turnDown";
+            case 3:
+                return "shuffle";
         }
         return effect;
     }
@@ -83,7 +98,7 @@ public class ChartController extends PageController implements Serializable{
     }
 
     public boolean isMozilla() {
-        String userAgent=((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getHeader("User-Agent");
+        String userAgent = ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest()).getHeader("User-Agent");
         System.out.println(userAgent);
         return userAgent.contains("Firefox");
     }
@@ -91,7 +106,5 @@ public class ChartController extends PageController implements Serializable{
     public void setMozilla(boolean mozilla) {
         this.mozilla = mozilla;
     }
-    
-    
-    
+
 }

@@ -15,7 +15,6 @@ import info.microsityv6.microsityv6.pagesControllers.PageController;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;

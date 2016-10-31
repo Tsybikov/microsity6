@@ -106,6 +106,8 @@ public class ParseData implements Serializable {
                             sd.setWasRead(true);
                             return true;
                         }else{
+                            sensor.setAsCounter(false);
+                            sensor.setAsBool(false);
                             sensor.addValue(Double.parseDouble(sd.getValue()));
                             sd.setWasRead(true);
                             return true;

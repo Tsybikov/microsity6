@@ -6,9 +6,7 @@
 package info.microsityv6.microsityv6.support;
 
 import info.microsityv6.microsityv6.entitys.CounterSensorHistory;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Map;
 import org.primefaces.model.chart.ChartModel;
 import org.primefaces.model.chart.ChartSeries;
@@ -31,6 +29,11 @@ public class SensorOnePeriodView {
     private LineChartSeries middleValueCS = new LineChartSeries();
     private LineChartSeries realValueCS = new LineChartSeries();
     private ChartModel cm;
+
+    public SensorOnePeriodView() {
+    }
+    
+    
 
     public SensorOnePeriodView(CounterSensorHistory csh, double startValue) {
         switch (csh.getRecordDate().get(Calendar.MONTH)) {
@@ -149,6 +152,7 @@ public class SensorOnePeriodView {
             return lcm;
         } else {
             PieChartModel pcm = new PieChartModel();
+            if(endValue==0)endValue=1;
             pcm.set("Тревога", endValue);
             pcm.set("Норма", count - endValue);
             chartType = "pie";
@@ -160,6 +164,7 @@ public class SensorOnePeriodView {
         LineChartSeries remasteredChartSeries = new LineChartSeries();
         int size = chartValueCS.getData().size();
         int middle = (int) Math.floor((double) size / 30.0);
+        if(middle<=1)return chartValueCS;
         for (int i = 1; i <= 30; i++) {
             int innerCount = 0;
             double innerMedianValue = 0.0;
@@ -178,10 +183,11 @@ public class SensorOnePeriodView {
     }
 
     public String getChartType() {
-        if (chartType == null) {
-            getCm();
+        if (!realValueCS.getData().isEmpty()) {
+            return "line";
+        } else {
+            return "pie";
         }
-        return chartType;
     }
 
     public void setChartType(String chartType) {

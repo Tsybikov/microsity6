@@ -136,6 +136,7 @@ public class Sensor implements Serializable {
         }
         CounterSensorHistory addedValue = new CounterSensorHistory();
         addedValue.setRecordValue(recordValue);
+        counterSensorHistorys.add(addedValue);
     }
 
     public void addValue(boolean recordState) {
@@ -144,6 +145,7 @@ public class Sensor implements Serializable {
         }
         CounterSensorHistory addedValue = new CounterSensorHistory();
         addedValue.setState(recordState);
+        counterSensorHistorys.add(addedValue);
     }
 
     public boolean isAsBool() {
