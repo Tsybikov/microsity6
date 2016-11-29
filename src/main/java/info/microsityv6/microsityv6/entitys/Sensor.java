@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,6 +30,8 @@ public class Sensor implements Serializable {
     
     private String title;
     private boolean showInTheMap;
+    @Column(name = "HOME_SHOW")
+    private boolean showInTheMain = false;
     private String esp_id;
     private int pinNum;
     private boolean isBool;
@@ -164,6 +167,31 @@ public class Sensor implements Serializable {
         if(isCounter)setAsBool(false);
         this.isCounter = isCounter;
     }
+
+    public boolean isShowInTheMain() {
+        return showInTheMain;
+    }
+
+    public void setShowInTheMain(boolean showInTheMain) {
+        this.showInTheMain = showInTheMain;
+    }
+
+    public boolean isIsBool() {
+        return isBool;
+    }
+
+    public void setIsBool(boolean isBool) {
+        this.isBool = isBool;
+    }
+
+    public boolean isIsCounter() {
+        return isCounter;
+    }
+
+    public void setIsCounter(boolean isCounter) {
+        this.isCounter = isCounter;
+    }
+    
     
     
     

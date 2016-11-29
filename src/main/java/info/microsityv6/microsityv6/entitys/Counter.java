@@ -12,6 +12,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,6 +34,8 @@ public class Counter implements Serializable {
     private String title;
     private CounterType counterType;
     private boolean showInTheMap = true;
+    @Column(name = "HOME_SHOW")
+    private boolean showInTheMain = false;
     private String esp_id;
     private int pin;
 
@@ -189,6 +192,16 @@ public class Counter implements Serializable {
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
+
+    public boolean isShowInTheMain() {
+        return showInTheMain;
+    }
+
+    public void setShowInTheMain(boolean showInTheMain) {
+        this.showInTheMain = showInTheMain;
+    }
+    
+    
 
     @Override
     public boolean equals(Object object) {

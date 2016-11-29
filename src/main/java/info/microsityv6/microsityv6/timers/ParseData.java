@@ -79,7 +79,6 @@ public class ParseData implements Serializable {
             }
         }
         int size = sdf.findAll().size();
-        logFacade.create(new Log(LoggerLevel.INFO, "Parsed " + size + " element"));
         setLock(false);
     }
     

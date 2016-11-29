@@ -13,6 +13,7 @@ import info.microsityv6.microsityv6.support.GMailService;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -46,6 +47,7 @@ public class UserController implements Serializable {
     private boolean admin = false;
     private boolean remMe = false;
     private String userMail = "";
+    private List<User> users=new ArrayList<>();
 
     @PostConstruct
     public void init() {
@@ -351,5 +353,16 @@ public class UserController implements Serializable {
     public void setNewPassword(String newPassword) {
         this.newPassword = newPassword;
     }
+
+    public List<User> getUsers() {
+        users=uf.findAll();
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+    
+    
 
 }

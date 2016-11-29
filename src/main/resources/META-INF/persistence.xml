@@ -5,6 +5,15 @@
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <property name="eclipselink.canonicalmodel.subpackage" value="pu1"/>
     </properties>
-  </persistence-unit>  
+  </persistence-unit>
+  <persistence-unit name="ua.turboSMS_PU" transaction-type="JTA">
+    <jta-data-source>java:app/jbdc/sms</jta-data-source>
+    <class>info.microsityv6.microsityv6.entitys.Smartsys</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="eclipselink.canonicalmodel.subpackage" value="pu2"/>
+    </properties>
+  </persistence-unit>
 </persistence>

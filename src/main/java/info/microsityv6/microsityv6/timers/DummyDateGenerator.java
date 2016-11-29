@@ -59,7 +59,6 @@ public class DummyDateGenerator {
         Calendar dateToSet = Calendar.getInstance();
         Date shiftDate = dateToSet.getTime();
         int iteration = 1;
-        System.out.println("Generated " + iteration + "values");
         for (int minute = 0; minute < iteration; minute++) {
             SimpleDateFormat sdf=new SimpleDateFormat("HH:mm:ss");
             initiateSensors();

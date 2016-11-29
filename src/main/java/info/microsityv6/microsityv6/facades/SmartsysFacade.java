@@ -5,20 +5,16 @@
  */
 package info.microsityv6.microsityv6.facades;
 
-import info.microsityv6.microsityv6.entitys.SensorsDataReaded;
+import info.microsityv6.microsityv6.entitys.Smartsys;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 
-/**
- *
- * @author Panker-RDP
- */
+
 @Stateless
-public class SensorsDataReadedFacade extends AbstractFacade<SensorsDataReaded> {
+public class SmartsysFacade extends AbstractFacade<Smartsys> {
 
-    @PersistenceContext(unitName = "info.microsityv6_PU",type = PersistenceContextType.TRANSACTION)
+    @PersistenceContext(unitName = "ua.turboSMS_PU")
     private EntityManager em;
 
     @Override
@@ -26,8 +22,8 @@ public class SensorsDataReadedFacade extends AbstractFacade<SensorsDataReaded> {
         return em;
     }
 
-    public SensorsDataReadedFacade() {
-        super(SensorsDataReaded.class);
+    public SmartsysFacade() {
+        super(Smartsys.class);
     }
     
 }

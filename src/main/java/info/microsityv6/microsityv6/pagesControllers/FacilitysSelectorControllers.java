@@ -51,5 +51,9 @@ public class FacilitysSelectorControllers implements Serializable {
     public void setFacilitys(List<Facility> facilitys) {
         this.facilitys = facilitys;
     }
-
+    
+    public void removeSelected(Facility facility){
+        userController.getCurrent().getFasilitys().remove(facility);
+        userController.saveCurrent();
+    }
 }

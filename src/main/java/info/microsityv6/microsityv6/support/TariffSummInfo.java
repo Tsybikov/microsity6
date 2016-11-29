@@ -5,7 +5,6 @@
  */
 package info.microsityv6.microsityv6.support;
 
-import java.util.Iterator;
 import java.util.Map;
 import org.primefaces.model.chart.LineChartSeries;
 
@@ -69,9 +68,9 @@ public class TariffSummInfo {
         lcs.setLabel(chartSeries.getLabel());
         for (Map.Entry<Object, Number> entry : chartSeries.getData().entrySet()) {
             if(count<=size){
-                count++;value+=(int)entry.getKey();
+                count++;value=(int)entry.getKey();
             }else{
-                lcs.set(num, value);
+                lcs.set(value, num);
                 num++;count=0;
             }
         }

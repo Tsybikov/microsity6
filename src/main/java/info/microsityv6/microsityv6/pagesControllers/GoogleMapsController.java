@@ -11,6 +11,8 @@ import java.util.Random;
 import java.util.Scanner;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import org.primefaces.json.JSONObject;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -19,7 +21,7 @@ import org.primefaces.model.map.Marker;
 
 @Named(value = "gmController")
 @RequestScoped
-public class GoogleMapsController extends PageController{
+public class GoogleMapsController extends PageController {
 
     private MapModel mapModel;
     private String center;
@@ -73,9 +75,10 @@ public class GoogleMapsController extends PageController{
 
             JSONObject obj = new JSONObject(str);
             if (!obj.getString("status").equals("OK")) {
-                lat = "59.5611525";
-                lng = "150.8301413";
+                lat = "54.3617753";
+                lng = "18.6334365";
                 latLng = new LatLng(Double.valueOf(lat), Double.valueOf(lng));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Не определены координаты для объекта "+currentFacility.getTitle()));
             } else {
                 JSONObject res = obj.getJSONArray("results").getJSONObject(0);
                 JSONObject loc
@@ -86,24 +89,25 @@ public class GoogleMapsController extends PageController{
             }
 
         } catch (IOException ex) {
-            lat = "59.5611525";
-            lng = "150.8301413";
+            lat = "54.3617753";
+            lng = "18.6334365";
             latLng = new LatLng(Double.valueOf(lat), Double.valueOf(lng));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Не определены координаты для объекта "+currentFacility.getTitle()));
             logFacade.create(new Log(LoggerLevel.ERROR, "Error in GoogleMapsController", ex));
-        } 
+        }
         return latLng;
     }
-    
-    public String getCenter(Object obj){
+
+    public String getCenter(Object obj) {
         if (obj instanceof Facility) {
             return getCenter((Facility) obj);
         }
         if (obj instanceof User) {
             return getCenter((User) obj);
         }
-        return "59.5611525" +",150.8301413";
+        return "54.3617753" + ",18.6334365";
     }
-    
+
     private String getCenter(Facility facility) {
         LatLng latLng = getGMapsAdress(facility);
         center = "" + latLng.getLat() + "," + latLng.getLng();
@@ -114,11 +118,11 @@ public class GoogleMapsController extends PageController{
         double lat = 0, lng = 0;
         for (Facility fasility : user.getFasilitys()) {
             LatLng latLng = getGMapsAdress(fasility);
-            lat+=latLng.getLat();
-            lng+=latLng.getLng();
+            lat += latLng.getLat();
+            lng += latLng.getLng();
 
         }
-        center = "" + lat / user.getFasilitys().size() + "," + lng/ user.getFasilitys().size();
+        center = "" + lat / user.getFasilitys().size() + "," + lng / user.getFasilitys().size();
         return center;
     }
 
@@ -136,7 +140,8 @@ public class GoogleMapsController extends PageController{
     public String getId(User user) {
         return user.getId().toString();
     }
-    private int count=10;
+    private int count = 10;
+
     public MapModel getTestsMarkers() {
         MapModel mm = new DefaultMapModel();
         int start = 0;
@@ -148,13 +153,13 @@ public class GoogleMapsController extends PageController{
                 at:46.93537809500658, Lng:32.05741882324219
                 46.98107216122198, Lng:31.970558166503906
              */
-            Double lat1,lng1;
-            if(new Random().nextBoolean()){
-                lat1=lat+Math.random();
-                lng1=lng-Math.random();
-            }else{
-                lat1=lat-Math.random();
-                lng1=lng-Math.random();
+            Double lat1, lng1;
+            if (new Random().nextBoolean()) {
+                lat1 = lat + Math.random();
+                lng1 = lng - Math.random();
+            } else {
+                lat1 = lat - Math.random();
+                lng1 = lng - Math.random();
             }
             if (lat1 > 46.93537809500658 && lng1 > 31.970558166503906 && lat1 < 46.98107216122198 && lng1 < 32.05741882324219) {
                 mm.addOverlay(new Marker(new LatLng(lat1, lng1)));
@@ -172,7 +177,5 @@ public class GoogleMapsController extends PageController{
     public void setCount(int count) {
         this.count = count;
     }
-    
-    
 
 }

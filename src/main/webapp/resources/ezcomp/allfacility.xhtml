@@ -37,7 +37,7 @@
                                              width: 200px;height: 150px;z-index: 4;left: 365px; top:170px;
                                              position: relative; box-shadow: 2px 2px 8px #000000;
                                              margin-right: -10000000000000px;" />
-                            <p:commandLink actionListener="#{homePageController.deleteFacility()}" update="@all">
+                            <p:commandLink actionListener="#{facilitysSelectorControllers.removeSelected(homePageController.currentFacility)}" update="@all">
                                 <div class="Button shadow clearfix grpelem" id="buttonu524"><!-- container box -->
                                     <img class="grpelem" id="u525-4" alt="Удалить" src="resources/images/u525-4.png" data-image-width="167"/><!-- rasterized frame -->
                                 </div>

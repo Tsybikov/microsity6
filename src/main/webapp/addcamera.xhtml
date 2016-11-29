@@ -6,7 +6,16 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp">
     <h:head>
-        <ezcomp:head />
+        <h:outputStylesheet library="css" name="master-a.css" />
+        <h:outputStylesheet library="css" name="addcamera.css" />
+        <h:outputStylesheet library="css" name="site_global.css"  />
+        <h:outputStylesheet library="css" name="home.css" />
+        <h:outputStylesheet library="css" name="addfacility.css" />
+        <c:if test="#{!userController.entered}">
+            <meta http-equiv="refresh" content="0; url=login.xhtml?faces-redirect=true" />
+        </c:if>
+        <script src = "http://maps.google.com/maps/api/js?key=AIzaSyB8gcM1-DkoiAi2yFEgNZMf22axD-mJaug"
+                type = "text/javascript" />
     </h:head>
     <h:body>
         <p:growl autoUpdate="true" />
@@ -30,7 +39,7 @@
                                       z-index: 7;display: block;vertical-align: top;position: relative;margin-right: -10000px;
                                       margin-top: 6px;width: 42.56%;margin-left: 200px;left: -189px;color: white;
                                       " />
-                        
+
                     </div>
                     <h:form>
                         <div class="clearfix grpelem" id="u100"><!-- group -->

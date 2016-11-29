@@ -39,7 +39,16 @@
                             <h:outputText value="Настройки профиля" styleClass="grpelem" style="color: white;margin-top: 7px;margin-left: 7px;" />
                         </div>
                         <h:form>
-                            <h:graphicImage library="images" name="Under-construction.png" style="margin-left: 30%"/>                            
+                            <h:panelGrid columns="2" >
+                                <h:outputText value="Пользователь: " style="color:white;padding-bottom: 3px;margin-left: 12px" />
+                                <h:outputText value="#{userController.current.mainEmail}" style="color:white;padding-bottom: 3px;;margin-left: 12px" />
+                                <h:outputText value="Новый пароль: " style="color:white;padding-bottom: 3px;;margin-left: 12px" />
+                                <h:inputSecret value="#{userController.newPassword}" style="color:white;margin-bottom: 5px;;margin-left: 12px" />
+                                <h:outputText value="Повторите пароль: " style="color:white;margin-bottom: 3px;;margin-left: 12px" />
+                                <h:inputSecret value="#{userController.repeatedPassword}" style="color:white;margin-bottom: 3px;;margin-left: 12px" />
+                                <ezcomp:button actionButton="save" actionDestination="#{userController.updatePassword()}" />
+                                <ezcomp:button actionButton="cancel" />
+                            </h:panelGrid>
                         </h:form>
                     </div>
                 </div>

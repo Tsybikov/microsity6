@@ -4,30 +4,134 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <ezcomp:head />
+        <title>MicroSity Version 6</title>
+        <h:outputStylesheet library="css" name="master-a.css" />
+        <h:outputStylesheet library="css" name="home.css" />
+        <h:outputStylesheet library="css" name="profile.css" />
+        <h:outputStylesheet library="css" name="facilitySelector.css" />
+        <h:outputStylesheet library="css" name="allfacility.css" />
+        <h:outputStylesheet library="css" name="site_global.css"  />
+
+
+        <c:if test="#{!userController.entered}">
+            <meta http-equiv="refresh" content="#{cc.attrs.redirect}; url=login.xhtml?faces-redirect=true" />
+        </c:if>
+        <script src = "http://maps.google.com/maps/api/js?key=AIzaSyB8gcM1-DkoiAi2yFEgNZMf22axD-mJaug"
+                type = "text/javascript" />
     </h:head>
-    <h:body>
+    <h:body style="background-color: #394751 ">
+        <p:growl autoUpdate="true" />
+        <div class="clearfix borderbox" id="page"><!-- group -->
+            <div class="clearfix grpelem" id="pu1880"><!-- group -->
+                <div class="browser_width" id="u1880-bw">
+                    <div id="u1880"><!-- simple frame --></div>
+                </div>
+                <h:form>
+                    <h:commandLink action="home.xhtml?faces-redirect=true">
+                        <img id="u1883" alt="" src="resources/images/logo.png" data-image-width="96" style="margin-top: 15px;"/><!-- rasterized frame -->
+                    </h:commandLink>
+                </h:form>
+                <div class="browser_width" id="u1885-bw">
+                    <div class="shadow" id="u1885"><!-- simple frame --></div>
+                </div>
+                <!--personal info-->
+                <ezcomp:personal/>
+                <!-- end personal info-->
+                <!-- Facilitys div -->
+
+                <!-- /facility div -->
+                <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1886" href="counters.xhtml?faces-redirect=true"><!-- container box --><img class="grpelem" id="u1889-4" alt="Счетчики" src="resources/images/u1889-4.png" data-image-width="77"/><!-- rasterized frame --><div class="clip_frame grpelem" id="u1887"><!-- image --><img class="block" id="u1887_img" src="resources/images/counters-new.png" alt="" data-image-width="25" data-image-height="25"/></div></a>
+                <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1890" href="sensors.xhtml?faces-redirect=true"><!-- container box --><img class="grpelem" id="u1891-4" alt="Датчики" src="resources/images/u1891-4.png" data-image-width="76"/><!-- rasterized frame --><div class="clip_frame grpelem" id="u1892"><!-- image --><img class="block" id="u1892_img" src="resources/images/sensors-new.png" alt="" data-image-width="25" data-image-height="25"/></div></a>
+                <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1902" href="rcontrols.xhtml?faces-redirect=true"><!-- container box --><img class="grpelem" id="u1903-4" alt="Управление" src="resources/images/u1903-4.png" data-image-width="88"/><!-- rasterized frame --><div class="clip_frame grpelem" id="u1904"><!-- image --><img class="block" id="u1904_img" src="resources/images/rcontrol-new.png" alt="" data-image-width="25" data-image-height="25"/></div></a>
+                <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1906" href="health.xhtml?faces-redirect=true"><!-- container box --><img class="grpelem" id="u1909-4" alt="Биометрия" src="resources/images/u1909-4.png" data-image-width="88"/><!-- rasterized frame --><div class="clip_frame grpelem" id="u1907"><!-- image --><img class="block" id="u1907_img" src="resources/images/health-new.png" alt="" data-image-width="25" data-image-height="25"/></div></a>
+                <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1910" href="gps.xhtml?faces-redirect=true"><!-- container box --><img class="grpelem" id="u1911-4" alt="GPS" src="resources/images/u1911-4.png" data-image-width="88"/><!-- rasterized frame --><div class="clip_frame grpelem" id="u1912"><!-- image --><img class="block" id="u1912_img" src="resources/images/gps-new.png" alt="" data-image-width="25" data-image-height="25"/></div></a>
+                <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1894" href="cameras.xhtml?faces-redirect=true"><!-- container box --><img class="grpelem" id="u1895-4" alt="Камеры" src="resources/images/u1895-4.png" data-image-width="76"/><!-- rasterized frame --><div class="clip_frame grpelem" id="u1896"><!-- image --><img class="block" id="u1896_img" src="resources/images/camera-new.png" alt="" data-image-width="25" data-image-height="25"/></div></a>
+                <a class="nonblock nontext Button ButtonSelected transition shadow clearfix" id="buttonu1898" href="home.xhtml?faces-redirect=true"><!-- container box --><img class="grpelem" id="u1899-4" alt="Главная" src="resources/images/u1899-4.png" data-image-width="76"/><!-- rasterized frame --><div class="clip_frame grpelem" id="u1900"><!-- image --><img class="block" id="u1900_img" src="resources/images/home-new.png" alt="" data-image-width="25" data-image-height="25"/></div></a>
+            </div>
+            <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1918" href="messages.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u1919"><!-- image --><img class="block" id="u1919_img" src="resources/images/msgs.png" alt="" data-image-width="30" data-image-height="30"/></div><img class="grpelem" id="u1921-4" alt="Сообщения" src="resources/images/u1921-4.png" data-image-width="88"/><!-- rasterized frame --></a>
+            <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1922" href="profile.xhtml?faces-redirect=true"><!-- container box --><div class="clip_frame grpelem" id="u1924"><!-- image --><img class="block" id="u1924_img" src="resources/images/user.png" alt="" data-image-width="30" data-image-height="30"/></div><img class="grpelem" id="u1923-4" alt="Профиль" src="resources/images/u1923-4.png" data-image-width="88"/><!-- rasterized frame --></a>
+            <a class="nonblock nontext Button transition shadow clearfix" id="buttonu1914" href="actionmap.xhtml?faces-redirect=true"><!-- container box --><div class="position_content" id="buttonu1914_position_content"><div class="clip_frame colelem" id="u1916"><!-- image --><img class="block" id="u1916_img" src="resources/images/maps-new.png" alt="" data-image-width="30" data-image-height="30"/></div><img class="colelem" id="u1915-4" alt="Карта событий" src="resources/images/u1915-4.png" data-image-width="170"/><!-- rasterized frame --></div></a>
+            <ezcomp:logout/>
+        </div>
         <h:form>
-            <h:commandLink action="home.xhtml?faces-redirect=true">
-                <h:outputText value="Назад" />
-            </h:commandLink>
+            <h:outputStylesheet library="css" name="pf.css" />
+            <p:panel toggleable="true" header="Логи" styleClass="outputPanel firstPanel sizeFull" collapsed="true">
+                <p:dataTable var="log" value="#{adminPageController.logs}" widgetVar="logsTable" 
+                             emptyMessage="Нет данных" filteredValue="#{adminPageController.filteredLogs}" styleClass="logsTable"
+                             paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rows="20" rowsPerPageTemplate="20,50,100"
+                             >
+                    <p:column filterBy="#{log.mess}" headerText="Сообщение" filterMatchMode="contains">
+                        <h:outputText value="#{log.mess}" />
+                    </p:column>
+                    <p:column filterBy="#{log.loggerLevel}" headerText="Уровень тревоги" filterMatchMode="in" >
+                        <f:facet name="filter">
+                            <p:selectCheckboxMenu label="Level" onchange="PF('logsTable').filter()">
+                                <f:selectItems value="#{adminPageController.getLevels()}" />
+                            </p:selectCheckboxMenu>
+                        </f:facet>
+                        <h:outputText value="#{log.loggerLevel}" />
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{adminPageController.getDate(log.date)}" />
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+            <p:panel header="Kits List" styleClass="outputPanel size500" toggleable="true">
+                <p:dataTable var="kit" value="#{adminPageController.kits}" emptyMessage="Нет данных">
+                    <p:column headerText="Kit ID">
+                        <h:outputText value="#{kit.kitHexId}" />
+                    </p:column>
+                    <p:column headerText="Devices in kit">
+                        <h:outputText value="#{kit.esps.size()}" />
+                    </p:column>
+                    <p:column headerText="Status">
+                        <h:outputText value="#{kit.sold ? 'Продан': 'Не продан'}" />
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+            <p:panel toggleable="true" header="Отправка SMS" styleClass="outputPanel size500" rendered="#{userController.admin}">
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Адресат" />
+                        <h:inputText value="#{adminPageController.smsTo}" required="true" style="border:1px gray solid;border-radius: 3px;" />
+                        <h:outputText value="Сообщение" />
+                        <h:inputText value="#{adminPageController.messageSms}" required="true" style="border:1px gray solid;border-radius: 3px;" />                        
+                    </h:panelGrid>
+                    <h:commandButton action="#{adminPageController.sendSms()}" value="Отправить" />
+                </h:form>
+            </p:panel>
+            <p:panel toggleable="true" header="Отправка почты" styleClass="outputPanel size500" rendered="#{userController.admin}">
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Адресат" />
+                        <h:inputText value="#{adminPageController.mailTo}" required="true" style="border:1px gray solid;border-radius: 3px;" />
+                        <h:outputText value="Сообщение" />
+                        <h:inputText value="#{adminPageController.messageMail}" required="true" style="border:1px gray solid;border-radius: 3px;" />                        
+                    </h:panelGrid>
+                    <ezcomp:button actionButton="check" actionDestination="#{adminPageController.sendMail()}" text="Отправить" />
+                </h:form>
+            </p:panel>
+
+            <p:panel toggleable="true" header="Отправленные SMS" styleClass="outputPanel size500" rendered="#{userController.admin}">
+                <p:dataTable var="sms" value="#{adminPageController.smss}">
+                    <p:column headerText="Номер">
+                        <h:outputText value="#{sms.number}" />
+                    </p:column>
+                    <p:column headerText="Сообщение">
+                        <h:outputText value="#{sms.message}" />
+                    </p:column>
+                    <p:column headerText="Статус">
+                        <h:outputText value="#{adminPageController.getStatusSms(sms.status)}" />
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+
         </h:form>
-        <h:form>
-            <h:commandButton value="Show debug" action="#{logController.setSelectedLevelAsDebug()}" style="margin: 5px;" />
-            <h:commandButton value="Show error" action="#{logController.setSelectedLevelAsError()}" style="margin: 5px;"/>
-            <h:commandButton value="Show fatal" action="#{logController.setSelectedLevelAsFatal()}" style="margin: 5px;" />
-            <h:commandButton value="Show info" action="#{logController.setSelectedLevelAsInfo()}" style="margin: 5px;" />
-            <h:commandButton value="Show warning" action="#{logController.setSelectedLevelAsWarn()}" style="margin: 5px;" />
-            <h:commandButton value="Show all" action="#{logController.setSelectedLevelAsEmpty()}"  style="margin: 5px;"/>
-            <h:panelGrid columns="2">
-                <c:forEach var="log" items="#{logController.logs}">
-                    <h:outputText value="#{log.date}" style="margin: 5px;color:white;" />
-                    <h:outputText value="#{log.mess}" style="margin: 5px;color:white;" />                    
-                </c:forEach>
-            </h:panelGrid>
-        </h:form>
+        <div class="verticalspacer"></div>
     </h:body>
 </html>
 

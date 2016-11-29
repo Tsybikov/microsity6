@@ -37,6 +37,9 @@ public class Controller implements Serializable {
     private int pinNum;
     @Column(name = "J_STATE")
     private boolean state;
+    private boolean showInTheMap = true;
+    @Column(name = "HOME_SHOW")
+    private boolean showInTheMain = false;
     private List<String> alarmMails;
     private List<String> alarmPhones;
 
@@ -183,6 +186,23 @@ public class Controller implements Serializable {
     public void setPinNum(int pinNum) {
         this.pinNum = pinNum;
     }
+
+    public boolean isShowInTheMap() {
+        return showInTheMap;
+    }
+
+    public void setShowInTheMap(boolean showInTheMap) {
+        this.showInTheMap = showInTheMap;
+    }
+
+    public boolean isShowInTheMain() {
+        return showInTheMain;
+    }
+
+    public void setShowInTheMain(boolean showInTheMain) {
+        this.showInTheMain = showInTheMain;
+    }
+    
     
     
     

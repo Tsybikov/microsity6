@@ -1,0 +1,31 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12.11.2016, 10:52:18
+    Author     : Panker-RDP
+*/
+
+.outputPanel{
+    position: relative;    
+    margin: 20px 0px 30px 10px;
+    top: -500px;
+    
+}
+
+.sizeFull{
+    max-width: 90%;
+    clear: both;
+    margin: auto;
+}
+
+.size500{
+    max-width: 500px;
+    float: left;
+}
+
+.firstPanel{
+   
+}
